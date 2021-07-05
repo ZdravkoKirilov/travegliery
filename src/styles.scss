@@ -34,6 +34,7 @@
 
 html {
   font-size: var(--text-base-size);
+  @extend .full-container;
 }
 
 body {
@@ -41,6 +42,7 @@ body {
   font-weight: var(--font-weight-small);
   font-family: "Poppins", sans-serif;
   color: var(--text-color);
+  @extend .full-container;
 }
 
 p {
@@ -151,6 +153,30 @@ $paddings: "pb", "pt", "pl", "pr", "p";
   }
 }
 
+/* SUPPORTED DEVICES SIZES AND MEDIA QUERIES */
+
+$screen-size1: 48em; /* 768 */
+$screen-size2: 64em; /* 1024 */
+$screen-size3: 120em; /* 1920 */
+
+@mixin phone {
+  @media (max-width: $screen-size1) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media (max-width: $screen-size2) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media (min-width: $screen-size2) {
+    @content;
+  }
+}
+
 /* GENERAL LAYOUT AND CONTAINERS */
 .block {
   display: block;
@@ -200,7 +226,12 @@ $paddings: "pb", "pt", "pl", "pr", "p";
 
 .centered-content {
   width: 100%;
+
   @extend .centered;
+
+  @include desktop {
+    width: $screen-size2;
+  }
 }
 
 .padded-content {
