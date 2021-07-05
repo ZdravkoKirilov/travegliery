@@ -1,3 +1,6 @@
+@import url("https://fonts.googleapis.com/css?family=Poppins:400,600");
+@import "~normalize.css/normalize";
+
 :root {
   --primary-color: #58a77b;
   --primary-dark-color: #2c543e;
@@ -12,7 +15,9 @@
   --error-color: #c95c4b;
   --info-color: #2fbeb3;
 
-  --text-size: 1em;
+  --text-base-size: 1em;
+  --font-weight-small: 400;
+  --font-weight-big: 600;
   --text-color: #4d4d4d;
   --text-color-on-background: #ffffff;
 
@@ -23,4 +28,196 @@
 
   --border-1: 1px;
   --border-2: 2px;
+}
+
+/* GENERAL TYPOGRAPHY  */
+
+html {
+  font-size: var(--text-base-size);
+}
+
+body {
+  line-height: 2;
+  font-weight: var(--font-weight-small);
+  font-family: "Poppins", sans-serif;
+  color: var(--text-color);
+}
+
+p {
+  margin-bottom: 1em;
+}
+
+@mixin heading-base {
+  font-weight: var(--font-weight-big);
+  line-height: 1.3;
+  margin: 0;
+}
+
+.h1 {
+  @include heading-base;
+  font-size: 3.052em;
+}
+
+.h2 {
+  @include heading-base;
+  font-size: 2.441em;
+}
+
+.h3 {
+  @include heading-base;
+  font-size: 1.953em;
+}
+
+.h4 {
+  @include heading-base;
+  font-size: 1.563em;
+}
+
+.h5 {
+  @include heading-base;
+  font-size: 1.25em;
+}
+
+h1 {
+  @extend .h1;
+}
+
+h2 {
+  @extend .h2;
+}
+
+h3 {
+  @extend .h3;
+}
+
+h4 {
+  @extend .h4;
+}
+
+h5 {
+  @extend .h5;
+}
+
+small,
+.small-text {
+  font-size: 0.8em;
+}
+
+/* SPACINGS. mb = margin-bottom, mt = margin-top and so on, similar with paddings */
+
+$sizes: 5;
+$margins: "mb", "mt", "ml", "mr", "m";
+$paddings: "pb", "pt", "pl", "pr", "p";
+
+@each $marginType in $margins {
+  @for $i from 1 through $sizes {
+    .#{$marginType}-#{$i} {
+      @if ($marginType == "mb") {
+        margin-bottom: var(--space-#{$i});
+      } @else if ($marginType == "mt") {
+        margin-top: var(--space-#{$i});
+      } @else if ($marginType == "mr") {
+        margin-right: var(--space-#{$i});
+      } @else if ($marginType == "ml") {
+        margin-left: var(--space-#{$i});
+      } @else if ($marginType == "m") {
+        margin: var(--space-#{$i});
+      }
+    }
+  }
+}
+
+@each $paddingType in $paddings {
+  @for $i from 1 through $sizes {
+    .#{$paddingType}-#{$i} {
+      @if ($paddingType == "pb") {
+        padding-bottom: var(--space-#{$i});
+      } @else if ($paddingType == "pt") {
+        padding-top: var(--space-#{$i});
+      } @else if ($paddingType == "pr") {
+        padding-right: var(--space-#{$i});
+      } @else if ($paddingType == "pl") {
+        padding-left: var(--space-#{$i});
+      } @else if ($paddingType == "p") {
+        padding: var(--space-#{$i});
+      }
+    }
+  }
+}
+
+@for $i from 1 through $sizes {
+  .gap-#{$i} {
+    gap: var(--space-#{$i});
+  }
+}
+
+/* GENERAL LAYOUT AND CONTAINERS */
+.block {
+  display: block;
+}
+
+.inline-block {
+  display: inline-block;
+}
+
+.flex {
+  display: flex;
+}
+
+.align-self-end {
+  align-self: flex-end;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+}
+
+.wrap {
+  flex-wrap: wrap;
+}
+
+.align-center {
+  align-items: center;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.space-between {
+  justify-content: space-between;
+}
+
+.full-container {
+  display: block;
+  height: 100%;
+}
+
+.centered {
+  margin: 0 auto;
+}
+
+.centered-content {
+  width: 100%;
+  @extend .centered;
+}
+
+.padded-content {
+  padding: var(--space-2);
+}
+
+.card-container {
+  display: flex;
+  gap: var(--space-2);
+}
+
+/* GRID HELPERS .width-1 to .width-12 */
+
+$grid-columns: 12;
+
+@for $i from 1 through $grid-columns {
+  .width-#{$i} {
+    width: ($i / 12) * 100%;
+  }
 }
