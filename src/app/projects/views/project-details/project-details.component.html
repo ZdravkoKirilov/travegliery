@@ -1,0 +1,17 @@
+<main class="centered-content padded-content">
+  <header class="mb-2 flex">
+    <a class="mr-3" routerLink="../">Back to projects</a>
+  </header>
+
+  <div *ngIf="project$ | async as project">
+    <h1 class="mb-1">{{ project.name }}</h1>
+
+    <div>
+      <a routerLink="itinerary">Itinerary</a>
+    </div>
+
+    <div>
+      <a routerLink="participants">Participants</a>
+    </div>
+  </div>
+</main>

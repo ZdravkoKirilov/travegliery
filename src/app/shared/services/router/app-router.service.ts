@@ -19,6 +19,12 @@ export class AppRouterService {
     return this.router.navigate(['/auth']);
   }
 
+  getProjectId() {
+    const data = this.getRouteData();
+    const projectId: string = data.params['projectId'];
+    return projectId;
+  }
+
   getRouteData() {
     let route = this.activatedRoute.snapshot.root;
     let params = { ...route.params };

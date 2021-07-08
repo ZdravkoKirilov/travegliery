@@ -1,8 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+import { map } from 'rxjs/operators';
+import { Observable, of } from 'rxjs';
 
 import { UserService } from '@root/authentication';
-import { AppRouterService } from '@root/shared';
-import { map } from 'rxjs/operators';
+import { AppRouterService, Project } from '@root/shared';
+
+import { ProjectsService } from '../../services/projects.service';
 
 @Component({
   selector: 'app-projects-list',
@@ -12,10 +15,15 @@ import { map } from 'rxjs/operators';
 export class ProjectsListComponent implements OnInit {
   constructor(
     private userService: UserService,
-    private appRouter: AppRouterService
+    private appRouter: AppRouterService,
+    private projectService: ProjectsService
   ) {}
 
-  ngOnInit(): void {}
+  projects$: Observable<Project[]> = of([]);
+
+  ngOnInit(): void {
+    this.projects$ = this.projectService.getProjects();
+  }
 
   logout() {
     this.userService

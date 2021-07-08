@@ -1,6 +1,15 @@
 <article class="centered-content padded-content">
-  <header>
+  <header class="mb-2">
     <button (click)="logout()">Logout</button>
+    <h1>Active projects</h1>
   </header>
-  <p>projects-list works!</p>
+
+  <div>
+    <div *ngFor="let project of projects$ | async">
+      <h2 class="h5">{{ project.name }}</h2>
+      <div>
+        <a [routerLink]="[project.id]">Open</a>
+      </div>
+    </div>
+  </div>
 </article>
