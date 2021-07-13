@@ -2,6 +2,7 @@ import { Booking, Participant } from '@root/shared';
 
 export const bookings: Record<string, Booking> = {
   '1': {
+    id: '1',
     type: 'flight',
     start: '29-09-2021: 11:30',
     end: '29-09-2021: 13:25',
@@ -11,6 +12,7 @@ export const bookings: Record<string, Booking> = {
     to: 'Paris De Gaul',
   },
   '2': {
+    id: '2',
     type: 'hotel',
     start: '30-09-2021: 14:00',
     end: '31-09-2021: 12:00',
@@ -20,6 +22,7 @@ export const bookings: Record<string, Booking> = {
     address: 'Tsar Osvoboditel 13',
   },
   '3': {
+    id: '3',
     type: 'ferry',
     start: '01-10-2021: 14:00',
     end: '01-10-2021: 16:00',
@@ -29,6 +32,7 @@ export const bookings: Record<string, Booking> = {
     to: 'Istanbul port 2',
   },
   '4': {
+    id: '4',
     type: 'train',
     start: '03-10-2021: 09:00',
     end: '03-10-2021: 19:00',

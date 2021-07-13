@@ -1,7 +1,17 @@
 <main class="centered-content padded-content">
-  <header>
+  <header class="mb-2">
     <a routerLink="../">Back to project details</a>
   </header>
 
-  <div>This is the itinerary</div>
+  <article>
+    <h1 class="mb-1">Itinerary</h1>
+
+    <div *ngFor="let booking of bookings$ | async" class="mb-2">
+      <div>
+        <span class="mr-1">{{ booking.type }}</span>
+        <span>{{ booking.provider }}</span>
+      </div>
+      <a class="block" [routerLink]="[booking.id]">Open details</a>
+    </div>
+  </article>
 </main>

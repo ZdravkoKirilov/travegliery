@@ -31,6 +31,12 @@ export class AppRouterService {
     return participantId;
   }
 
+  getBookingId() {
+    const data = this.getRouteData();
+    const bookingId: string = data.params['bookingId'];
+    return bookingId;
+  }
+
   getRouteData() {
     let route = this.activatedRoute.snapshot.root;
     let params = { ...route.params };

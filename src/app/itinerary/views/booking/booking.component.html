@@ -1,0 +1,16 @@
+<main class="centered-content padded-content">
+  <header class="mb-2">
+    <a routerLink="../">Back to itinerary</a>
+  </header>
+
+  <article *ngIf="booking$ | async as booking">
+    <h1 class="h2 mb-1">
+      <div class="flex space-between">
+        <span class="mr-1">{{ booking.type }}</span>
+        <span>{{ booking.provider }}</span>
+      </div>
+    </h1>
+
+    <div class="mb-1">{{ booking.start }} - {{ booking.end }}</div>
+  </article>
+</main>

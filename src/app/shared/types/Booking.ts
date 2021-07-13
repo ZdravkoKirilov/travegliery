@@ -1,4 +1,6 @@
 type CommonFields = Readonly<{
+  id: string;
+  
   start: string;
   end: string;
   provider: string;
