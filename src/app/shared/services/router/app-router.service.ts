@@ -25,6 +25,12 @@ export class AppRouterService {
     return projectId;
   }
 
+  getParticipantId() {
+    const data = this.getRouteData();
+    const participantId: string = data.params['participantId'];
+    return participantId;
+  }
+
   getRouteData() {
     let route = this.activatedRoute.snapshot.root;
     let params = { ...route.params };

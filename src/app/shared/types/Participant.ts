@@ -1,4 +1,6 @@
 export type Participant = {
+  id: string;
+
   firstName: string;
   lastName: string;
 
@@ -7,4 +9,4 @@ export type Participant = {
 
   image?: string;
   label?: string;
-}
+};

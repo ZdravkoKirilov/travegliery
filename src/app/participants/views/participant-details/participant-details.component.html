@@ -1,0 +1,14 @@
+<main class="centered-content padded-content">
+  <header class="mb-2">
+    <a routerLink="../">Back to all participants</a>
+  </header>
+
+  <article *ngIf="participant$ | async as participant">
+    <h1 class="h2 mb-1">
+      {{ participant.firstName }} {{ participant.lastName }}
+    </h1>
+
+    <div class="mb-1">{{ participant.email }}</div>
+    <div>{{ participant.phone }}</div>
+  </article>
+</main>

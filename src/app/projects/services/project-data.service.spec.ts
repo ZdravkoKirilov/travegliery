@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { ItineraryService } from './itinerary.service';
+import { ProjectDataService } from './project-data.service';
 
-describe('ItineraryService', () => {
-  let service: ItineraryService;
+describe('ProjectDataService', () => {
+  let service: ProjectDataService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(ItineraryService);
+    service = TestBed.inject(ProjectDataService);
   });
 
   it('should be created', () => {

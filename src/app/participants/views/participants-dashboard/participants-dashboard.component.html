@@ -3,5 +3,14 @@
     <a routerLink="../">Back to project details</a>
   </header>
 
-  <div>Participants</div>
+  <h1>Participants</h1>
+
+  <div class="mt-2">
+    <div *ngFor="let participant of participants$ | async" class="mb-3">
+      <h5 class="mb-1">
+        {{ participant.firstName }} {{ participant.lastName }}
+      </h5>
+      <a class="block" [routerLink]="[participant.id]">Check details</a>
+    </div>
+  </div>
 </main>
