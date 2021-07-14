@@ -1,14 +1,18 @@
 import { Injectable } from '@angular/core';
-import { Observable, BehaviorSubject } from 'rxjs';
+import { Observable, BehaviorSubject, combineLatest } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 import { AppRouterService, Booking, Participant } from '@root/shared';
 
 import { bookings, participants } from './data';
+import { ProjectsService } from './projects.service';
 
 @Injectable()
 export class ProjectDataService {
-  constructor(private appRouter: AppRouterService) {}
+  constructor(
+    private appRouter: AppRouterService,
+    private projectService: ProjectsService
+  ) {}
 
   private participants$ = new BehaviorSubject<Record<string, Participant>>(
     participants
@@ -17,9 +21,16 @@ export class ProjectDataService {
   private bookings$ = new BehaviorSubject<Record<string, Booking>>(bookings);
 
   getParticipants(): Observable<Participant[]> {
-    return this.participants$
-      .asObservable()
-      .pipe(map((data) => Object.values(data)));
+    return combineLatest([
+      this.participants$,
+      this.projectService.getActiveProject(),
+    ]).pipe(
+      map(([participants, activeProject]) => {
+        return Object.values(participants).filter(
+          (pt) => pt.projectId === activeProject?.id
+        );
+      })
+    );
   }
 
   getActiveParticipant(): Observable<Participant> {
@@ -30,12 +41,19 @@ export class ProjectDataService {
   }
 
   getBookings(): Observable<Booking[]> {
-    return this.bookings$
-      .asObservable()
-      .pipe(map((data) => Object.values(data)));
+    return combineLatest([
+      this.bookings$,
+      this.projectService.getActiveProject(),
+    ]).pipe(
+      map(([bookings, activeProject]) => {
+        return Object.values(bookings).filter(
+          (bk) => bk.projectId === activeProject?.id
+        );
+      })
+    );
   }
 
-  getActivePBooking(): Observable<Booking> {
+  getActiveBooking(): Observable<Booking> {
     const activeBookingId = this.appRouter.getBookingId();
     return this.bookings$
       .asObservable()

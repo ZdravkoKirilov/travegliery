@@ -3,6 +3,7 @@ import { Booking, Participant } from '@root/shared';
 export const bookings: Record<string, Booking> = {
   '1': {
     id: '1',
+    projectId: '1',
     type: 'flight',
     start: '29-09-2021: 11:30',
     end: '29-09-2021: 13:25',
@@ -13,6 +14,7 @@ export const bookings: Record<string, Booking> = {
   },
   '2': {
     id: '2',
+    projectId: '1',
     type: 'hotel',
     start: '30-09-2021: 14:00',
     end: '31-09-2021: 12:00',
@@ -23,6 +25,7 @@ export const bookings: Record<string, Booking> = {
   },
   '3': {
     id: '3',
+    projectId: '2',
     type: 'ferry',
     start: '01-10-2021: 14:00',
     end: '01-10-2021: 16:00',
@@ -33,6 +36,7 @@ export const bookings: Record<string, Booking> = {
   },
   '4': {
     id: '4',
+    projectId: '3',
     type: 'train',
     start: '03-10-2021: 09:00',
     end: '03-10-2021: 19:00',
@@ -46,12 +50,14 @@ export const bookings: Record<string, Booking> = {
 export const participants: Record<string, Participant> = {
   '1': {
     id: '1',
+    projectId: '1',
     firstName: 'John',
     lastName: 'Simmons',
     email: 'johns@gmail.com',
   },
   '2': {
     id: '2',
+    projectId: '1',
     firstName: 'Jean',
     lastName: 'Tennesy',
     email: 'jeant@hotmail.com',
@@ -59,6 +65,7 @@ export const participants: Record<string, Participant> = {
   },
   '3': {
     id: '3',
+    projectId: '1',
     firstName: 'Eric',
     lastName: 'Gartner',
     email: 'ericg@hotmail.com',
@@ -66,24 +73,28 @@ export const participants: Record<string, Participant> = {
   },
   '4': {
     id: '4',
+    projectId: '2',
     firstName: 'Vanessa',
     lastName: 'Hughes',
     email: 'vanhughes@gmail.com',
   },
   '5': {
     id: '5',
+    projectId: '2',
     firstName: 'Patrick',
     lastName: 'Rothfuss',
     email: 'nottodaypat@yahoo.com',
   },
   '6': {
     id: '6',
+    projectId: '2',
     firstName: 'Patricia',
     lastName: 'Gates',
     email: 'patgates55@yahoo.com',
   },
   '7': {
     id: '7',
+    projectId: '3',
     firstName: 'Ivan',
     lastName: 'Orlov',
     email: 'luckychicken@gmail.com',

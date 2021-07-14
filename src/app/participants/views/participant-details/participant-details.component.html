@@ -1,6 +1,22 @@
 <main class="centered-content padded-content">
   <header class="mb-2">
-    <a routerLink="../">Back to all participants</a>
+    <span>
+      <a routerLink="../../.." cta="tertiary"> Dashboard </a>
+    </span>
+
+    <span class="ml-1 mr-1"> / </span>
+
+    <span>
+      <a routerLink="../../" cta="tertiary">{{
+        (activeProject$ | async)?.name
+      }}</a>
+    </span>
+
+    <span class="ml-1 mr-1"> / </span>
+
+    <span>
+      <a routerLink="../" cta="tertiary">Participants</a>
+    </span>
   </header>
 
   <article *ngIf="participant$ | async as participant">

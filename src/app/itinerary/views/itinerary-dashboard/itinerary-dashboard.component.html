@@ -1,17 +1,27 @@
 <main class="centered-content padded-content">
   <header class="mb-2">
-    <a routerLink="../">Back to project details</a>
+    <span>
+      <a routerLink="../.." cta="tertiary"> Back to home dashboard </a>
+    </span>
+
+    <span class="ml-1 mr-1"> / </span>
+
+    <span>
+      <a routerLink="../" cta="tertiary">Back to project details</a>
+    </span>
   </header>
 
   <article>
-    <h1 class="mb-1">Itinerary</h1>
+    <h1 class="mb-2 h2">Itinerary</h1>
 
-    <div *ngFor="let booking of bookings$ | async" class="mb-2">
-      <div>
-        <span class="mr-1">{{ booking.type }}</span>
-        <span>{{ booking.provider }}</span>
+    <div class="card-container">
+      <div *ngFor="let booking of bookings$ | async" class="card">
+        <div>
+          <span class="mr-1">{{ booking.type }}</span>
+          <span>{{ booking.provider }}</span>
+        </div>
+        <a class="block" [routerLink]="[booking.id]">Open details</a>
       </div>
-      <a class="block" [routerLink]="[booking.id]">Open details</a>
     </div>
   </article>
 </main>

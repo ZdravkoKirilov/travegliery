@@ -1,5 +1,6 @@
 export type Participant = {
   id: string;
+  projectId: string;
 
   firstName: string;
   lastName: string;

@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 
-import { Booking } from '@root/shared';
-import { ProjectDataService } from '@root/projects';
+import { Booking, Project } from '@root/shared';
+import { ProjectDataService, ProjectsService } from '@root/projects';
 
 @Component({
   selector: 'app-booking',
@@ -11,9 +11,14 @@ import { ProjectDataService } from '@root/projects';
 })
 export class BookingComponent implements OnInit {
   booking$: Observable<Booking>;
+  activeProject$: Observable<Project>;
 
-  constructor(private dataService: ProjectDataService) {
-    this.booking$ = this.dataService.getActivePBooking();
+  constructor(
+    private dataService: ProjectDataService,
+    private projectService: ProjectsService
+  ) {
+    this.booking$ = this.dataService.getActiveBooking();
+    this.activeProject$ = this.projectService.getActiveProject();
   }
 
   ngOnInit(): void {}

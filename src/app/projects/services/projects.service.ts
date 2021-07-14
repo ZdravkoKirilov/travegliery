@@ -5,18 +5,18 @@ import { map } from 'rxjs/operators';
 import { AppRouterService, Project } from '@root/shared';
 
 const projects: Record<string, Project> = {
-  '1ABC': {
-    id: '1ABC',
+  '1': {
+    id: '1',
     name: 'Project 1',
     image: '',
   },
-  '2DEF': {
-    id: '2DEF',
+  '2': {
+    id: '2',
     name: 'Project 2',
     image: '',
   },
-  '3GHI': {
-    id: '3GHI',
+  '3': {
+    id: '3',
     name: 'Project 3',
     image: '',
   },

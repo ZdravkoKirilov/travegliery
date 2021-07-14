@@ -1,21 +1,21 @@
 <main class="full-container centered-content padded-content">
-  <form class="column align-center" (submit)="login($event)">
+  <form class="form" (submit)="login($event)">
     <legend class="mb-2">
       <h1>Login</h1>
     </legend>
 
     <div class="mb-1">
       <label class="block">Email:</label>
-      <input />
+      <input class="input"/>
     </div>
 
     <div class="mb-2">
       <label class="block">Password:</label>
-      <input type="password" />
+      <input type="password" class="input"/>
     </div>
 
     <div>
-      <button>Submit</button>
+      <button cta="primary">Submit</button>
     </div>
   </form>
 </main>

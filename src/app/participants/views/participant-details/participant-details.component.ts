@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 
-import { Participant } from '@root/shared';
-import { ProjectDataService } from '@root/projects';
+import { Participant, Project } from '@root/shared';
+import { ProjectDataService, ProjectsService } from '@root/projects';
 
 @Component({
   selector: 'app-participant-details',
@@ -11,9 +11,14 @@ import { ProjectDataService } from '@root/projects';
 })
 export class ParticipantDetailsComponent implements OnInit {
   participant$: Observable<Participant>;
+  activeProject$: Observable<Project>;
 
-  constructor(private dataService: ProjectDataService) {
+  constructor(
+    private dataService: ProjectDataService,
+    private projectService: ProjectsService
+  ) {
     this.participant$ = this.dataService.getActiveParticipant();
+    this.activeProject$ = this.projectService.getActiveProject();
   }
 
   ngOnInit(): void {}
