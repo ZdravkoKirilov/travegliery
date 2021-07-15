@@ -11,6 +11,7 @@ export const bookings: Record<string, Booking> = {
     participants: ['1', '2'],
     from: 'London - Heathrow',
     to: 'Paris De Gaul',
+    image: '',
   },
   '2': {
     id: '2',
