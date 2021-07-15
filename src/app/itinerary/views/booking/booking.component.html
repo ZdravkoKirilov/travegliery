@@ -27,6 +27,10 @@
       </div>
     </h1>
 
+    <div *ngIf="booking.image">
+      <img [src]="booking.image" class="hero-image" />
+    </div>
+
     <div class="mb-1">{{ booking.start }} - {{ booking.end }}</div>
   </article>
 </main>
