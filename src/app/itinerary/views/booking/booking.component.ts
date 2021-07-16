@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 
-import { Booking, Project } from '@root/shared';
+import { AppRouterService, Booking, Project } from '@root/shared';
 import { ProjectDataService, ProjectsService } from '@root/projects';
 
 @Component({
@@ -15,7 +15,8 @@ export class BookingComponent implements OnInit {
 
   constructor(
     private dataService: ProjectDataService,
-    private projectService: ProjectsService
+    private projectService: ProjectsService,
+    public appRouter: AppRouterService,
   ) {
     this.booking$ = this.dataService.getActiveBooking();
     this.activeProject$ = this.projectService.getActiveProject();

@@ -28,13 +28,26 @@
       </div>
     </h1>
 
-    <div *ngIf="booking.image">
-      <img [src]="booking.image" class="hero-image" />
+    <div *ngIf="booking.image" class="img-container">
+      <img [src]="booking.image" />
     </div>
 
-    <div class="mb-1">
-      {{ booking.startDate }} {{ booking.startTime }} - {{ booking.endDate }}
-      {{ booking.endTime }}
+    <div class="mt-2">
+      <div class="tab-controls">
+        <a
+          cta="outlined"
+          [routerLink]="['./']"
+          [class.active]="appRouter.isRouteActive('general')"
+          >General info</a
+        >
+        <a
+          cta="outlined"
+          [routerLink]="['participants']"
+          [class.active]="appRouter.isRouteActive('participants')"
+          >Participants</a
+        >
+      </div>
+      <router-outlet></router-outlet>
     </div>
   </article>
 </main>

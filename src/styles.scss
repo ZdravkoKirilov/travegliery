@@ -308,6 +308,7 @@ a[cta="outlined"] {
   }
 
   &:focus,
+  &:active,
   &.active {
     background-color: var(--primary-color);
     color: var(--text-color-on-background);
@@ -592,8 +593,8 @@ a[cta="outlined"] {
   }
 }
 
-.hero-image {
-  max-width: 100%;
-  max-height: 400px;
-  border-radius: 30px;
+.tab-controls {
+  & > *:not(:last-child) {
+    margin-right: var(--space-2);
+  }
 }
