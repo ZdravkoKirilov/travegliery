@@ -14,6 +14,8 @@
   <article>
     <h1 class="mb-2 h2">Itinerary</h1>
 
+    <app-booking-list></app-booking-list>
+
     <div class="card-container">
       <div *ngFor="let booking of bookings$ | async" class="card">
         <div>

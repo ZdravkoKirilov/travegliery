@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 
-import { ProjectDataService } from '@root/projects';
+import { BookingGroups, ProjectDataService } from '@root/projects';
 import { Booking } from '@root/shared';
 
 @Component({
@@ -12,8 +12,11 @@ import { Booking } from '@root/shared';
 export class ItineraryDashboardComponent implements OnInit {
   bookings$: Observable<Booking[]>;
 
+  bookingGroups$: Observable<BookingGroups>;
+
   constructor(private dataService: ProjectDataService) {
     this.bookings$ = this.dataService.getBookings();
+    this.bookingGroups$ = this.dataService.getBookingGroupsByDate();
   }
 
   ngOnInit(): void {}

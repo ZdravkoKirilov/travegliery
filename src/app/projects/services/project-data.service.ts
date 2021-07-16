@@ -1,12 +1,14 @@
 import { Injectable } from '@angular/core';
 import { Observable, BehaviorSubject, combineLatest } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { isAfter } from 'date-fns';
 
 import { AppRouterService, Booking, Participant } from '@root/shared';
 
 import { bookings, participants } from './data';
 import { ProjectsService } from './projects.service';
 
+export type BookingGroups = Array<{ date: string; bookings: Booking[] }>;
 @Injectable()
 export class ProjectDataService {
   constructor(
@@ -50,6 +52,48 @@ export class ProjectDataService {
           (bk) => bk.projectId === activeProject?.id
         );
       })
+    );
+  }
+
+  getBookingGroupsByDate(): Observable<BookingGroups> {
+    return this.getBookings().pipe(
+      map((bookings) =>
+        bookings.reduce((acc, item) => {
+          const startDate = item.start;
+          const endDate = item.end;
+
+          const startGroup = acc[startDate] || [];
+          const endGroup = acc[endDate] || [];
+
+          startGroup.push(item);
+          endGroup.push(item);
+
+          acc[startDate] = startGroup;
+          acc[endDate] = endGroup;
+          return acc;
+        }, {} as Record<string, Booking[]>)
+      ),
+      map((groupedBookings) => {
+        return Object.keys(groupedBookings).map((date) => {
+          return {
+            date,
+            bookings: groupedBookings[date],
+          };
+        });
+      }),
+      map((bookings) =>
+        bookings.sort((a, b) => {
+          const date1 = new Date(a.date);
+          const date2 = new Date(b.date);
+          if (isAfter(date1, date2)) {
+            return 1;
+          }
+          if (isAfter(date2, date1)) {
+            return -1;
+          }
+          return 0;
+        })
+      )
     );
   }
 

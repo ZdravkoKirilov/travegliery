@@ -1,12 +1,10 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
-
+import { BookingListComponent } from './components/booking-list/booking-list.component';
 
 @NgModule({
-  declarations: [],
-  imports: [
-    CommonModule
-  ]
+  declarations: [BookingListComponent],
+  imports: [CommonModule],
+  exports: [CommonModule, BookingListComponent],
 })
-export class SharedModule { }
+export class SharedModule {}
