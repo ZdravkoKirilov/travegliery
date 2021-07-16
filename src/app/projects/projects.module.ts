@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 
 import { ProjectsListComponent } from './views/projects-list/projects-list.component';
 import { ProjectDetailsComponent } from './views/project-details/project-details.component';
 import { ProjectContextComponent } from './views/project-context/project-context.component';
+import { SharedModule } from '@root/shared';
 
 const routes: Routes = [
   {
@@ -44,7 +44,7 @@ const routes: Routes = [
     ProjectDetailsComponent,
     ProjectContextComponent,
   ],
-  imports: [CommonModule, RouterModule.forChild(routes)],
+  imports: [SharedModule, RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
 export class ProjectsModule {}

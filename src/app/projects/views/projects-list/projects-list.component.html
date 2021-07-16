@@ -1,8 +1,7 @@
 <article class="centered-content padded-content">
-  <header class="mb-2">
-    <button (click)="logout()" cta="outlined">Logout</button>
-    <h1>Active projects</h1>
-  </header>
+  <app-authenticated-header class="mb-2"></app-authenticated-header>
+
+  <h1 class="mb-2">Active projects</h1>
 
   <div>
     <div *ngFor="let project of projects$ | async">

@@ -1,8 +1,10 @@
 <main class="centered-content padded-content">
-  <header class="mb-2 flex">
-    <a class="mr-3" routerLink="../" cta="tertiary">Back to projects</a>
-  </header>
+  <app-authenticated-header> </app-authenticated-header>
 
+  <div class="mb-2">
+    <a class="mr-3" routerLink="../" cta="tertiary">All projects</a>
+  </div>
+  
   <div *ngIf="project$ | async as project">
     <h1 class="mb-1">{{ project.name }}</h1>
 

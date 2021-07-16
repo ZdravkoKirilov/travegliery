@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 
 import { ParticipantsDashboardComponent } from './views/participants-dashboard/participants-dashboard.component';
 import { ParticipantDetailsComponent } from './views/participant-details/participant-details.component';
+import { SharedModule } from '@root/shared';
 
 const routes: Routes = [
   {
@@ -23,7 +23,7 @@ const routes: Routes = [
 
 @NgModule({
   declarations: [ParticipantsDashboardComponent, ParticipantDetailsComponent],
-  imports: [CommonModule, RouterModule.forChild(routes)],
+  imports: [SharedModule, RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
 export class ParticipantsModule {}

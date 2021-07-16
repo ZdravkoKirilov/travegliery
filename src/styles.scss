@@ -298,7 +298,7 @@ $grid-columns: 12;
 button[cta="outlined"],
 a[cta="outlined"] {
   @include cta;
-  background-color: transparent;
+  background-color: white;
   color: var(--primary-color);
   box-shadow: 0 0 0 1px var(--primary-color);
 
