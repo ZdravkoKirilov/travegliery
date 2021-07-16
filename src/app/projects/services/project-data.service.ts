@@ -62,14 +62,23 @@ export class ProjectDataService {
           const startDate = item.startDate;
           const endDate = item.endDate;
 
+          const isMultiDayEvent = startDate !== endDate;
+
           const startGroup = acc[startDate] || [];
           const endGroup = acc[endDate] || [];
 
           startGroup.push(item);
-          endGroup.push(item);
+
+          if (isMultiDayEvent) {
+            endGroup.push(item);
+          }
 
           acc[startDate] = startGroup;
-          acc[endDate] = endGroup;
+
+          if (isMultiDayEvent) {
+            acc[endDate] = endGroup;
+          }
+
           return acc;
         }, {} as Record<string, Booking[]>)
       ),
