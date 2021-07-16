@@ -1,15 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+
+import { BookingGroups } from '@root/projects';
 
 @Component({
-  selector: 'app-booking-list',
+  selector: 'app-booking-list[bookings]',
   templateUrl: './booking-list.component.html',
-  styleUrls: ['./booking-list.component.scss']
+  styleUrls: ['./booking-list.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class BookingListComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
+export class BookingListComponent {
+  @Input() bookings: BookingGroups = [];
 }

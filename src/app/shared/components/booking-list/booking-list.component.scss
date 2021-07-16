@@ -1,0 +1,30 @@
+.booking:not(:last-child) {
+  border-bottom: 1px solid var(--text-color);
+  padding-bottom: var(--space-2);
+}
+
+.date-badge {
+  padding: var(--space-1);
+  background-color: var(--secondary-transparent-color);
+  color: var(--text-color-on-background);
+  font-weight: bold;
+  border-radius: var(--space-1);
+}
+
+.info-container {
+  flex-grow: 1;
+}
+
+.img-container {
+  max-width: 60%;
+  max-height: 200px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  img {
+    max-width: 100%;
+  }
+}

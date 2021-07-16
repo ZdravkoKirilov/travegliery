@@ -2,8 +2,12 @@ type CommonFields = Readonly<{
   id: string;
   projectId: string;
   
-  start: string;
-  end: string;
+  startDate: string;
+  endDate: string;
+
+  startTime: string;
+  endTime: string;
+
   provider: string;
 
   image?: string;

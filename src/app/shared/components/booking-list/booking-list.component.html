@@ -1,1 +1,22 @@
-<p>booking-list works!</p>
+<div *ngFor="let group of bookings" class="card mb-3">
+  <div class="date-badge mb-1">{{ group.date }}</div>
+
+  <div>
+    <div *ngFor="let booking of group.bookings" class="booking mb-4">
+      <header class="header mb-1">
+        <span class="mr-2">{{ booking.type }}</span>
+        <span>{{ booking.startTime }} - {{ booking.endTime }}</span>
+      </header>
+
+      <div class="flex">
+        <div class="info-container">
+          <div class="mr-2">{{ booking.provider }}</div>
+          <a class="block" [routerLink]="[booking.id]">Open details</a>
+        </div>
+        <div class="img-container">
+          <img [src]="booking.image" />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

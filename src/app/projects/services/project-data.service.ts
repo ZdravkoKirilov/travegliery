@@ -59,8 +59,8 @@ export class ProjectDataService {
     return this.getBookings().pipe(
       map((bookings) =>
         bookings.reduce((acc, item) => {
-          const startDate = item.start;
-          const endDate = item.end;
+          const startDate = item.startDate;
+          const endDate = item.endDate;
 
           const startGroup = acc[startDate] || [];
           const endGroup = acc[endDate] || [];
