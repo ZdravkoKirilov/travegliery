@@ -1,6 +1,6 @@
 <main class="centered-content padded-content">
   <app-authenticated-header></app-authenticated-header>
-  <header class="mb-2">
+  <nav class="mb-2">
     <span>
       <a routerLink="../../.." cta="tertiary"> Dashboard </a>
     </span>
@@ -18,14 +18,18 @@
     <span>
       <a routerLink="../" cta="tertiary">Participants</a>
     </span>
-  </header>
+  </nav>
 
   <article *ngIf="participant$ | async as participant">
-    <h1 class="h2 mb-1">
-      {{ participant.firstName }} {{ participant.lastName }}
-    </h1>
+    <header class="hero-header mb-3">
+      <div class="img-container">
+        <img src="/assets/avatar.jpg" />
+      </div>
+      <h1 class="h2 ml-1">
+        {{ participant.firstName }} {{ participant.lastName }}
+      </h1>
+    </header>
 
-    <div class="mb-1">{{ participant.email }}</div>
-    <div>{{ participant.phone }}</div>
+    <router-outlet></router-outlet>
   </article>
 </main>

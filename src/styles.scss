@@ -18,6 +18,8 @@
   --error-color: #c95c4b;
   --info-color: #2fbeb3;
 
+  --neutral-color: #cfd4d1;
+
   --text-base-size: 1em;
   --font-weight-small: 400;
   --font-weight-big: 600;
@@ -302,9 +304,18 @@ a[cta="outlined"] {
   color: var(--primary-color);
   box-shadow: 0 0 0 1px var(--primary-color);
 
+  &[secondary] {
+    color: var(--secondary-color);
+    box-shadow: 0 0 0 1px var(--secondary-color);
+  }
+
   &:hover {
     color: var(--text-color-on-background);
     background-color: var(--primary-color);
+
+    &[secondary] {
+      background-color: var(--secondary-color);
+    }
   }
 
   &:focus,
@@ -313,6 +324,11 @@ a[cta="outlined"] {
     background-color: var(--primary-color);
     color: var(--text-color-on-background);
     box-shadow: 0 0 0 4px var(--primary-transparent-color);
+
+    &[secondary] {
+      background-color: var(--secondary-color);
+      box-shadow: 0 0 0 4px var(--secondary-transparent-color);
+    }
   }
 }
 
@@ -595,6 +611,31 @@ a[cta="outlined"] {
 
 .tab-controls {
   & > *:not(:last-child) {
-    margin-right: var(--space-2);
+    margin-right: var(--space-4);
+  }
+}
+
+.separator {
+  width: 100%;
+  height: 1px;
+
+  background-color: var(--primary-color);
+
+  &.secondary {
+    background-color: var(--secondary-color);
+  }
+}
+
+.list {
+  margin: 0;
+  padding: 0;
+
+  & > * {
+    border: 1px solid var(--neutral-color);
+    border-radius: var(--space-2);
+  }
+
+  & > *:not(:last-child) {
+    margin-bottom: var(--space-3);
   }
 }

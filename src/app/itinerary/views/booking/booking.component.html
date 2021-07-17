@@ -35,18 +35,20 @@
     <div class="mt-2">
       <div class="tab-controls">
         <a
-          cta="outlined"
+          cta="tertiary"
           [routerLink]="['./']"
           [class.active]="appRouter.isRouteActive('general')"
           >General info</a
         >
         <a
-          cta="outlined"
+          cta="tertiary"
           [routerLink]="['participants']"
           [class.active]="appRouter.isRouteActive('participants')"
           >Participants</a
         >
       </div>
+
+      <div class="separator secondary mt-3 mb-2"></div>
       <router-outlet></router-outlet>
     </div>
   </article>

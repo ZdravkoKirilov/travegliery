@@ -35,6 +35,19 @@ export class ProjectDataService {
     );
   }
 
+  getBookingParticipants(bookingId: Booking['id']): Observable<Participant[]> {
+    return combineLatest([
+      this.getParticipants(),
+      this.getBookingById(bookingId),
+    ]).pipe(
+      map(([participants, booking]) => {
+        return participants.filter((item) =>
+          booking.participants.includes(item.id)
+        );
+      })
+    );
+  }
+
   getActiveParticipant(): Observable<Participant> {
     const activeParticipantId = this.appRouter.getParticipantId();
     return this.participants$
@@ -111,5 +124,11 @@ export class ProjectDataService {
     return this.bookings$
       .asObservable()
       .pipe(map((bookings) => bookings[activeBookingId]));
+  }
+
+  getBookingById(bookingId: Booking['id']): Observable<Booking> {
+    return this.bookings$
+      .asObservable()
+      .pipe(map((bookings) => bookings[bookingId]));
   }
 }

@@ -11,7 +11,7 @@
       <div class="flex">
         <div class="info-container">
           <div class="mr-2">{{ booking.provider }}</div>
-          <a class="block" [routerLink]="[booking.id]">Open details</a>
+          <a class="block" cta="tertiary" [routerLink]="[booking.id]">Open details</a>
         </div>
         <div class="img-container">
           <img [src]="booking.image" />

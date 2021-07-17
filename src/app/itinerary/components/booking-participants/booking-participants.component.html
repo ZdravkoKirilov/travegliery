@@ -1,1 +1,20 @@
-<p>booking-participants works!</p>
+<ul class="list">
+  <li
+    *ngFor="let participant of participants$ | async"
+    class="participant"
+  >
+    <h2 class="h5">{{ participant.firstName }} {{ participant.lastName }}</h2>
+    <span>
+      <a
+        cta="outlined"
+        [routerLink]="[
+          '/projects',
+          (activeProject$ | async)?.id,
+          'participants',
+          participant.id
+        ]"
+        >Profile</a
+      >
+    </span>
+  </li>
+</ul>
