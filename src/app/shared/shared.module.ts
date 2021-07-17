@@ -8,6 +8,10 @@ import { AuthenticatedHeaderComponent } from './components/authenticated-header/
 @NgModule({
   declarations: [BookingListComponent, AuthenticatedHeaderComponent],
   imports: [CommonModule, RouterModule],
-  exports: [CommonModule, BookingListComponent, AuthenticatedHeaderComponent],
+  exports: [
+    CommonModule,
+    BookingListComponent,
+    AuthenticatedHeaderComponent,
+  ],
 })
 export class SharedModule {}

@@ -45,3 +45,6 @@ testem.log
 Thumbs.db
 
 .Identifier
+.identifier
+src/assets/icons/star.svg:Zone.Identifier
+src/assets/svg-icons/star.svg:Zone.Identifier

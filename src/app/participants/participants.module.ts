@@ -1,9 +1,13 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
+import { SharedModule } from '@root/shared';
+
 import { ParticipantsDashboardComponent } from './views/participants-dashboard/participants-dashboard.component';
 import { ParticipantDetailsComponent } from './views/participant-details/participant-details.component';
-import { SharedModule } from '@root/shared';
+import { ParticipantContactComponent } from './components/participant-contact/participant-contact.component';
+import { ParticipantItineraryComponent } from './components/participant-itinerary/participant-itinerary.component';
+import { IconsModule } from '@root/icons';
 
 const routes: Routes = [
   {
@@ -13,7 +17,19 @@ const routes: Routes = [
   {
     path: ':participantId',
     component: ParticipantDetailsComponent,
-    pathMatch: 'exact',
+    children: [
+      {
+        path: '',
+        component: ParticipantContactComponent,
+        data: { key: 'contact' },
+      },
+      {
+        path: 'itinerary',
+        component: ParticipantItineraryComponent,
+        data: { key: 'itinerary' },
+      },
+      { path: '**', redirectTo: '' },
+    ],
   },
   {
     path: '**',
@@ -22,8 +38,13 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  declarations: [ParticipantsDashboardComponent, ParticipantDetailsComponent],
-  imports: [SharedModule, RouterModule.forChild(routes)],
+  declarations: [
+    ParticipantsDashboardComponent,
+    ParticipantDetailsComponent,
+    ParticipantContactComponent,
+    ParticipantItineraryComponent,
+  ],
+  imports: [SharedModule, RouterModule.forChild(routes), IconsModule],
   exports: [RouterModule],
 })
 export class ParticipantsModule {}
