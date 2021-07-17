@@ -10,3 +10,16 @@ if (environment.production) {
 
 platformBrowserDynamic().bootstrapModule(AppModule)
   .catch(err => console.error(err));
+
+
+  /* TODO
+
+participant notes
+participant message history
+participant groups besides "Favorites"?
+send email to group?
+
+booking -> send reminder
+
+
+  */
