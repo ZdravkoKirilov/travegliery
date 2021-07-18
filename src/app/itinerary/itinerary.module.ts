@@ -7,6 +7,7 @@ import { ItineraryDashboardComponent } from './views/itinerary-dashboard/itinera
 import { BookingComponent } from './views/booking/booking.component';
 import { BookingGeneralComponent } from './components/booking-general/booking-general.component';
 import { BookingParticipantsComponent } from './components/booking-participants/booking-participants.component';
+import { IconsModule } from '@root/icons';
 
 const routes: Routes = [
   {
@@ -43,7 +44,7 @@ const routes: Routes = [
     BookingGeneralComponent,
     BookingParticipantsComponent,
   ],
-  imports: [SharedModule, RouterModule.forChild(routes)],
+  imports: [SharedModule, RouterModule.forChild(routes), IconsModule],
   exports: [RouterModule],
 })
 export class ItineraryModule {}

@@ -10,7 +10,7 @@ export const bookings: Record<string, Booking> = {
     endDate: '29-09-2021',
     endTime: '13:30',
     provider: 'Austrian airlines',
-    participants: ['1', '2'],
+    participants: ['1', '2', '8'],
     from: 'London - Heathrow',
     to: 'Paris De Gaul',
     image: 'assets/booking-images/flight1.jpg',
@@ -166,5 +166,13 @@ export const participants: Record<string, Participant> = {
     firstName: 'Ivan',
     lastName: 'Orlov',
     email: 'luckychicken@gmail.com',
+  },
+  '8': {
+    id: '8',
+    projectId: '1',
+    firstName: 'Anna',
+    lastName: 'Heartfilia',
+    email: 'annah@hotmail.com',
+    phone: '4412295677',
   },
 };

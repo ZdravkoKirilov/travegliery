@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Observable } from 'rxjs';
+import { map, switchMap, take } from 'rxjs/operators';
 
 import { AppRouterService, Participant, Project } from '@root/shared';
 import { ProjectDataService, ProjectsService } from '@root/projects';
@@ -9,7 +10,7 @@ import { ProjectDataService, ProjectsService } from '@root/projects';
   templateUrl: './participant-details.component.html',
   styleUrls: ['./participant-details.component.scss'],
 })
-export class ParticipantDetailsComponent implements OnInit {
+export class ParticipantDetailsComponent {
   participant$: Observable<Participant>;
   activeProject$: Observable<Project>;
 
@@ -22,5 +23,23 @@ export class ParticipantDetailsComponent implements OnInit {
     this.activeProject$ = this.projectService.getActiveProject();
   }
 
-  ngOnInit(): void {}
+  isFavorite(participantId: Participant['id']) {
+    return this.dataService.favoriteParticipants$.pipe(
+      map((favorites) => favorites.includes(participantId))
+    );
+  }
+
+  toggleFavorite(participantId: Participant['id']) {
+    this.dataService.favoriteParticipants$
+      .pipe(
+        take(1),
+        switchMap((favorites) => {
+          if (favorites.includes(participantId)) {
+            return this.dataService.removeFromFavorites(participantId);
+          }
+          return this.dataService.addToFavorites(participantId);
+        })
+      )
+      .subscribe();
+  }
 }

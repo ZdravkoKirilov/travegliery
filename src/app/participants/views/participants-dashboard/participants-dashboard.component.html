@@ -1,5 +1,4 @@
 <main class="centered-content padded-content">
-
   <app-authenticated-header></app-authenticated-header>
   <header class="mb-2">
     <span>
@@ -17,10 +16,19 @@
 
   <div class="mt-2 card-container">
     <div *ngFor="let participant of participants$ | async" class="card">
-      <h5 class="mb-1">
-        {{ participant.firstName }} {{ participant.lastName }}
-      </h5>
-      <a class="block" [routerLink]="[participant.id]">Check details</a>
+      <div class="flex mb-1">
+        <svg-icon
+          key="star"
+          size="md"
+          class="mr-1 star"
+          *ngIf="isFavorite(participant.id) | async"
+        ></svg-icon>
+        <h5>{{ participant.firstName }} {{ participant.lastName }}</h5>
+      </div>
+
+      <a class="block" cta="tertiary" [routerLink]="[participant.id]"
+        >Check details</a
+      >
     </div>
   </div>
 </main>

@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { Observable, of } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 import { Participant } from '@root/shared';
 import { ProjectDataService } from '@root/projects';
@@ -8,13 +9,18 @@ import { ProjectDataService } from '@root/projects';
   selector: 'app-participants-dashboard',
   templateUrl: './participants-dashboard.component.html',
   styleUrls: ['./participants-dashboard.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ParticipantsDashboardComponent implements OnInit {
+export class ParticipantsDashboardComponent {
   constructor(private dataService: ProjectDataService) {
     this.participants$ = this.dataService.getParticipants();
   }
 
   participants$: Observable<Participant[]> = of([]);
 
-  ngOnInit(): void {}
+  isFavorite(participantId: Participant['id']) {
+    return this.dataService.favoriteParticipants$.pipe(
+      map((favorites) => favorites.includes(participantId))
+    );
+  }
 }

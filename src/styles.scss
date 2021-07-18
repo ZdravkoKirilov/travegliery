@@ -639,3 +639,11 @@ a[cta="outlined"] {
     margin-bottom: var(--space-3);
   }
 }
+
+svg-icon {
+  display: flex !important;
+}
+
+svg-icon.star {
+  color: orange;
+}

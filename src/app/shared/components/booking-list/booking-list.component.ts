@@ -10,4 +10,5 @@ import { BookingGroups } from '@root/projects';
 })
 export class BookingListComponent {
   @Input() bookings: BookingGroups = [];
+  @Input() baseUrl: string[] = [];
 }

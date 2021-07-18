@@ -1,9 +1,14 @@
 <ul class="list">
-  <li
-    *ngFor="let participant of participants$ | async"
-    class="participant"
-  >
-    <h2 class="h5">{{ participant.firstName }} {{ participant.lastName }}</h2>
+  <li *ngFor="let participant of participants$ | async" class="participant">
+    <div class="flex">
+      <h2 class="h5">{{ participant.firstName }} {{ participant.lastName }}</h2>
+      <svg-icon
+        key="star"
+        class="ml-1 star"
+        *ngIf="isFavorite(participant.id) | async"
+      ></svg-icon>
+    </div>
+
     <span>
       <a
         cta="outlined"

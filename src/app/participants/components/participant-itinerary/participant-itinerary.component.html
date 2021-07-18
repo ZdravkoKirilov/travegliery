@@ -1,1 +1,6 @@
-<p>participant-itinerary works!</p>
+<ng-container *ngIf="activeProject$ | async as project">
+  <app-booking-list
+    [bookings]="(bookingGroups$ | async) || []"
+    [baseUrl]="['/projects', project.id, 'itinerary']"
+  ></app-booking-list>
+</ng-container>
