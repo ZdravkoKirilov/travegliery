@@ -1,14 +1,21 @@
-<main class="centered-content padded-content">
+<main
+  class="centered-content padded-content"
+  *ngIf="activeProject$ | async as project"
+>
   <app-authenticated-header></app-authenticated-header>
-  <header class="mb-2">
+  <header class="mb-2 flex align-center">
     <span>
-      <a routerLink="../.." cta="tertiary"> Back to home dashboard </a>
+      <a routerLink="../.." cta="tertiary" class="align-center">
+        <svg-icon key="back" class="mr-1"></svg-icon>
+
+        <span>Projects</span>
+      </a>
     </span>
 
     <span class="ml-1 mr-1"> / </span>
 
     <span>
-      <a routerLink="../" cta="tertiary">Back to project details</a>
+      <a routerLink="../" cta="tertiary">{{ project.name }}</a>
     </span>
   </header>
 

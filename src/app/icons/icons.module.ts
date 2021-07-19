@@ -4,6 +4,7 @@ import { SvgIconComponent, SvgIconsModule } from '@ngneat/svg-icon';
 
 import { appStarIcon } from '@assets/generated-icons/star';
 import { appShareIcon } from '@assets/generated-icons/share';
+import { appBackIcon } from '@assets/generated-icons/back';
 
 @NgModule({
   declarations: [],
@@ -19,7 +20,7 @@ import { appShareIcon } from '@assets/generated-icons/share';
         xxl: '60px',
       },
       defaultSize: 'md',
-      icons: [appStarIcon, appShareIcon],
+      icons: [appStarIcon, appShareIcon, appBackIcon],
     }),
   ],
   exports: [SvgIconsModule, SvgIconComponent],
