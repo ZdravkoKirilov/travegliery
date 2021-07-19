@@ -56,7 +56,7 @@ export const bookings: Record<string, Booking> = {
     endDate: today.toUTCString(),
     endTime: '19:00',
     provider: 'Old Tomm',
-    participants: ['3', '4'],
+    participants: ['3', '4', '7'],
     from: 'Moscow',
     to: 'St Petersburg',
     image: 'assets/booking-images/train1.jpg',
