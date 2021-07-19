@@ -137,7 +137,7 @@ export const participants: Record<string, Participant> = {
   },
   '3': {
     id: '3',
-    projectId: '1',
+    projectId: '3',
     firstName: 'Eric',
     lastName: 'Gartner',
     email: 'ericg@hotmail.com',
@@ -145,7 +145,7 @@ export const participants: Record<string, Participant> = {
   },
   '4': {
     id: '4',
-    projectId: '2',
+    projectId: '3',
     firstName: 'Vanessa',
     lastName: 'Hughes',
     email: 'vanhughes@gmail.com',
