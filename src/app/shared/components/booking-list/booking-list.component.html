@@ -1,5 +1,5 @@
 <div *ngFor="let group of bookings" class="card mb-3">
-  <div class="date-badge mb-1">{{ group.date }}</div>
+  <div class="date-badge mb-1">{{ group.date | date }}</div>
 
   <div>
     <div *ngFor="let booking of group.bookings" class="booking mb-4">
