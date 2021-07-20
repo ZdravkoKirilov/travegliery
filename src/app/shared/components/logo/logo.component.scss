@@ -1,0 +1,21 @@
+:host {
+  color: white;
+
+  .logo-container {
+    width: 35px;
+  }
+
+  .slogan {
+    font-style: italic;
+  }
+
+  ::ng-deep svg {
+    width: 100%;
+    height: 100%;
+  }
+
+  a {
+    text-decoration: none;
+    color: currentColor;
+  }
+}

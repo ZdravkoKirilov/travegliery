@@ -28,14 +28,14 @@
     </div>
 
     <section class="card mt-4">
-      <h2 class="mb-1 h4 flex align-center">
+      <h2 class="mb-3 h4 flex align-center">
         <span class="mr-1">
           <svg-icon key="heartbeat" size="xl" class="heartbeat-icon"></svg-icon>
         </span>
 
         <span>Heartbeat</span>
       </h2>
-      <section class="mb-1 flex align-center">
+      <section class="mb-3 flex align-center">
         <h3 class="h5 mr-2">Past week</h3>
         <div class="ml-1" *ngFor="let booking of pastBookings$ | async">
           <span class="mr-1">|</span>
@@ -44,7 +44,7 @@
         <span class="ml-2">...</span>
       </section>
 
-      <section class="mb-1 flex">
+      <section class="mb-3 flex">
         <h3 class="h5 mr-2">Today</h3>
         <div class="ml-1" *ngFor="let booking of todayBookings$ | async">
           <span class="mr-1">|</span>
