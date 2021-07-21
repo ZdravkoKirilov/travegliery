@@ -195,6 +195,10 @@ $screen-size3: 120em; /* 1920 */
   display: flex;
 }
 
+.inline-flex {
+  display: inline-flex;
+}
+
 .align-self-end {
   align-self: flex-end;
 }
@@ -341,7 +345,7 @@ a[cta="outlined"] {
   color: var(--secondary-color);
   border-radius: 3em;
   background: none;
-  display: inline-block;
+  display: inline-flex;
 
   &::after {
     content: "";
@@ -645,5 +649,5 @@ svg-icon {
 }
 
 svg-icon.star {
-  color: orange;
+  color: var(--secondary-color);
 }
