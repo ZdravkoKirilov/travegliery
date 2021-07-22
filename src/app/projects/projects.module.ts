@@ -33,6 +33,11 @@ const routes: Routes = [
           import('../participants').then((m) => m.ParticipantsModule),
       },
       {
+        path: ':projectId/sharing',
+        loadChildren: () =>
+          import('../data-sharing').then((m) => m.DataSharingModule),
+      },
+      {
         path: '**',
         redirectTo: '',
       },

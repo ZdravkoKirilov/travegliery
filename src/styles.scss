@@ -47,6 +47,7 @@ body {
   font-weight: var(--font-weight-small);
   font-family: "Poppins", sans-serif;
   color: var(--text-color);
+  overflow-y: scroll;
   @extend .full-container;
 }
 

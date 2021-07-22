@@ -11,11 +11,6 @@ const routes: Routes = [
     canActivate: [WithoutAuthGuard],
   },
   {
-    path: 'sharing',
-    loadChildren: () =>
-      import('./data-sharing').then((m) => m.DataSharingModule),
-  },
-  {
     path: 'projects',
     loadChildren: () => import('./projects').then((m) => m.ProjectsModule),
     canActivate: [WithAuthGuard],

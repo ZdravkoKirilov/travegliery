@@ -19,10 +19,17 @@
         </a>
       </div>
 
-      <div>
+      <div class="mr-3">
         <a routerLink="participants" cta="tertiary" class="align-center">
           <svg-icon key="people" class="mr-1"></svg-icon>
           <span>Participants</span>
+        </a>
+      </div>
+
+      <div>
+        <a routerLink="sharing" cta="tertiary" class="align-center">
+          <svg-icon key="share-center" class="mr-1"></svg-icon>
+          <span>Sharing center</span>
         </a>
       </div>
     </div>
@@ -36,7 +43,7 @@
         <span>Heartbeat</span>
       </h2>
       <section class="mb-3 flex align-center">
-        <h3 class="h5 mr-2">Past week</h3>
+        <h3 class="h5 mr-2">Past 7 days</h3>
         <div class="ml-1" *ngFor="let booking of pastBookings$ | async">
           <span class="mr-1">|</span>
           <a [routerLink]="['itinerary', booking.id]">{{ booking.provider }}</a>
@@ -54,7 +61,7 @@
       </section>
 
       <section class="flex">
-        <h3 class="h5 mr-2">Next week</h3>
+        <h3 class="h5 mr-2">Next 7 days</h3>
         <div class="ml-1" *ngFor="let booking of upcomingBookings$ | async">
           <span class="mr-1">|</span>
           <a [routerLink]="['itinerary', booking.id]">{{ booking.provider }}</a>
