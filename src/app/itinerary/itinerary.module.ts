@@ -2,12 +2,13 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 import { SharedModule } from '@root/shared';
+import { IconsModule } from '@root/icons';
 
 import { ItineraryDashboardComponent } from './views/itinerary-dashboard/itinerary-dashboard.component';
 import { BookingComponent } from './views/booking/booking.component';
 import { BookingGeneralComponent } from './components/booking-general/booking-general.component';
 import { BookingParticipantsComponent } from './components/booking-participants/booking-participants.component';
-import { IconsModule } from '@root/icons';
+import { BookingRemindersComponent } from './components/booking-reminders/booking-reminders.component';
 
 const routes: Routes = [
   {
@@ -28,6 +29,11 @@ const routes: Routes = [
         component: BookingParticipantsComponent,
         data: { key: 'participants' },
       },
+      {
+        path: 'reminders',
+        component: BookingRemindersComponent,
+        data: { key: 'reminders' },
+      },
       { path: '**', redirectTo: '' },
     ],
   },
@@ -43,6 +49,7 @@ const routes: Routes = [
     BookingComponent,
     BookingGeneralComponent,
     BookingParticipantsComponent,
+    BookingRemindersComponent,
   ],
   imports: [SharedModule, RouterModule.forChild(routes), IconsModule],
   exports: [RouterModule],
