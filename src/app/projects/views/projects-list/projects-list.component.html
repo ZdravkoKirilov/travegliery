@@ -1,14 +1,37 @@
 <article class="centered-content padded-content">
   <app-authenticated-header class="mb-2"></app-authenticated-header>
 
-  <h1 class="mb-2">Active projects</h1>
+  <h1 class="mb-2">Projects</h1>
 
-  <div class="card-container">
-    <div *ngFor="let project of projects$ | async" class="card">
-      <h2 class="h5 mb-1">{{ project.name }}</h2>
-      <div>
-        <a [routerLink]="[project.id]" cta="tertiary">Open</a>
+  <section class="mb-4">
+    <h2 class="mb-2 h4">Active</h2>
+    <div class="card-container">
+      <div *ngFor="let project of activeProjects$ | async" class="card">
+        <h2 class="h5 mb-1">{{ project.name }}</h2>
+        <div class="mb-1 small-text italic">
+          <span>{{ project.start | date }}</span> -
+          <span>{{ project.end | date }}</span>
+        </div>
+        <div>
+          <a [routerLink]="[project.id]" cta="tertiary">Open</a>
+        </div>
       </div>
     </div>
-  </div>
+  </section>
+
+  <section>
+    <h2 class="mb-2 h4">Past</h2>
+    <div class="card-container">
+      <div *ngFor="let project of pastProjects$ | async" class="card">
+        <h2 class="h5 mb-1">{{ project.name }}</h2>
+        <div class="mb-1 small-text italic">
+          <span>{{ project.start | date }}</span> -
+          <span>{{ project.end | date }}</span>
+        </div>
+        <div>
+          <a [routerLink]="[project.id]" cta="tertiary">Open</a>
+        </div>
+      </div>
+    </div>
+  </section>
 </article>

@@ -1,24 +1,33 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable, of } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { addDays, subDays } from 'date-fns';
 
 import { AppRouterService, Project } from '@root/shared';
+
+const today = new Date();
 
 const projects: Record<string, Project> = {
   '1': {
     id: '1',
     name: 'Project 1',
     image: '',
+    start: subDays(today, 55).toUTCString(),
+    end: addDays(today, 25).toUTCString(),
   },
   '2': {
     id: '2',
     name: 'Project 2',
     image: '',
+    start: subDays(today, 55).toUTCString(),
+    end: subDays(today, 5).toUTCString(),
   },
   '3': {
     id: '3',
     name: 'Project 3',
     image: '',
+    start: subDays(today, 55).toUTCString(),
+    end: addDays(today, 5).toUTCString(),
   },
 };
 
