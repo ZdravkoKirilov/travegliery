@@ -21,12 +21,19 @@
   </header>
 
   <article *ngIf="booking$ | async as booking">
-    <h1 class="h2 mb-1">
-      <div class="flex space-between">
-        <span class="mr-1">{{ booking.type }}</span>
-        <span>{{ booking.provider }}</span>
-      </div>
-    </h1>
+    <div class="flex space-between align-center mb-2">
+      <h1 class="h2">
+        <div class="flex">
+          <span class="mr-2">{{ booking.type }}</span>
+          <span>{{ booking.provider }}</span>
+        </div>
+      </h1>
+      <span>
+        <a cta="outlined" [routerLink]="['/', 'sharing', 'booking', 'send']">
+          Share booking</a
+        >
+      </span>
+    </div>
 
     <div *ngIf="booking.image" class="img-container">
       <img [src]="booking.image" />

@@ -110,6 +110,14 @@ small,
   font-size: 0.8em;
 }
 
+.italic {
+  font-style: italic;
+}
+
+.bold {
+  font-weight: bold;
+}
+
 /* SPACINGS. mb = margin-bottom, mt = margin-top and so on, similar with paddings */
 
 $sizes: 5;
@@ -334,6 +342,12 @@ a[cta="outlined"] {
       box-shadow: 0 0 0 4px var(--secondary-transparent-color);
     }
   }
+}
+
+a[cta="outlined"] {
+  min-height: 2em;
+  display: inline-block;
+  text-align: center;
 }
 
 [cta="tertiary"] {

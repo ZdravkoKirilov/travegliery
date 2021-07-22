@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+
 import { WithAuthGuard, WithoutAuthGuard } from './authentication';
 
 const routes: Routes = [
@@ -8,6 +9,11 @@ const routes: Routes = [
     loadChildren: () =>
       import('./authentication').then((m) => m.AuthenticationModule),
     canActivate: [WithoutAuthGuard],
+  },
+  {
+    path: 'sharing',
+    loadChildren: () =>
+      import('./data-sharing').then((m) => m.DataSharingModule),
   },
   {
     path: 'projects',
