@@ -7,7 +7,9 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "generate-icons": "svg-generator"
+    "generate-icons": "svg-generator",
+    "serve": "http-server dist/goatzilla",
+    "deploy": "npm run build && ng deploy --base-href=/goatzilla/"
   },
   "private": true,
   "dependencies": {
@@ -34,6 +36,8 @@
     "@ngneat/svg-generator": "^3.0.1",
     "@types/jasmine": "~3.6.0",
     "@types/node": "^12.11.1",
+    "angular-cli-ghpages": "^1.0.0-rc.2",
+    "http-server": "^0.12.3",
     "jasmine-core": "~3.7.0",
     "karma": "~6.3.0",
     "karma-chrome-launcher": "~3.1.0",
