@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 
+import { SharedModule } from '@root/shared';
 import { WithAuthGuard } from '@root/authentication';
 
 import { ShareItineraryComponent } from './views/share-itinerary/share-itinerary.component';
@@ -42,7 +42,7 @@ const routes: Routes = [
     SharingDashboardComponent,
     ShareBookingComponent,
   ],
-  imports: [CommonModule, RouterModule.forChild(routes)],
+  imports: [SharedModule, RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
 export class DataSharingModule {}

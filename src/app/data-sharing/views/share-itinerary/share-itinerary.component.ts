@@ -1,15 +1,19 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { Observable } from 'rxjs';
+
+import { ProjectsService } from '@root/projects';
+import { Project } from '@root/shared';
 
 @Component({
   selector: 'app-share-itinerary',
   templateUrl: './share-itinerary.component.html',
-  styleUrls: ['./share-itinerary.component.scss']
+  styleUrls: ['./share-itinerary.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ShareItineraryComponent implements OnInit {
+export class ShareItineraryComponent {
+  activeProject$: Observable<Project>;
 
-  constructor() { }
-
-  ngOnInit(): void {
+  constructor(private projectService: ProjectsService) {
+    this.activeProject$ = this.projectService.getActiveProject();
   }
-
 }

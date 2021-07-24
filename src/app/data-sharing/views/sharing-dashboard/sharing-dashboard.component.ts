@@ -1,15 +1,19 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { Observable } from 'rxjs';
+
+import { ProjectsService } from '@root/projects';
+import { Project } from '@root/shared';
 
 @Component({
   selector: 'app-sharing-dashboard',
   templateUrl: './sharing-dashboard.component.html',
-  styleUrls: ['./sharing-dashboard.component.scss']
+  styleUrls: ['./sharing-dashboard.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class SharingDashboardComponent implements OnInit {
+export class SharingDashboardComponent {
+  activeProject$: Observable<Project>;
 
-  constructor() { }
-
-  ngOnInit(): void {
+  constructor(private projectService: ProjectsService) {
+    this.activeProject$ = this.projectService.getActiveProject();
   }
-
 }

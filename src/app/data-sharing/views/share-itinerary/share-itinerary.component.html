@@ -1,1 +1,27 @@
-<p>share-itinerary works!</p>
+<main class="centered-content padded-content">
+  <app-authenticated-header></app-authenticated-header>
+
+  <header class="mb-2 mt-1">
+    <span>
+      <a routerLink="../../../../" cta="tertiary"> Dashboard </a>
+    </span>
+
+    <span class="ml-1 mr-1"> / </span>
+
+    <span>
+      <a routerLink="../../../" cta="tertiary">{{
+        (activeProject$ | async)?.name
+      }}</a>
+    </span>
+
+    <span class="ml-1 mr-1"> / </span>
+
+    <span>
+      <a routerLink="../../" cta="tertiary">Sharing center</a>
+    </span>
+  </header>
+
+  <article>
+    <p>Send itinerary information to participants</p>
+  </article>
+</main>
