@@ -49,7 +49,7 @@
   "svgGenerator": {
     "outputPath": "./src/assets/generated-icons",
     "prefix": "app",
-    "srcPath": "./src/assets/svg-icons",
+    "srcPath": "./src/svg-icons",
     "svgoConfig": {
       "plugins": [
         "removeDimensions"

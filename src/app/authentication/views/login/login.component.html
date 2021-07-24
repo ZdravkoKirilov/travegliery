@@ -1,15 +1,17 @@
 <main class="full-container centered-content padded-content">
-  <form class="form" (submit)="login($event)">
+  <app-public-header></app-public-header>
+
+  <form class="form mt-4" (submit)="login($event)">
     <legend class="mb-2">
       <h1>Login</h1>
     </legend>
 
-    <div class="mb-1">
+    <div class="mb-2">
       <label class="block">Email:</label>
       <input class="input"/>
     </div>
 
-    <div class="mb-2">
+    <div class="mb-4">
       <label class="block">Password:</label>
       <input type="password" class="input"/>
     </div>

@@ -1,5 +1,6 @@
 @use "sass:math";
 @import url("https://fonts.googleapis.com/css?family=Poppins:400,600");
+@import url("https://fonts.googleapis.com/css2?family=Pacifico&display=swap");
 @import "~normalize.css/normalize";
 
 :root {
@@ -117,6 +118,15 @@ small,
 
 .bold {
   font-weight: bold;
+}
+
+.handwritten {
+  font-family: "Pacifico", sans-serif;
+  font-weight: var(--font-weight-small);
+
+  &.bold {
+    font-weight: var(--font-weight-big);
+  }
 }
 
 /* SPACINGS. mb = margin-bottom, mt = margin-top and so on, similar with paddings */
@@ -397,10 +407,6 @@ a[cta="outlined"] {
   align-items: center;
   justify-content: center;
   font-size: var(--text-base);
-
-  & > * {
-    margin-bottom: var(--space-2);
-  }
 }
 
 .input {
