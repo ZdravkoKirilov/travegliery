@@ -15,6 +15,7 @@
 
   --secondary-color: #a75884;
   --secondary-transparent-color: rgba(167, 88, 132, 0.6);
+  --secondary-transparent-color-2: rgba(167, 88, 132, 0.2);
   --secondary-dark-color: #542c42;
   --secondary-light-color: #e5cdda;
 
@@ -146,6 +147,7 @@ small,
 
 $sizes: 5;
 $margins: "mb", "mt", "ml", "mr", "m";
+$mobileMargins: "mobile-mb", "mobile-mt", "mobile-ml", "mobile-mr", "mobile-m";
 $paddings: "pb", "pt", "pl", "pr", "p";
 
 @each $marginType in $margins {
@@ -161,6 +163,34 @@ $paddings: "pb", "pt", "pl", "pr", "p";
         margin-left: var(--space-#{$i});
       } @else if ($marginType == "m") {
         margin: var(--space-#{$i});
+      }
+    }
+  }
+}
+
+@each $marginType in $mobileMargins {
+  @for $i from 1 through $sizes {
+    .#{$marginType}-#{$i} {
+      @if ($marginType == "mobile-mb") {
+        @include non-desktop {
+          margin-bottom: var(--space-#{$i});
+        }
+      } @else if ($marginType == "mobile-mt") {
+        @include non-desktop {
+          margin-top: var(--space-#{$i});
+        }
+      } @else if ($marginType == "mobile-mr") {
+        @include non-desktop {
+          margin-right: var(--space-#{$i});
+        }
+      } @else if ($marginType == "mobile-ml") {
+        @include non-desktop {
+          margin-left: var(--space-#{$i});
+        }
+      } @else if ($marginType == "mobile-m") {
+        @include non-desktop {
+          margin: var(--space-#{$i});
+        }
       }
     }
   }

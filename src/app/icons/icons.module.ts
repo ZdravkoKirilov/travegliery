@@ -11,6 +11,7 @@ import { appPeopleIcon } from '@assets/generated-icons/people';
 import { appHeartbeatIcon } from '@assets/generated-icons/heartbeat';
 import { appShareCenterIcon } from '@assets/generated-icons/share-center';
 import { appDotsIcon } from '@assets/generated-icons/dots';
+import { appNotesIcon } from '@assets/generated-icons/notes';
 
 @NgModule({
   declarations: [],
@@ -36,6 +37,7 @@ import { appDotsIcon } from '@assets/generated-icons/dots';
         appHeartbeatIcon,
         appShareCenterIcon,
         appDotsIcon,
+        appNotesIcon,
       ],
     }),
   ],

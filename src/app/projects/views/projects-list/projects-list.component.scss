@@ -1,17 +1,18 @@
 @import "../../../../breakpoints.scss";
 
 :host {
+  .main-heading {
+    padding: 0 var(--space-1);
+
+    .projects-icon {
+      color: var(--secondary-color);
+    }
+  }
+
   .heading {
     padding: var(--space-1);
     border-radius: 10px;
-
-    &.active {
-      background-color: var(--primary-transparent-color-2);
-    }
-
-    &.past {
-      background-color: var(--neutral-transparent-color);
-    }
+    background-color: var(--neutral-transparent-color);
   }
 
   @include non-desktop {

@@ -1,10 +1,13 @@
 <article class="centered-content padded-container">
   <app-authenticated-header class="mb-2"></app-authenticated-header>
 
-  <h1 class="mb-2 mt-1 h2 heading">Projects</h1>
+  <div class="mb-2 mt-1 mobile-mb-1 main-heading flex align-center">
+    <svg-icon key="notes" size="lg"class="projects-icon"></svg-icon>
+    <h1 class="h2 ml-1">Projects</h1>
+  </div>
 
   <section class="mb-4">
-    <h2 class="mb-2 h4 heading active">Active</h2>
+    <h2 class="mb-2 h4 heading">Active</h2>
     <div class="card-container wrap">
       <div *ngFor="let project of activeProjects$ | async" class="card">
         <h2 class="h5 mb-1">{{ project.name }}</h2>
@@ -20,7 +23,7 @@
   </section>
 
   <section>
-    <h2 class="mb-2 h4 heading past">Past</h2>
+    <h2 class="mb-2 h4 heading">Past</h2>
     <div class="card-container wrap">
       <div *ngFor="let project of pastProjects$ | async" class="card">
         <h2 class="h5 mb-1">{{ project.name }}</h2>
