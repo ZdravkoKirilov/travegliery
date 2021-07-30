@@ -12,6 +12,10 @@ import { appHeartbeatIcon } from '@assets/generated-icons/heartbeat';
 import { appShareCenterIcon } from '@assets/generated-icons/share-center';
 import { appDotsIcon } from '@assets/generated-icons/dots';
 import { appNotesIcon } from '@assets/generated-icons/notes';
+import { appPlaneIcon } from '@assets/generated-icons/plane';
+import { appTrainIcon } from '@assets/generated-icons/train';
+import { appHotelIcon } from '@assets/generated-icons/hotel';
+import { appFerryIcon } from '@assets/generated-icons/ferry';
 
 @NgModule({
   declarations: [],
@@ -38,6 +42,10 @@ import { appNotesIcon } from '@assets/generated-icons/notes';
         appShareCenterIcon,
         appDotsIcon,
         appNotesIcon,
+        appPlaneIcon,
+        appTrainIcon,
+        appHotelIcon,
+        appFerryIcon,
       ],
     }),
   ],

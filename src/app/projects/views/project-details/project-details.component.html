@@ -1,17 +1,20 @@
-<main class="centered-content padded-container">
+<main class="centered-content padded-container" *ngIf="project$ | async as project">
   <app-authenticated-header> </app-authenticated-header>
 
-  <div class="mb-2">
-    <a class="mr-3 inline-flex align-center" routerLink="../" cta="tertiary">
+  <nav class="mb-2 mobile-mb-1 mobile-ml-1 flex align-center">
+    <a class="inline-flex align-center" routerLink="../" cta="tertiary">
       <span><svg-icon key="back" class="mr-1"></svg-icon></span>
-      <span>Back to projects</span>
+      <span>Projects</span>
     </a>
-  </div>
 
-  <div *ngIf="project$ | async as project">
-    <h1 class="mb-1 h2">{{ project.name }}</h1>
+    <span class="ml-1 mr-1"> / </span>
 
-    <div class="flex">
+    <h1 class="bold h5">{{ project.name }}</h1>
+  </nav>
+
+  <div class="mobile-ml-1 mobile-mr-1">
+    <div class="separator secondary mb-2"></div>
+    <div class="flex wrap">
       <div class="mr-3">
         <a routerLink="itinerary" cta="tertiary" class="align-center">
           <svg-icon key="itinerary" size="lg" class="mr-1"></svg-icon>
@@ -34,8 +37,10 @@
       </div>
     </div>
 
+    <div class="separator secondary mb-2 mt-2"></div>
+
     <section class="card mt-4">
-      <h2 class="mb-3 h4 flex align-center">
+      <h2 class="mb-2 h4 flex align-center">
         <span class="mr-1">
           <svg-icon key="heartbeat" size="xl" class="heartbeat-icon"></svg-icon>
         </span>
