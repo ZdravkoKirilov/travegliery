@@ -1,0 +1,30 @@
+@import "../../../../breakpoints.scss";
+
+:host {
+  .form {
+    align-self: flex-start;
+
+    min-width: 50%;
+  }
+  .hero-image {
+    img {
+      max-width: 100%;
+    }
+  }
+
+  @include non-desktop {
+    .main-wrapper {
+      flex-direction: column;
+
+      .form {
+        align-self: center;
+        margin-bottom: var(--space-3);
+      }
+
+      .hero-image {
+        align-self: center;
+        max-width: 80%;
+      }
+    }
+  }
+}
