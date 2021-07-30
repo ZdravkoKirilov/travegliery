@@ -244,11 +244,11 @@ $paddings: "pb", "pt", "pl", "pr", "p";
   }
 }
 
-.padded-desktop-container {
+.padded-container {
   padding: var(--space-2);
 
   @include non-desktop {
-    padding: 0;
+    padding: 0 0 var(--space-2) 0;
   }
 }
 
