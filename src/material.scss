@@ -29,12 +29,17 @@ $goatzilla-theme: mat.define-light-theme(
   font-weight: var(--font-weight-small);
   font-family: "Poppins", sans-serif;
   color: var(--text-color);
-  padding: var(--space-2) var(--space-1);
+  padding: var(--space-2) var(--space-1) !important;
+
+  min-width: 200px;
 
   .mat-menu-item {
-    line-height: 2 !important;
     font-weight: var(--font-weight-small) !important;
     font-family: "Poppins", sans-serif !important;
+
+    & > *:not(:last-child) {
+      margin-bottom: var(--space-1);
+    }
   }
 }
 
@@ -42,10 +47,25 @@ $goatzilla-theme: mat.define-light-theme(
   &.mat-menu-item {
     background-color: white !important;
     color: var(--primary-color) !important;
-  }
 
-  &:hover {
-    color: var(--text-color-on-background) !important;
-    background-color: var(--primary-color) !important;
+    &:hover {
+      color: var(--text-color-on-background) !important;
+      background-color: var(--primary-color) !important;
+    }
+  }
+}
+
+[cta="tertiary"] {
+  &.mat-menu-item {
+    color: var(--secondary-color) !important;
+    background-color: transparent !important;
+    text-align: center;
+
+    &:hover,
+    &:active {
+      &::after {
+        background-color: var(--secondary-color) !important;
+      }
+    }
   }
 }

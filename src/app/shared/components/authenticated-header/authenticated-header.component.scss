@@ -25,7 +25,38 @@
 .more-actions {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
   color: white;
+  justify-content: center;
+  outline-color: white;
+
+  .text-label {
+    display: none;
+  }
+
+  .dots-icon {
+    align-self: flex-end;
+    transition: transform 0.2s ease-out;
+  }
+  &:hover {
+    justify-content: flex-start;
+
+    .text-label {
+      display: inline-flex;
+    }
+
+    .dots-icon {
+      transform: rotate(90deg);
+    }
+  }
+  &:focus:not(:active) {
+    justify-content: flex-start;
+
+    .text-label {
+      display: inline-flex;
+    }
+
+    .dots-icon {
+      transform: rotate(90deg);
+    }
+  }
 }

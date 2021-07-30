@@ -5,11 +5,14 @@
   </div>
   <div class="default-area">
     <button [matMenuTriggerFor]="menu" class="ghost-button more-actions">
-      <svg-icon key="dots" size="lg"></svg-icon>
-      <span class="text-label mt-1">More actions</span>
+      <svg-icon key="dots" size="lg" class="dots-icon"></svg-icon>
+      <span class="text-label">More actions</span>
     </button>
     <mat-menu #menu="matMenu">
-      <button mat-menu-item (click)="logout()" cta="outlined">Logout</button>
+      <button mat-menu-item (click)="logout()" cta="tertiary">Logout</button>
+      <a mat-menu-item cta="tertiary" [routerLink]="['/', 'me', 'account']"
+        >Account</a
+      >
     </mat-menu>
   </div>
 </header>
