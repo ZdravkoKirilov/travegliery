@@ -4,6 +4,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Pacifico&display=swap");
 @import "~normalize.css/normalize";
 @import "./material.scss";
+@import "./breakpoints.scss";
 
 :root {
   --primary-color: #58a77b;
@@ -186,36 +187,6 @@ $paddings: "pb", "pt", "pl", "pr", "p";
 @for $i from 1 through $sizes {
   .gap-#{$i} {
     gap: var(--space-#{$i});
-  }
-}
-
-/* SUPPORTED DEVICES SIZES AND MEDIA QUERIES */
-
-$screen-size1: 48em; /* 768 */
-$screen-size2: 64em; /* 1024 */
-$screen-size3: 120em; /* 1920 */
-
-@mixin phone {
-  @media (max-width: $screen-size1) {
-    @content;
-  }
-}
-
-@mixin tablet {
-  @media (max-width: $screen-size2) {
-    @content;
-  }
-}
-
-@mixin desktop {
-  @media (min-width: $screen-size2) {
-    @content;
-  }
-}
-
-@mixin non-desktop {
-  @media (max-width: $screen-size2) {
-    @content;
   }
 }
 
