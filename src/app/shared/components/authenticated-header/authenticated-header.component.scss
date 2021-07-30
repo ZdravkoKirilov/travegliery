@@ -1,14 +1,18 @@
+@import "../../../../styles.scss";
+
 :host {
   display: block;
+  overflow: hidden;
   background-color: var(--primary-transparent-color);
   color: var(--text-color-on-background);
   padding: var(--space-2);
   border-radius: var(--space-3);
+
+  @include non-desktop {
+    border-radius: 0;
+  }
 }
 
 .content-area {
   flex-grow: 1;
-}
-.default-area {
-  min-width: 7em;
 }

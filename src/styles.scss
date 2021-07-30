@@ -6,6 +6,7 @@
 :root {
   --primary-color: #58a77b;
   --primary-transparent-color: rgba(88, 167, 123, 0.6);
+  --primary-transparent-color-2: rgba(88, 167, 123, 0.2);
   --primary-dark-color: #2c543e;
   --primary-light-color: #cde5d7;
 
@@ -20,6 +21,7 @@
   --info-color: #2fbeb3;
 
   --neutral-color: #cfd4d1;
+  --neutral-transparent-color: rgba(207, 212, 209, 0.2);
 
   --text-base-size: 1em;
   --font-weight-small: 400;
@@ -201,6 +203,12 @@ $screen-size3: 120em; /* 1920 */
   }
 }
 
+@mixin non-desktop {
+  @media (max-width: $screen-size2) {
+    @content;
+  }
+}
+
 /* GENERAL LAYOUT AND CONTAINERS */
 .block {
   display: block;
@@ -248,27 +256,28 @@ $screen-size3: 120em; /* 1920 */
   height: 100%;
 }
 
-.centered {
-  margin: 0 auto;
-}
-
 .centered-content {
-  width: 100%;
-
-  @extend .centered;
-
   @include desktop {
     width: $screen-size2;
+    margin: 0 auto;
   }
 }
 
-.padded-content {
+.padded-desktop-container {
   padding: var(--space-2);
+
+  @include non-desktop {
+    padding: 0;
+  }
 }
 
 .card-container {
   display: flex;
   gap: var(--space-2);
+
+  @include non-desktop {
+    flex-direction: column;
+  }
 }
 
 /* GRID HELPERS .width-1 to .width-12 */
@@ -576,6 +585,10 @@ a[cta="outlined"] {
   transition: 0.3s;
   padding: var(--space-2);
   border-radius: 10px;
+
+  @include non-desktop {
+    padding: var(--space-1);
+  }
 
   &:hover {
     box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);

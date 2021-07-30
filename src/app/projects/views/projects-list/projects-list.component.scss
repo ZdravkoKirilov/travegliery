@@ -1,0 +1,31 @@
+@import "../../../../styles.scss";
+
+:host {
+  .heading {
+    padding: var(--space-1);
+    border-radius: 10px;
+
+    &.active {
+      background-color: var(--primary-transparent-color-2);
+    }
+
+    &.past {
+      background-color: var(--neutral-transparent-color);
+    }
+  }
+
+  @include non-desktop {
+    .heading {
+      padding: var(--space-1);
+      border-radius: 0;
+    }
+
+    .card-container {
+      padding: 0 var(--space-1);
+    }
+
+    .padded-content {
+      padding-bottom: var(--space-2);
+    }
+  }
+}
