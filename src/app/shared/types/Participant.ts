@@ -8,6 +8,5 @@ export type Participant = {
   email: string;
   phone?: string;
 
-  image?: string;
-  label?: string;
+  passportNumber: string;
 };

@@ -1,9 +1,23 @@
-.hero-header {
-  display: flex;
-}
+@import "../../../../breakpoints.scss";
 
+:host {
+  .mobile-actions {
+    display: none;
+  }
+
+  & {
+    @include phone {
+      .mobile-actions {
+        display: initial;
+      }
+      .desktop-action {
+        display: none;
+      }
+    }
+  }
+}
 .img-container {
-  max-height: 200px;
+  max-width: 50%;
   overflow: hidden;
   border-radius: 50%;
 
@@ -12,8 +26,13 @@
   justify-content: center;
   align-items: center;
 
+  @include phone {
+    max-width: 30%;
+    align-self: flex-start;
+  }
+
   img {
-    max-height: 100%;
+    max-width: 100%;
   }
 }
 
