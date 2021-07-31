@@ -1,5 +1,6 @@
 <main class="centered-content padded-container">
   <app-authenticated-header></app-authenticated-header>
+  <!-- breadcrumbs -->
   <nav class="mb-2 mobile-ml-1 mobile-mr-1">
     <span>
       <a routerLink="../../.." cta="tertiary"> Dashboard </a>
@@ -22,55 +23,19 @@
 
   <article
     *ngIf="participant$ | async as participant"
-    class="mobile-ml-1 mobile-mr-1"
+    class="mobile-ml-2 mobile-mr-1"
   >
-    <header class="flex mb-3 mobile-mb-2">
-      <div class="img-container">
+    <header class="flex mb-4 mobile-mb-3 align-center">
+      <div class="img-container mr-2">
         <img src="assets/avatar.jpg" />
       </div>
 
-      <div class="ml-3 mb-2">
-        <h1 class="mb-2 h3">
-          {{ participant.firstName }} {{ participant.lastName }}
-        </h1>
-
-        <div class="flex align-center desktop-action">
-          <svg-icon
-            key="star"
-            size="lg"
-            class="favorite-star"
-            [class.active]="isFavorite(participant.id) | async"
-          ></svg-icon>
-          <button
-            cta="outlined"
-            class="ml-2"
-            (click)="toggleFavorite(participant.id)"
-          >
-            <span *ngIf="!(isFavorite(participant.id) | async)"
-              >Add to favorites</span
-            >
-            <span *ngIf="isFavorite(participant.id) | async"
-              >Remove favorite</span
-            >
-          </button>
-        </div>
-
-        <div class="mt-3 flex align-center desktop-action">
-          <svg-icon key="share" size="lg"></svg-icon>
-          <span class="flex">
-            <a
-              cta="outlined"
-              class="ml-2"
-              [routerLink]="['../..', 'sharing', 'itinerary', 'send']"
-              [queryParams]="{ participant: participant.id }"
-              >Send itinerary</a
-            >
-          </span>
-        </div>
-      </div>
+      <h1 class="h3">
+        {{ participant.firstName }} {{ participant.lastName }}
+      </h1>
     </header>
 
-    <div class="card-container mobile-actions">
+    <div class="card-container">
       <div class="flex align-center favorites">
         <svg-icon
           key="star"
@@ -92,7 +57,7 @@
         </button>
       </div>
 
-      <div class="mt-3 flex align-center sharing">
+      <div class="mobile-mt-2 ml-2 mobile-ml-0 flex align-center sharing">
         <svg-icon key="share" size="lg"></svg-icon>
         <span class="flex">
           <a
@@ -106,7 +71,7 @@
       </div>
     </div>
 
-    <div class="mt-4 mobile-mt-3 mobile-ml-1 mobile-mr-1">
+    <div class="mt-4 mobile-mt-3">
       <div class="tab-controls">
         <a
           cta="tertiary"

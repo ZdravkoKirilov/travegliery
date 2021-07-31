@@ -43,6 +43,16 @@ $goatzilla-theme: mat.define-light-theme(
   }
 }
 
+.mat-snack-bar-container {
+  background-color: var(--primary-dark-color);
+  .mat-simple-snackbar {
+    line-height: 2;
+    font-weight: var(--font-weight-big);
+    font-family: "Poppins", sans-serif;
+    font-size: var(--text-base-size);
+  }
+}
+
 [cta="outlined"] {
   &.mat-menu-item {
     background-color: white !important;

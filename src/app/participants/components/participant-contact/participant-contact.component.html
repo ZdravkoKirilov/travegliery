@@ -1,21 +1,49 @@
 <ng-container *ngIf="participant$ | async as participant">
   <div class="wrap card-container mobile-ml-1 mobile-mr-1">
     <section class="section">
-      <div class="mb-2">
+      <div class="mb-2 flex align-center">
         <span class="bold">Email:</span>
-        <span class="ml-2">{{ participant.email }}</span>
+        <a class="ml-2" [href]="'mailto:' + participant.email">{{
+          participant.email
+        }}</a>
+        <button
+          (click)="onCopy('Email')"
+          [cdkCopyToClipboard]="participant.email"
+          class="ghost-button ml-2 mobile-ml-3 inline-flex align-center"
+        >
+          <svg-icon key="copy" class="mr-1"></svg-icon>
+          <span>Copy</span>
+        </button>
       </div>
 
-      <div *ngIf="participant.phone">
+      <div *ngIf="participant.phone" class="flex align-center">
         <span class="bold">Phone:</span>
-        <span class="ml-2">{{ participant.phone }}</span>
+        <a class="ml-2" [href]="'tel:' + participant.phone"
+          >Call {{ participant.phone }}</a
+        >
+        <button
+          (click)="onCopy('Phone')"
+          [cdkCopyToClipboard]="participant.phone"
+          class="ghost-button ml-2 mobile-ml-3 inline-flex align-center"
+        >
+          <svg-icon key="copy" class="mr-1"></svg-icon>
+          <span>Copy</span>
+        </button>
       </div>
     </section>
 
-    <section class="section">
-      <div>
+    <section class="section ml-4 mobile-ml-0">
+      <div class="flex align-center">
         <span class="bold">Passport number:</span>
         <span class="ml-2">{{ participant.passportNumber }}</span>
+        <button
+          (click)="onCopy('Passport number')"
+          [cdkCopyToClipboard]="participant.passportNumber"
+          class="ghost-button ml-2 mobile-ml-3 inline-flex align-center"
+        >
+          <svg-icon key="copy" class="mr-1"></svg-icon>
+          <span>Copy</span>
+        </button>
       </div>
     </section>
   </div>

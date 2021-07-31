@@ -33,6 +33,7 @@
   --text-color: #4d4d4d;
   --text-color-on-background: #ffffff;
 
+  --space-0: 0;
   --space-1: 0.5em;
   --space-2: 1em;
   --space-3: 2em;
@@ -151,7 +152,7 @@ $mobileMargins: "mobile-mb", "mobile-mt", "mobile-ml", "mobile-mr", "mobile-m";
 $paddings: "pb", "pt", "pl", "pr", "p";
 
 @each $marginType in $margins {
-  @for $i from 1 through $sizes {
+  @for $i from 0 through $sizes {
     .#{$marginType}-#{$i} {
       @if ($marginType == "mb") {
         margin-bottom: var(--space-#{$i});
@@ -169,7 +170,7 @@ $paddings: "pb", "pt", "pl", "pr", "p";
 }
 
 @each $marginType in $mobileMargins {
-  @for $i from 1 through $sizes {
+  @for $i from 0 through $sizes {
     .#{$marginType}-#{$i} {
       @if ($marginType == "mobile-mb") {
         @include non-desktop {
@@ -197,7 +198,7 @@ $paddings: "pb", "pt", "pl", "pr", "p";
 }
 
 @each $paddingType in $paddings {
-  @for $i from 1 through $sizes {
+  @for $i from 0 through $sizes {
     .#{$paddingType}-#{$i} {
       @if ($paddingType == "pb") {
         padding-bottom: var(--space-#{$i});
@@ -214,7 +215,7 @@ $paddings: "pb", "pt", "pl", "pr", "p";
   }
 }
 
-@for $i from 1 through $sizes {
+@for $i from 0 through $sizes {
   .gap-#{$i} {
     gap: var(--space-#{$i});
   }
@@ -425,6 +426,15 @@ a[cta="outlined"] {
   background: none;
   border: none;
   cursor: pointer;
+  outline-color: var(--primary-color);
+  outline-offset: var(--space-1);
+}
+
+a {
+  color: var(--primary-color);
+  text-underline-offset: 5px;
+  outline-color: var(--primary-color);
+  outline-offset: var(--space-1);
 }
 
 /* Forms */
@@ -702,4 +712,16 @@ svg-icon {
 
 svg-icon.star {
   color: var(--secondary-color);
+}
+
+.hide-on-desktop {
+  @include desktop {
+    display: none;
+  }
+}
+
+.hide-on-mobile {
+  @include non-desktop {
+    display: none;
+  }
 }

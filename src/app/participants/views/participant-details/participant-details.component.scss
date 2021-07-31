@@ -1,23 +1,5 @@
-@import "../../../../breakpoints.scss";
-
-:host {
-  .mobile-actions {
-    display: none;
-  }
-
-  & {
-    @include phone {
-      .mobile-actions {
-        display: initial;
-      }
-      .desktop-action {
-        display: none;
-      }
-    }
-  }
-}
 .img-container {
-  max-width: 50%;
+  max-width: 50px;
   overflow: hidden;
   border-radius: 50%;
 
@@ -25,11 +7,6 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-
-  @include phone {
-    max-width: 30%;
-    align-self: flex-start;
-  }
 
   img {
     max-width: 100%;

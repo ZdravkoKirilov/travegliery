@@ -9,8 +9,8 @@ import { BookingListComponent } from './components/booking-list/booking-list.com
 import { AuthenticatedHeaderComponent } from './components/authenticated-header/authenticated-header.component';
 import { LogoComponent } from './components/logo/logo.component';
 import { PublicHeaderComponent } from './components/public-header/public-header.component';
-import { MaterialModule } from './material.module';
 import { BookingTypePipe } from './pipes/booking-type.pipe';
+import { MaterialModule } from './material.module';
 
 @NgModule({
   declarations: [
@@ -25,8 +25,8 @@ import { BookingTypePipe } from './pipes/booking-type.pipe';
     RouterModule,
     HttpClientModule,
     InlineSVGModule,
-    MaterialModule,
     IconsModule,
+    MaterialModule,
   ],
   exports: [
     CommonModule,
@@ -34,6 +34,7 @@ import { BookingTypePipe } from './pipes/booking-type.pipe';
     AuthenticatedHeaderComponent,
     PublicHeaderComponent,
     InlineSVGModule,
+    MaterialModule,
   ],
 })
 export class SharedModule {}
