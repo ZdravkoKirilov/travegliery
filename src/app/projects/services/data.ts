@@ -18,6 +18,9 @@ export const bookings: Record<string, Booking> = {
     from: 'London - Heathrow',
     to: 'Paris De Gaul',
     image: 'assets/booking-images/flight1.jpg',
+    confirmationNumber: 'A2B7G',
+    price: 100,
+    currencyCode: 'EUR',
   },
   '2': {
     id: '2',
@@ -32,6 +35,9 @@ export const bookings: Record<string, Booking> = {
     city: 'Sofia',
     address: 'Tsar Osvoboditel 13',
     image: 'assets/booking-images/hotel1.jpg',
+    confirmationNumber: 'A2B7G',
+    price: 150,
+    currencyCode: 'EUR',
   },
   '3': {
     id: '3',
@@ -46,6 +52,9 @@ export const bookings: Record<string, Booking> = {
     from: 'Istanbul port 1',
     to: 'Istanbul port 2',
     image: 'assets/booking-images/ferry1.jpg',
+    confirmationNumber: 'A2B7G',
+    price: 75,
+    currencyCode: 'EUR',
   },
   '4': {
     id: '4',
@@ -60,6 +69,9 @@ export const bookings: Record<string, Booking> = {
     from: 'Moscow',
     to: 'St Petersburg',
     image: 'assets/booking-images/train1.jpg',
+    confirmationNumber: 'A2B7G',
+    price: 333,
+    currencyCode: 'EUR',
   },
   '5': {
     id: '5',
@@ -74,6 +86,9 @@ export const bookings: Record<string, Booking> = {
     from: 'London - Heathrow',
     to: 'Paris De Gaul',
     image: 'assets/booking-images/flight2.jpg',
+    confirmationNumber: 'A2B7G',
+    price: 257,
+    currencyCode: 'EUR',
   },
   '6': {
     id: '6',
@@ -88,6 +103,9 @@ export const bookings: Record<string, Booking> = {
     from: 'Vienna airport',
     to: 'Qatar',
     image: 'assets/booking-images/flight3.jpg',
+    confirmationNumber: 'A2B7G',
+    price: 110,
+    currencyCode: 'EUR',
   },
   '7': {
     id: '7',
@@ -102,6 +120,9 @@ export const bookings: Record<string, Booking> = {
     from: 'Qatar central station',
     to: 'Bangalore',
     image: 'assets/booking-images/train1.jpg',
+    confirmationNumber: 'A2B7G',
+    price: 205,
+    currencyCode: 'EUR',
   },
   '8': {
     id: '8',
@@ -116,6 +137,9 @@ export const bookings: Record<string, Booking> = {
     from: 'Bangalore port',
     to: 'New Zealand',
     image: 'assets/booking-images/ferry2.jpg',
+    confirmationNumber: 'A2B7G',
+    price: 170,
+    currencyCode: 'EUR',
   },
   '9': {
     id: '9',
@@ -130,6 +154,9 @@ export const bookings: Record<string, Booking> = {
     city: 'London',
     address: 'Richmond Way, London W14 0AX',
     image: 'assets/booking-images/hotel4.jpg',
+    confirmationNumber: 'A2B7G',
+    price: 306,
+    currencyCode: 'EUR',
   },
 };
 

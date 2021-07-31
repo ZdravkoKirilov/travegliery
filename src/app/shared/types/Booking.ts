@@ -1,7 +1,7 @@
 type CommonFields = Readonly<{
   id: string;
   projectId: string;
-  
+
   startDate: string;
   endDate: string;
 
@@ -12,37 +12,49 @@ type CommonFields = Readonly<{
 
   image?: string;
   participants: string[];
-}>
 
-export type FlightBooking = CommonFields & Readonly<{
-  type: 'flight';
+  confirmationNumber: string;
+  price: number;
+  currencyCode: string;
+}>;
 
-  from: string;
-  to: string;
-}>
+export type FlightBooking = CommonFields &
+  Readonly<{
+    type: 'flight';
 
-export type HotelBooking = CommonFields & Readonly<{
-  type: 'hotel';
+    from: string;
+    to: string;
+  }>;
 
-  address: string;
-  city: string;
+export type HotelBooking = CommonFields &
+  Readonly<{
+    type: 'hotel';
 
-  phone?: string;
-  email?: string;
-}>
+    address: string;
+    city: string;
 
-export type FerryBooking = CommonFields & Readonly<{
-  type: 'ferry';
+    phone?: string;
+    email?: string;
+  }>;
 
-  from: string;
-  to: string;
-}>
+export type FerryBooking = CommonFields &
+  Readonly<{
+    type: 'ferry';
 
-export type TrainBooking = CommonFields & Readonly<{
-  type: 'train';
+    from: string;
+    to: string;
+  }>;
 
-  from: string;
-  to: string;
-}>
+export type TrainBooking = CommonFields &
+  Readonly<{
+    type: 'train';
 
-export type Booking = FlightBooking | HotelBooking | FerryBooking | TrainBooking;
+    from: string;
+    to: string;
+  }>;
+
+export type Booking =
+  | FlightBooking
+  | HotelBooking
+  | FerryBooking
+  | TrainBooking;

@@ -35,6 +35,7 @@ import { MaterialModule } from './material.module';
     PublicHeaderComponent,
     InlineSVGModule,
     MaterialModule,
+    BookingTypePipe,
   ],
 })
 export class SharedModule {}

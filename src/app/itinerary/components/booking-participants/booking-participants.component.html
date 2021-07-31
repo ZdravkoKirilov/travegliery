@@ -1,6 +1,6 @@
 <ul class="list">
   <li *ngFor="let participant of participants$ | async" class="participant">
-    <div class="flex">
+    <div class="flex wrap">
       <h2 class="h5">{{ participant.firstName }} {{ participant.lastName }}</h2>
       <svg-icon
         key="star"
@@ -9,7 +9,7 @@
       ></svg-icon>
     </div>
 
-    <span>
+    <span class="ml-1">
       <a
         cta="outlined"
         [routerLink]="[

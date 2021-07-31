@@ -20,19 +20,31 @@
     </span>
   </header>
 
-  <article *ngIf="booking$ | async as booking">
-    <div class="flex space-between align-center mb-2">
-      <h1 class="h2">
-        <div class="flex">
-          <span class="mr-2">{{ booking.type }}</span>
-          <span>{{ booking.provider }}</span>
-        </div>
-      </h1>
-      <span>
-        <a cta="outlined" [routerLink]="['../..', 'sharing', 'booking', 'send']">
+  <article *ngIf="booking$ | async as booking" class="mobile-ml-1 mobile-mr-1">
+    <div class="mb-2 flex column">
+      <div class="flex align-center mb-2">
+        <svg-icon
+          [key]="booking.type | bookingType"
+          class="mr-2 booking-type"
+          size="xl"
+        ></svg-icon>
+        <a
+          cta="outlined"
+          [routerLink]="['../..', 'sharing', 'booking', 'send']"
+        >
           Share booking</a
         >
-      </span>
+      </div>
+
+      <h1 class="h4 mb-1">
+        {{ booking.provider }}
+      </h1>
+
+      <div class="dates small-text">
+        <span> {{ booking.startDate | date }} {{ booking.startTime }} </span>
+        <span> - </span>
+        <span>{{ booking.endDate | date }} {{ booking.endTime }}</span>
+      </div>
     </div>
 
     <div *ngIf="booking.image" class="img-container">
@@ -51,7 +63,7 @@
           cta="tertiary"
           [routerLink]="['participants']"
           [class.active]="appRouter.isRouteActive('participants')"
-          >Participants</a
+          >Participants ({{ booking.participants.length }})</a
         >
         <a
           cta="tertiary"

@@ -1,3 +1,51 @@
-<p>
-  Booking information with different content depending on the type of booking
-</p>
+<div *ngIf="booking$ | async as booking" class="wrap card-container">
+  <section>
+    <div class="flex align-center mb-2">
+      <span class="bold">Confirmation number:</span>
+      <span class="ml-2">{{ booking.confirmationNumber }}</span>
+
+      <button
+        (click)="onCopy('Confirmation number')"
+        [cdkCopyToClipboard]="booking.confirmationNumber"
+        class="ghost-button ml-2 mobile-ml-3 inline-flex align-center"
+      >
+        <svg-icon key="copy" class="mr-1"></svg-icon>
+        <span>Copy</span>
+      </button>
+    </div>
+
+    <div class="flex align-center mb-2">
+      <span class="bold">Price per person:</span>
+      <span class="ml-2">{{
+        booking.price | currency: booking.currencyCode
+      }}</span>
+
+      <button
+        (click)="onCopy('Price per person')"
+        [cdkCopyToClipboard]="booking.price + ' ' + booking.currencyCode"
+        class="ghost-button ml-2 mobile-ml-3 inline-flex align-center"
+      >
+        <svg-icon key="copy" class="mr-1"></svg-icon>
+        <span>Copy</span>
+      </button>
+    </div>
+
+    <div class="flex align-center">
+      <span class="bold">Total price:</span>
+      <span class="ml-2">{{
+        getTotalPrice(booking) | currency: booking.currencyCode
+      }}</span>
+
+      <button
+        (click)="onCopy('Confirmation number')"
+        [cdkCopyToClipboard]="
+          getTotalPrice(booking) + ' ' + booking.currencyCode
+        "
+        class="ghost-button ml-2 mobile-ml-3 inline-flex align-center"
+      >
+        <svg-icon key="copy" class="mr-1"></svg-icon>
+        <span>Copy</span>
+      </button>
+    </div>
+  </section>
+</div>
