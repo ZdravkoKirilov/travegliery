@@ -9,10 +9,10 @@
       <span class="text-label">More actions</span>
     </button>
     <mat-menu #menu="matMenu">
-      <button mat-menu-item (click)="logout()" cta="tertiary">Logout</button>
       <a mat-menu-item cta="tertiary" [routerLink]="['/', 'me', 'account']"
         >Account</a
       >
+      <button mat-menu-item (click)="logout()" cta="tertiary">Logout</button>
     </mat-menu>
   </div>
 </header>

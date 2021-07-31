@@ -1,7 +1,10 @@
-<main class="centered-content padded-container" *ngIf="project$ | async as project">
+<main
+  class="centered-content padded-container"
+  *ngIf="project$ | async as project"
+>
   <app-authenticated-header> </app-authenticated-header>
 
-  <nav class="mb-2 mobile-mb-1 mobile-ml-1 flex align-center">
+  <nav class="mb-2 mobile-ml-1 flex align-center">
     <a class="inline-flex align-center" routerLink="../" cta="tertiary">
       <span><svg-icon key="back" class="mr-1"></svg-icon></span>
       <span>Projects</span>
@@ -12,67 +15,52 @@
     <h1 class="bold h5">{{ project.name }}</h1>
   </nav>
 
-  <div class="mobile-ml-1 mobile-mr-1">
-    <div class="separator secondary mb-2"></div>
-    <div class="flex wrap">
-      <div class="mr-3">
-        <a routerLink="itinerary" cta="tertiary" class="align-center">
-          <svg-icon key="itinerary" size="lg" class="mr-1"></svg-icon>
-          <span>Itinerary</span>
-        </a>
+  <div class="mobile-ml-1 mobile-mr-1 card-container wrap column">
+    <div class="card mb-2 flex column">
+      <div class="flex mb-1 align-center">
+        <svg-icon
+          key="itinerary"
+          size="lg"
+          class="mr-1 itinerary-icon"
+        ></svg-icon>
+        <h2 class="h3">Itinerary</h2>
       </div>
 
-      <div class="mr-3">
-        <a routerLink="participants" cta="tertiary" class="align-center">
-          <svg-icon key="people" class="mr-1"></svg-icon>
-          <span>Participants</span>
-        </a>
-      </div>
+      <p class="mb-1">Keeps track of all bookings</p>
 
-      <div>
-        <a routerLink="sharing" cta="tertiary" class="align-center">
-          <svg-icon key="share-center" class="mr-1"></svg-icon>
-          <span>Sharing center</span>
-        </a>
+      <div class="flex wrap">
+        <span class="mr-3">
+          <a routerLink="itinerary" cta="tertiary"> Today </a>
+        </span>
+        <span class="mr-3">
+          <a routerLink="itinerary" cta="tertiary"> All </a>
+        </span>
+        <span class="mr-3">
+          <a routerLink="itinerary" cta="tertiary"> Next 7 days </a>
+        </span>
+        <span>
+          <a routerLink="itinerary" cta="tertiary"> Past 7 days </a>
+        </span>
       </div>
     </div>
 
-    <div class="separator secondary mb-2 mt-2"></div>
+    <div class="card mb-2">
+      <a routerLink="participants" cta="tertiary" class="align-center">
+        <svg-icon key="people" class="mr-1"></svg-icon>
+        <h2 class="h5">Participants</h2>
+      </a>
+      <p>A list of all people involved in the project</p>
+    </div>
 
-    <section class="card mt-4">
-      <h2 class="mb-2 h4 flex align-center">
-        <span class="mr-1">
-          <svg-icon key="heartbeat" size="xl" class="heartbeat-icon"></svg-icon>
-        </span>
+    <div class="card">
+      <a routerLink="sharing" cta="tertiary" class="align-center">
+        <svg-icon key="share-center" class="mr-1"></svg-icon>
+        <h2 class="h5">Sharing center</h2>
+      </a>
 
-        <span>Heartbeat</span>
-      </h2>
-      <section class="mb-3 flex align-center">
-        <h3 class="h5 mr-2">Past 7 days</h3>
-        <div class="ml-1" *ngFor="let booking of pastBookings$ | async">
-          <span class="mr-1">|</span>
-          <a [routerLink]="['itinerary', booking.id]">{{ booking.provider }}</a>
-        </div>
-        <span class="ml-2">...</span>
-      </section>
-
-      <section class="mb-3 flex">
-        <h3 class="h5 mr-2">Today</h3>
-        <div class="ml-1" *ngFor="let booking of todayBookings$ | async">
-          <span class="mr-1">|</span>
-          <a [routerLink]="['itinerary', booking.id]">{{ booking.provider }}</a>
-        </div>
-        <span class="ml-2">...</span>
-      </section>
-
-      <section class="flex">
-        <h3 class="h5 mr-2">Next 7 days</h3>
-        <div class="ml-1" *ngFor="let booking of upcomingBookings$ | async">
-          <span class="mr-1">|</span>
-          <a [routerLink]="['itinerary', booking.id]">{{ booking.provider }}</a>
-        </div>
-        <span class="ml-2">...</span>
-      </section>
-    </section>
+      <p>
+        Keeps track of latest shared documents and sent emails through the app
+      </p>
+    </div>
   </div>
 </main>
