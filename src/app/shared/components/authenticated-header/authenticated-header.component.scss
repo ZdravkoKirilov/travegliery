@@ -1,14 +1,62 @@
+@import "../../../../breakpoints.scss";
+
 :host {
   display: block;
+  overflow: hidden;
   background-color: var(--primary-transparent-color);
   color: var(--text-color-on-background);
   padding: var(--space-2);
   border-radius: var(--space-3);
+
+  @include non-desktop {
+    border-radius: 0;
+  }
 }
 
 .content-area {
   flex-grow: 1;
 }
+
 .default-area {
-  min-width: 7em;
+  float: right;
+  display: flex;
+}
+
+.more-actions {
+  display: flex;
+  flex-direction: column;
+  color: white;
+  justify-content: center;
+  outline-color: white;
+
+  .text-label {
+    display: none;
+  }
+
+  .dots-icon {
+    align-self: flex-end;
+    transition: transform 0.2s ease-out;
+  }
+  &:hover {
+    justify-content: flex-start;
+
+    .text-label {
+      display: inline-flex;
+    }
+
+    .dots-icon {
+      transform: rotate(90deg);
+    }
+  }
+  &:focus:not(:active) {
+    justify-content: flex-start;
+
+    .text-label {
+      display: inline-flex;
+    }
+
+    .dots-icon {
+      transform: rotate(90deg);
+    }
+  }
 }

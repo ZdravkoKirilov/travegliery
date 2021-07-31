@@ -1,18 +1,26 @@
 <div *ngFor="let group of bookings" class="card mb-3">
-  <div class="date-badge mb-1">{{ group.date | date }}</div>
+  <div class="date-badge mb-1">
+    <span>{{ group.date | date }} </span>
+    <span class="ml-3"
+      >{{ group.bookings.length }}
+      {{ group.bookings.length > 1 ? "bookings" : "booking" }}</span
+    >
+  </div>
 
   <div>
     <div *ngFor="let booking of group.bookings" class="booking mb-4">
-      <header class="header mb-1">
-        <span class="mr-2">{{ booking.type }}</span>
+      <header class="mb-1 flex">
+        <span class="mr-2 booking-icon">
+          <svg-icon [key]="booking.type | bookingType" size="lg"></svg-icon>
+        </span>
         <span>{{ booking.startTime }} - {{ booking.endTime }}</span>
       </header>
 
       <div class="flex">
         <div class="info-container">
-          <div class="mr-2">{{ booking.provider }}</div>
+          <h3 class="mr-2 h5">{{ booking.provider }}</h3>
           <a
-            class="block"
+            class="block link"
             cta="tertiary"
             [routerLink]="baseUrl.concat([booking.id])"
             >Open details</a

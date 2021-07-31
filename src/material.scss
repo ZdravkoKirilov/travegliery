@@ -1,0 +1,71 @@
+@use '~@angular/material' as mat;
+@include mat.core();
+
+$goatzilla-primary: mat.define-palette(mat.$indigo-palette);
+$goatzilla-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
+
+$goatzilla-warn: mat.define-palette(mat.$red-palette);
+
+// Create the theme object. A theme consists of configurations for individual
+// theming systems such as "color" or "typography".
+$goatzilla-theme: mat.define-light-theme(
+  (
+    color: (
+      primary: $goatzilla-primary,
+      accent: $goatzilla-accent,
+      warn: $goatzilla-warn,
+    ),
+  )
+);
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include mat.all-component-themes($goatzilla-theme);
+
+/* angular material overrides */
+.mat-menu-content {
+  line-height: 2;
+  font-weight: var(--font-weight-small);
+  font-family: "Poppins", sans-serif;
+  color: var(--text-color);
+  padding: var(--space-2) var(--space-1) !important;
+
+  min-width: 200px;
+
+  .mat-menu-item {
+    font-weight: var(--font-weight-small) !important;
+    font-family: "Poppins", sans-serif !important;
+
+    & > *:not(:last-child) {
+      margin-bottom: var(--space-1);
+    }
+  }
+}
+
+[cta="outlined"] {
+  &.mat-menu-item {
+    background-color: white !important;
+    color: var(--primary-color) !important;
+
+    &:hover {
+      color: var(--text-color-on-background) !important;
+      background-color: var(--primary-color) !important;
+    }
+  }
+}
+
+[cta="tertiary"] {
+  &.mat-menu-item {
+    color: var(--secondary-color) !important;
+    background-color: transparent !important;
+    text-align: center;
+
+    &:hover,
+    &:active {
+      &::after {
+        background-color: var(--secondary-color) !important;
+      }
+    }
+  }
+}

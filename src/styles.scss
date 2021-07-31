@@ -1,16 +1,21 @@
 @use "sass:math";
+
 @import url("https://fonts.googleapis.com/css?family=Poppins:400,600");
 @import url("https://fonts.googleapis.com/css2?family=Pacifico&display=swap");
 @import "~normalize.css/normalize";
+@import "./material.scss";
+@import "./breakpoints.scss";
 
 :root {
   --primary-color: #58a77b;
   --primary-transparent-color: rgba(88, 167, 123, 0.6);
+  --primary-transparent-color-2: rgba(88, 167, 123, 0.2);
   --primary-dark-color: #2c543e;
   --primary-light-color: #cde5d7;
 
   --secondary-color: #a75884;
   --secondary-transparent-color: rgba(167, 88, 132, 0.6);
+  --secondary-transparent-color-2: rgba(167, 88, 132, 0.2);
   --secondary-dark-color: #542c42;
   --secondary-light-color: #e5cdda;
 
@@ -20,6 +25,7 @@
   --info-color: #2fbeb3;
 
   --neutral-color: #cfd4d1;
+  --neutral-transparent-color: rgba(207, 212, 209, 0.2);
 
   --text-base-size: 1em;
   --font-weight-small: 400;
@@ -50,6 +56,14 @@ body {
   color: var(--text-color);
   overflow-y: scroll;
   @extend .full-container;
+}
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
 }
 
 p {
@@ -133,6 +147,7 @@ small,
 
 $sizes: 5;
 $margins: "mb", "mt", "ml", "mr", "m";
+$mobileMargins: "mobile-mb", "mobile-mt", "mobile-ml", "mobile-mr", "mobile-m";
 $paddings: "pb", "pt", "pl", "pr", "p";
 
 @each $marginType in $margins {
@@ -148,6 +163,34 @@ $paddings: "pb", "pt", "pl", "pr", "p";
         margin-left: var(--space-#{$i});
       } @else if ($marginType == "m") {
         margin: var(--space-#{$i});
+      }
+    }
+  }
+}
+
+@each $marginType in $mobileMargins {
+  @for $i from 1 through $sizes {
+    .#{$marginType}-#{$i} {
+      @if ($marginType == "mobile-mb") {
+        @include non-desktop {
+          margin-bottom: var(--space-#{$i});
+        }
+      } @else if ($marginType == "mobile-mt") {
+        @include non-desktop {
+          margin-top: var(--space-#{$i});
+        }
+      } @else if ($marginType == "mobile-mr") {
+        @include non-desktop {
+          margin-right: var(--space-#{$i});
+        }
+      } @else if ($marginType == "mobile-ml") {
+        @include non-desktop {
+          margin-left: var(--space-#{$i});
+        }
+      } @else if ($marginType == "mobile-m") {
+        @include non-desktop {
+          margin: var(--space-#{$i});
+        }
       }
     }
   }
@@ -174,30 +217,6 @@ $paddings: "pb", "pt", "pl", "pr", "p";
 @for $i from 1 through $sizes {
   .gap-#{$i} {
     gap: var(--space-#{$i});
-  }
-}
-
-/* SUPPORTED DEVICES SIZES AND MEDIA QUERIES */
-
-$screen-size1: 48em; /* 768 */
-$screen-size2: 64em; /* 1024 */
-$screen-size3: 120em; /* 1920 */
-
-@mixin phone {
-  @media (max-width: $screen-size1) {
-    @content;
-  }
-}
-
-@mixin tablet {
-  @media (max-width: $screen-size2) {
-    @content;
-  }
-}
-
-@mixin desktop {
-  @media (min-width: $screen-size2) {
-    @content;
   }
 }
 
@@ -248,27 +267,28 @@ $screen-size3: 120em; /* 1920 */
   height: 100%;
 }
 
-.centered {
-  margin: 0 auto;
-}
-
 .centered-content {
-  width: 100%;
-
-  @extend .centered;
-
   @include desktop {
     width: $screen-size2;
+    margin: 0 auto;
   }
 }
 
-.padded-content {
+.padded-container {
   padding: var(--space-2);
+
+  @include non-desktop {
+    padding: 0 0 var(--space-2) 0;
+  }
 }
 
 .card-container {
   display: flex;
   gap: var(--space-2);
+
+  @include non-desktop {
+    flex-direction: column;
+  }
 }
 
 /* GRID HELPERS .width-1 to .width-12 */
@@ -326,7 +346,8 @@ a[cta="outlined"] {
   background-color: white;
   color: var(--primary-color);
   box-shadow: 0 0 0 1px var(--primary-color);
-
+  text-align: center;
+  font-size: inherit;
   &[secondary] {
     color: var(--secondary-color);
     box-shadow: 0 0 0 1px var(--secondary-color);
@@ -398,6 +419,12 @@ a[cta="outlined"] {
       width: 0;
     }
   }
+}
+
+.ghost-button {
+  background: none;
+  border: none;
+  cursor: pointer;
 }
 
 /* Forms */
@@ -576,6 +603,10 @@ a[cta="outlined"] {
   transition: 0.3s;
   padding: var(--space-2);
   border-radius: 10px;
+
+  @include non-desktop {
+    padding: var(--space-1);
+  }
 
   &:hover {
     box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);

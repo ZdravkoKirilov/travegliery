@@ -1,11 +1,22 @@
 <ng-container *ngIf="participant$ | async as participant">
-  <div class="mb-2">
-    <span>Email:</span>
-    <span class="ml-2">{{ participant.email }}</span>
-  </div>
+  <div class="wrap card-container mobile-ml-1 mobile-mr-1">
+    <section class="section">
+      <div class="mb-2">
+        <span class="bold">Email:</span>
+        <span class="ml-2">{{ participant.email }}</span>
+      </div>
 
-  <div *ngIf="participant.phone">
-    <span>Phone:</span>
-    <span class="ml-2">{{ participant.phone }}</span>
+      <div *ngIf="participant.phone">
+        <span class="bold">Phone:</span>
+        <span class="ml-2">{{ participant.phone }}</span>
+      </div>
+    </section>
+
+    <section class="section">
+      <div>
+        <span class="bold">Passport number:</span>
+        <span class="ml-2">{{ participant.passportNumber }}</span>
+      </div>
+    </section>
   </div>
 </ng-container>

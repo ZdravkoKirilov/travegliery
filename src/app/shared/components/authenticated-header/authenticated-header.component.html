@@ -4,6 +4,15 @@
     <ng-content></ng-content>
   </div>
   <div class="default-area">
-    <button (click)="logout()" cta="outlined">Logout</button>
+    <button [matMenuTriggerFor]="menu" class="ghost-button more-actions">
+      <svg-icon key="dots" size="lg" class="dots-icon"></svg-icon>
+      <span class="text-label">More actions</span>
+    </button>
+    <mat-menu #menu="matMenu">
+      <a mat-menu-item cta="tertiary" [routerLink]="['/', 'me', 'account']"
+        >Account</a
+      >
+      <button mat-menu-item (click)="logout()" cta="tertiary">Logout</button>
+    </mat-menu>
   </div>
 </header>

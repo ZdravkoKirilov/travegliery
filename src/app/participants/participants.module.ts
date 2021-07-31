@@ -21,7 +21,7 @@ const routes: Routes = [
       {
         path: '',
         component: ParticipantContactComponent,
-        data: { key: 'contact' },
+        data: { key: 'general' },
       },
       {
         path: 'itinerary',

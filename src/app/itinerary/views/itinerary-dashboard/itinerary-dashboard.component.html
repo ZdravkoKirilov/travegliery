@@ -1,9 +1,9 @@
 <main
   *ngIf="activeProject$ | async as project"
-  class="centered-content padded-content"
+  class="centered-content padded-container"
 >
   <app-authenticated-header> </app-authenticated-header>
-  <header class="mb-2 flex align-center">
+  <header class="mb-2 flex align-center wrap">
     <span>
       <a routerLink="../.." cta="tertiary" class="align-center">
         <svg-icon key="back" class="mr-1"></svg-icon>
@@ -17,11 +17,15 @@
     <span>
       <a routerLink="../" cta="tertiary">{{ project.name }}</a>
     </span>
+
+    <span class="ml-1 mr-1"> / </span>
+
+    <h1 class="ml-1 h5">
+      <span class="bold"> {{ project.name }} itinerary </span>
+    </h1>
   </header>
 
   <article>
-    <h1 class="mb-2 h2">Itinerary for {{ project.name }}</h1>
-
     <app-booking-list
       [bookings]="(bookingGroups$ | async) || []"
     ></app-booking-list>

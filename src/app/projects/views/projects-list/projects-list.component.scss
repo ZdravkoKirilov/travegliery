@@ -1,0 +1,32 @@
+@import "../../../../breakpoints.scss";
+
+:host {
+  .main-heading {
+    padding: 0 var(--space-1);
+
+    .projects-icon {
+      color: var(--secondary-color);
+    }
+  }
+
+  .heading {
+    padding: var(--space-1);
+    border-radius: 10px;
+    background-color: var(--neutral-transparent-color);
+  }
+
+  @include non-desktop {
+    .heading {
+      padding: var(--space-1);
+      border-radius: 0;
+    }
+
+    .card-container {
+      padding: 0 var(--space-1);
+    }
+
+    .padded-content {
+      padding-bottom: var(--space-2);
+    }
+  }
+}
