@@ -35,7 +35,7 @@
     <div *ngIf="showEmailSharing" class="email-share-toggable">
       <div class="flex wrap">
         <input
-          class="input ml-1"
+          class="input"
           type="text"
           placeholder="Search recipients"
           (keyup.enter)="handleEnter(emailFilter); input.focus()"
@@ -68,8 +68,10 @@
           </div>
         </div>
 
+        <div class="separator mt-3"></div>
+
         <div class="mt-4">
-          <button (click)="handleShare(displayedRecipients)" cta="outlined">
+          <button (click)="handleShare(displayedRecipients)" cta="outlined" secondary>
             Done
           </button>
         </div>
