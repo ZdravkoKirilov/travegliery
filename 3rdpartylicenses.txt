@@ -32,6 +32,9 @@ MIT
 @angular/core
 MIT
 
+@angular/forms
+MIT
+
 @angular/material
 MIT
 The MIT License
@@ -65,6 +68,16 @@ MIT
 
 @ngneat/svg-icon
 MIT
+
+date-fns
+MIT
+Copyright (C) 2020 Sasha Koss and Lesha Koss
+
+# License
+
+date-fns is licensed under the [MIT license](http://kossnocorp.mit-license.org).
+Read more about MIT at [TLDRLegal](https://tldrlegal.com/license/mit-license).
+
 
 ng-inline-svg
 MIT
