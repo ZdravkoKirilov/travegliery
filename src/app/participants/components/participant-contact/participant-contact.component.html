@@ -1,7 +1,7 @@
 <ng-container *ngIf="participant$ | async as participant">
   <div class="wrap card-container mobile-ml-1 mobile-mr-1">
     <section>
-      <div class="mb-2 flex align-center">
+      <div class="mb-2 flex align-center wrap">
         <span class="bold">Email:</span>
         <a class="ml-2" [href]="'mailto:' + participant.email">{{
           participant.email
@@ -16,7 +16,7 @@
         </button>
       </div>
 
-      <div *ngIf="participant.phone" class="flex align-center">
+      <div *ngIf="participant.phone" class="flex align-center wrap">
         <span class="bold">Phone:</span>
         <a class="ml-2" [href]="'tel:' + participant.phone"
           >Call {{ participant.phone }}</a
@@ -33,7 +33,7 @@
     </section>
 
     <section class="ml-4 mobile-ml-0">
-      <div class="flex align-center">
+      <div class="flex align-center wrap">
         <span class="bold">Passport number:</span>
         <span class="ml-2">{{ participant.passportNumber }}</span>
         <button
