@@ -22,6 +22,7 @@ export class ShareSettingsComponent implements OnInit {
 
   @OnChange<boolean, ShareSettingsComponent>((value, self) => {
     if (value === false) {
+      self.emailFilter = '';
       self.displayedRecipients = [];
     }
   })
