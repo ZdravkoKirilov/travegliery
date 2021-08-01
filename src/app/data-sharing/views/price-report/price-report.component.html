@@ -24,7 +24,10 @@
   <article class="mobile-ml-1 mobile-mr-1">
     <app-share-settings
       class="block mb-3"
-      (save)="handleSave($event)"
+      [code]="''"
+      [emails]="(participantEmails$ | async) || []"
+      (makeLink)="handleSave()"
+      (shareLink)="handleShare($event)"
     ></app-share-settings>
 
     <app-price-report-visualization

@@ -5,10 +5,8 @@ import { SvgIconComponent, SvgIconsModule } from '@ngneat/svg-icon';
 import { appStarIcon } from '@assets/generated-icons/star';
 import { appShareIcon } from '@assets/generated-icons/share';
 import { appBackIcon } from '@assets/generated-icons/back';
-import { appCalendarIcon } from '@assets/generated-icons/calendar';
 import { appItineraryIcon } from '@assets/generated-icons/itinerary';
 import { appPeopleIcon } from '@assets/generated-icons/people';
-import { appHeartbeatIcon } from '@assets/generated-icons/heartbeat';
 import { appShareCenterIcon } from '@assets/generated-icons/share-center';
 import { appDotsIcon } from '@assets/generated-icons/dots';
 import { appNotesIcon } from '@assets/generated-icons/notes';
@@ -20,6 +18,7 @@ import { appCopyIcon } from '@assets/generated-icons/copy';
 import { appFilterIcon } from '@assets/generated-icons/filter';
 import { appRemoveIcon } from '@assets/generated-icons/remove';
 import { appBudgetIcon } from '@assets/generated-icons/budget';
+import { appLinkIcon } from '@assets/generated-icons/link';
 
 @NgModule({
   declarations: [],
@@ -39,10 +38,8 @@ import { appBudgetIcon } from '@assets/generated-icons/budget';
         appStarIcon,
         appShareIcon,
         appBackIcon,
-        appCalendarIcon,
         appItineraryIcon,
         appPeopleIcon,
-        appHeartbeatIcon,
         appShareCenterIcon,
         appDotsIcon,
         appNotesIcon,
@@ -54,6 +51,7 @@ import { appBudgetIcon } from '@assets/generated-icons/budget';
         appFilterIcon,
         appRemoveIcon,
         appBudgetIcon,
+        appLinkIcon,
       ],
     }),
   ],

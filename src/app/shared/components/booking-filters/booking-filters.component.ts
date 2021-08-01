@@ -123,7 +123,11 @@ export class BookingFiltersComponent implements OnInit {
     }
   }
 
-  toggleFilters() {
+  toggleFilters(event?: MouseEvent) {
+    if (event) {
+      event.stopPropagation();
+    }
+
     this.showFilters = !this.showFilters;
   }
 

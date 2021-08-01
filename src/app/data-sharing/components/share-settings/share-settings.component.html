@@ -1,4 +1,79 @@
-<div class="card-container wrap align-center space-between">
-  <div>Settings</div>
-  <div>Sharing</div>
+<div class="flex wrap align-center space-between">
+  <div>
+    <button
+      *ngIf="!code"
+      cta="outlined"
+      class="flex align-center justify-center mobile-mb-2"
+      (click)="makeLink.emit()"
+    >
+      <svg-icon key="link" class="mr-1"></svg-icon>
+      <span>Generate link</span>
+    </button>
+
+    <button
+      *ngIf="code"
+      cta="outlined"
+      class="flex align-center justify-center"
+      [cdkCopyToClipboard]="code"
+      (click)="onCopy()"
+    >
+      <svg-icon key="link" class="mr-1"></svg-icon>
+      <span>Copy link</span>
+    </button>
+  </div>
+
+  <div class="email-share">
+    <button
+      (click)="toggleEmailSharing()"
+      cta="outlined"
+      class="flex align-center justify-center"
+    >
+      <svg-icon key="share" class="mr-1"></svg-icon>
+      <span>Share with</span>
+    </button>
+
+    <div *ngIf="showEmailSharing" class="email-share-toggable">
+      <div class="flex wrap">
+        <input
+          class="input ml-1"
+          type="text"
+          placeholder="Search recipients"
+          (keyup.enter)="handleEnter(emailFilter); input.focus()"
+          [(ngModel)]="emailFilter"
+          [matAutocomplete]="auto"
+          #input
+        />
+
+        <mat-autocomplete
+          #auto="matAutocomplete"
+          (optionSelected)="toggleRecipient($event.option.value)"
+        >
+          <mat-option *ngFor="let email of recipients$ | async" [value]="email">
+            {{ email }}
+          </mat-option>
+        </mat-autocomplete>
+
+        <div class="mt-2">
+          <div
+            *ngFor="let recipient of displayedRecipients"
+            class="flex align-center"
+          >
+            <span class="mr-1">{{ recipient }}</span>
+            <button
+              (click)="removeRecipient($event, recipient)"
+              class="ghost-button remove-recipient"
+            >
+              <svg-icon key="remove"></svg-icon>
+            </button>
+          </div>
+        </div>
+
+        <div class="mt-4">
+          <button (click)="handleShare(displayedRecipients)" cta="outlined">
+            Done
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

@@ -13,6 +13,7 @@ import { PublicHeaderComponent } from './components/public-header/public-header.
 import { BookingTypePipe } from './pipes/booking-type.pipe';
 import { MaterialModule } from './material.module';
 import { BookingFiltersComponent } from './components/booking-filters/booking-filters.component';
+import { ClickOutsideDirective } from './directives/click-outside.directive';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { BookingFiltersComponent } from './components/booking-filters/booking-fi
     PublicHeaderComponent,
     BookingTypePipe,
     BookingFiltersComponent,
+    ClickOutsideDirective,
   ],
   imports: [
     CommonModule,
@@ -40,7 +42,8 @@ import { BookingFiltersComponent } from './components/booking-filters/booking-fi
     InlineSVGModule,
     MaterialModule,
     BookingTypePipe,
-    BookingFiltersComponent
+    BookingFiltersComponent,
+    ClickOutsideDirective,
   ],
 })
 export class SharedModule {}

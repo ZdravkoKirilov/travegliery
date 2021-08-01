@@ -3,7 +3,7 @@ import { Observable, of } from 'rxjs';
 
 import { ProjectDataService, ProjectsService } from '@root/projects';
 import { Booking, Project } from '@root/shared';
-import { map } from 'rxjs/operators';
+import { map, withLatestFrom } from 'rxjs/operators';
 
 @Component({
   selector: 'app-price-report',
@@ -13,6 +13,7 @@ import { map } from 'rxjs/operators';
 export class PriceReportComponent {
   activeProject$: Observable<Project>;
   bookings$: Observable<Booking[]> = of([]);
+  participantEmails$: Observable<string[]> = of([]);
 
   constructor(
     private projectService: ProjectsService,
@@ -22,9 +23,25 @@ export class PriceReportComponent {
     this.bookings$ = this.dataService
       .getFilteredBookings()
       .pipe(map(this.dataService.sortBookings));
+    this.participantEmails$ = this.dataService.getFilteredBookings().pipe(
+      withLatestFrom(this.dataService.getParticipants()),
+      map(([bookings, participants]) => {
+        const participantIds = Array.from(
+          new Set(
+            bookings.reduce<string[]>((total, booking) => {
+              total = [...total, ...booking.participants];
+              return total;
+            }, [])
+          )
+        );
+        return participants
+          .filter((participant) => participantIds.includes(participant.id))
+          .map((participant) => participant.email);
+      })
+    );
   }
 
-  handleSave(payload: { sendEmail: boolean }) {
-    console.log(payload);
-  }
+  handleSave() {}
+
+  handleShare(emails: string[]) {}
 }
