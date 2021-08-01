@@ -26,8 +26,20 @@ export class SharingService {
 
   private _emails$ = new BehaviorSubject<Record<Email['id'], Email>>({});
 
-  items$ = this._items$.pipe(map((items) => Object.values(items)));
-  emails$ = this._emails$.pipe(map((emails) => Object.values(emails)));
+  items$ = this._items$.pipe(
+    map((items) => {
+      const projectId = this.appRouter.getProjectId();
+      return Object.values(items).filter(
+        (elem) => elem.projectId === projectId
+      );
+    })
+  );
+  emails$ = this._emails$.pipe(
+    map((emails) => {
+      const projectId = this.appRouter.getProjectId();
+      return Object.values(emails).filter((elem) => elem.id === projectId);
+    })
+  );
 
   deleteSharedItem(itemId: SharedItem['id']) {
     const currentItems = { ...this._items$.getValue() };
