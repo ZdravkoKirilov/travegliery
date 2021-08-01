@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { FormsModule } from '@angular/forms';
+import { DatePipe } from '@angular/common';
 
 import { SharedModule } from '@root/shared';
 import { WithAuthGuard } from '@root/authentication';
@@ -15,6 +16,8 @@ import { ShareSettingsComponent } from './components/share-settings/share-settin
 import { PriceReportVisualizationComponent } from './components/price-report-visualization/price-report-visualization.component';
 import { SharingService } from './services/sharing.service';
 import { PriceReportComponent } from './views/price-report/price-report.component';
+import { SharingTypePipe } from './pipes/sharing-type.pipe';
+import { EmailStatusPipe } from './pipes/email-status.pipe';
 
 const routes: Routes = [
   {
@@ -61,6 +64,8 @@ const routes: Routes = [
     ShareSettingsComponent,
     PriceReportVisualizationComponent,
     PriceReportComponent,
+    SharingTypePipe,
+    EmailStatusPipe,
   ],
   imports: [
     SharedModule,
@@ -69,6 +74,6 @@ const routes: Routes = [
     FormsModule,
   ],
   exports: [RouterModule],
-  providers: [SharingService],
+  providers: [SharingService, DatePipe],
 })
 export class DataSharingModule {}

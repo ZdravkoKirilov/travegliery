@@ -127,6 +127,11 @@ small,
   font-size: 0.8em;
 }
 
+.wrap-text {
+  word-wrap: break-word;
+  word-break: break-all;
+}
+
 .italic {
   font-style: italic;
 }
@@ -299,6 +304,14 @@ $grid-columns: 12;
 @for $i from 1 through $grid-columns {
   .width-#{$i} {
     width: math.div($i, 12) * 100%;
+  }
+}
+
+@for $i from 1 through $grid-columns {
+  .mbl-width-#{$i} {
+    @include non-desktop {
+      width: math.div($i, 12) * 100%;
+    }
   }
 }
 

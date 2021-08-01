@@ -1,9 +1,10 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 import { ProjectsService } from '@root/projects';
-import { Email, Project, SharedItem } from '@root/shared';
-import { SharingService } from '@root/data-sharing/services/sharing.service';
+import { Email, Project, SharedItem, MatSnackBar } from '@root/shared';
+import { SharingService } from '../../services/sharing.service';
 
 @Component({
   selector: 'app-sharing-dashboard',
@@ -19,7 +20,8 @@ export class SharingDashboardComponent {
 
   constructor(
     private projectService: ProjectsService,
-    private sharingService: SharingService
+    private sharingService: SharingService,
+    private snackbar: MatSnackBar
   ) {
     this.activeProject$ = this.projectService.getActiveProject();
 
@@ -29,5 +31,24 @@ export class SharingDashboardComponent {
 
   getItemLink(item: SharedItem) {
     return this.sharingService.getItemLink(item);
+  }
+
+  getItemById(itemId: SharedItem['id']) {
+    return this.items$.pipe(
+      map((items) => {
+        const item = items.find((elem) => elem.id === itemId);
+        return item;
+      })
+    );
+  }
+
+  deleteItem(itemId: SharedItem['id']) {
+    this.sharingService.deleteSharedItem(itemId);
+    this.snackbar.open('Link deleted', '', { duration: 3000 });
+  }
+
+  deleteEmail(emailId: Email['id']) {
+    this.sharingService.deleteEmail(emailId);
+    this.snackbar.open('Email deleted', '', { duration: 3000 });
   }
 }

@@ -29,7 +29,25 @@ export class SharingService {
   items$ = this._items$.pipe(map((items) => Object.values(items)));
   emails$ = this._emails$.pipe(map((emails) => Object.values(emails)));
 
-  generatePriceReportLink(bookingIds: Array<Booking['id']>): string {
+  deleteSharedItem(itemId: SharedItem['id']) {
+    const currentItems = { ...this._items$.getValue() };
+    delete currentItems[itemId];
+
+    localStorage.setItem('sharedItems', JSON.stringify(currentItems));
+
+    this._items$.next(currentItems);
+  }
+
+  deleteEmail(emailId: Email['id']) {
+    const currentEmails = { ...this._emails$.getValue() };
+    delete currentEmails[emailId];
+
+    localStorage.setItem('emails', JSON.stringify(currentEmails));
+
+    this._emails$.next(currentEmails);
+  }
+
+  generatePriceReport(bookingIds: Array<Booking['id']>): SharedItem {
     const nanoId = nanoid();
     const projectId = this.appRouter.getProjectId();
 
@@ -52,7 +70,7 @@ export class SharingService {
       JSON.stringify(this._items$.getValue())
     );
 
-    return this.getItemLink(item);
+    return item;
   }
 
   generateEmail(

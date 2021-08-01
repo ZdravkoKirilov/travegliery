@@ -3,7 +3,7 @@ import { Observable, of } from 'rxjs';
 import { map, withLatestFrom } from 'rxjs/operators';
 
 import { ProjectDataService, ProjectsService } from '@root/projects';
-import { Booking, MatSnackBar, Project } from '@root/shared';
+import { Booking, MatSnackBar, Project, SharedItem } from '@root/shared';
 
 import { SharingService } from '../../services/sharing.service';
 
@@ -18,6 +18,7 @@ export class SharePriceReportComponent {
   participantEmails$: Observable<string[]> = of([]);
 
   link = '';
+  item?: SharedItem = undefined;
 
   constructor(
     private projectService: ProjectsService,
@@ -48,20 +49,23 @@ export class SharePriceReportComponent {
   }
 
   handleSave(bookings: Booking[]) {
-    const link = this.sharingService.generatePriceReportLink(
+    const item = this.sharingService.generatePriceReport(
       bookings.map((elem) => elem.id)
     );
 
-    this.link = link;
+    this.item = item;
+    this.link = this.sharingService.getItemLink(item);
   }
 
   handleShare(emails: string[], bookings: Booking[]) {
-    if (!this.link) {
-      this.link = this.sharingService.generatePriceReportLink(
+    if (!this.item) {
+      const item = this.sharingService.generatePriceReport(
         bookings.map((elem) => elem.id)
       );
+      this.link = this.sharingService.getItemLink(item);
+      this.item = item;
     }
-    this.sharingService.generateEmail(this.link, emails);
+    this.sharingService.generateEmail(this.item.id, emails);
     this.snackbar.open('Email sent!', '', { duration: 3000 });
   }
 }

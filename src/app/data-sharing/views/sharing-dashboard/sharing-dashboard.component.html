@@ -1,4 +1,7 @@
-<main class="centered-content padded-container">
+<main
+  *ngIf="activeProject$ | async as project"
+  class="centered-content padded-container"
+>
   <app-authenticated-header></app-authenticated-header>
 
   <header class="mb-3 mt-1 flex wrap align-center">
@@ -9,9 +12,7 @@
     <span class="ml-1 mr-1"> / </span>
 
     <span>
-      <a routerLink="../" cta="tertiary">{{
-        (activeProject$ | async)?.name
-      }}</a>
+      <a routerLink="../" cta="tertiary">{{ project.name }}</a>
     </span>
 
     <span class="ml-1 mr-1"> / </span>
@@ -19,26 +20,66 @@
     <h1 class="h5">Sharing center</h1>
   </header>
 
-  <article class="flex wrap sections-container">
-    <section class="mr-4">
+  <article class="flex wrap mobile-ml-2 mobile-mr-1">
+    <section class="width-5 mbl-width-12">
       <h2 class="mb-2 h4">Links</h2>
 
-      <div *ngFor="let item of items$ | async" class="mb-1">
-        <a [href]="getItemLink(item)" target="_blank">{{
-          getItemLink(item)
-        }}</a>
+      <div *ngFor="let item of items$ | async" class="mb-3 flex column">
+        <div class="flex align-center wrap">
+          <a
+            class="mr-3"
+            [href]="getItemLink(item)"
+            [id]="item.id"
+            target="_blank"
+            >{{ item.type | sharingType }}</a
+          >
+          <button
+            (click)="deleteItem(item.id)"
+            class="ghost-button flex align-center revoke"
+          >
+            <svg-icon key="remove" class="mr-1"></svg-icon>
+            <span>Revoke</span>
+          </button>
+        </div>
+
+        <div class="small-text mb-1">
+          <span class="mr-1">Created at:</span>
+          <span>{{ item.createdAt | date: "short" }}</span>
+        </div>
       </div>
     </section>
 
-    <section>
+    <section class="width-5 mbl-width-12">
       <h2 class="mb-2 h4">Emails</h2>
 
-      <div *ngFor="let email of emails$ | async" class="mb-1 flex">
-        <span class="mr-3">{{ email.id }}</span>
-        <span>
-          <span class="mr-1">Ships at: </span>
-          <span>{{ email.sendAt | date }}</span>
-        </span>
+      <div *ngFor="let email of emails$ | async" class="mb-1 flex column">
+        <ng-container *ngIf="getItemById(email.shareId) | async as item">
+          <div class="flex align-center wrap">
+            <a
+              class="mr-3"
+              [routerLink]="['/', 'projects', project.id, 'sharing']"
+              [fragment]="item.id"
+              >{{ item.type | sharingType }}</a
+            >
+            <button
+              (click)="deleteEmail(email.id)"
+              class="ghost-button flex align-center revoke"
+            >
+              <svg-icon key="remove" class="mr-1"></svg-icon>
+              <span>Delete</span>
+            </button>
+          </div>
+
+          <span class="small-text">
+            {{ email.sendAt | emailStatus }}
+          </span>
+
+          <div class="small-text">
+            <div *ngFor="let recipient of email.recipients">
+              {{ recipient }}
+            </div>
+          </div>
+        </ng-container>
       </div>
     </section>
   </article>
