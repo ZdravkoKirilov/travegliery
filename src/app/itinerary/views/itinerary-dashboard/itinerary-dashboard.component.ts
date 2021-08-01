@@ -6,7 +6,7 @@ import {
   ProjectDataService,
   ProjectsService,
 } from '@root/projects';
-import { Booking, Project } from '@root/shared';
+import { Booking, Participant, Project } from '@root/shared';
 
 @Component({
   selector: 'app-itinerary-dashboard',
@@ -17,6 +17,7 @@ export class ItineraryDashboardComponent implements OnInit {
   bookings$: Observable<Booking[]>;
   bookingGroups$: Observable<BookingGroups> = of([]);
   activeProject$: Observable<Project>;
+  participants$: Observable<Participant[]>;
 
   constructor(
     private dataService: ProjectDataService,
@@ -25,6 +26,7 @@ export class ItineraryDashboardComponent implements OnInit {
     this.bookings$ = this.dataService.getBookings();
     this.bookingGroups$ = this.dataService.getBookingGroupsByDate();
     this.activeProject$ = this.projectService.getActiveProject();
+    this.participants$ = this.dataService.getParticipants();
   }
 
   ngOnInit(): void {}

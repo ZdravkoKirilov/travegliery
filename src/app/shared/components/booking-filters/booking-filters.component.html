@@ -1,0 +1,81 @@
+<button
+  (click)="toggleFilters()"
+  cta="tertiary"
+  class="flex align-center justify-center"
+>
+  <svg-icon key="filter" class="filter mr-1"></svg-icon>
+  <span *ngIf="!showFilters">Show filters {{ getAppliedFiltersCount() }}</span>
+  <span *ngIf="showFilters">Hide filters</span>
+</button>
+
+<div *ngIf="showFilters" class="filters">
+  <section>
+    <h3 class="h5 mb-1">By date</h3>
+    <div class="flex wrap">
+      <div class="mr-2 mb-2 mobile-mr-0 mobile-mb-1 flex align-center">
+        <span>Start: </span>
+        <input type="date" class="input ml-1 mr-2" [(ngModel)]="fromDate" />
+        <button (click)="clearDate('from')" class="ghost-button clear-date">
+          <svg-icon key="remove"></svg-icon>
+        </button>
+      </div>
+      <div class="flex align-center">
+        <span>End: </span>
+        <input type="date" class="input ml-2 mr-2" [(ngModel)]="toDate" />
+        <button (click)="clearDate('to')" class="ghost-button clear-date">
+          <svg-icon key="remove"></svg-icon>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <div class="separator mt-4 mb-4"></div>
+
+  <section>
+    <h3 class="h5 mb-1">By participant</h3>
+
+    <div class="flex wrap">
+      <span>Search: </span>
+      <input
+        class="input ml-1"
+        type="text"
+        placeholder="Start typing"
+        [(ngModel)]="participantFilter"
+        [matAutocomplete]="auto"
+      />
+
+      <mat-autocomplete
+        #auto="matAutocomplete"
+        (optionSelected)="toggleParticipant($event.option.value)"
+      >
+        <mat-option
+          *ngFor="let participant of filteredParticipantOptions$ | async"
+          [value]="participant.id"
+        >
+          {{ participant.firstName }} {{ participant.lastName }}
+        </mat-option>
+      </mat-autocomplete>
+
+      <div class="mt-2">
+        <div
+          *ngFor="let participant of displayedParticipants$ | async"
+          class="flex align-center"
+        >
+          <span class="mr-1"
+            >{{ participant.firstName }} {{ participant.lastName }}</span
+          >
+          <button
+            (click)="toggleParticipant(participant.id)"
+            class="ghost-button remove-participant"
+          >
+            <svg-icon key="remove"></svg-icon>
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="separator mt-4 mb-4"></div>
+
+  <button cta="primary" (click)="applyFilters()">Apply</button>
+</div>

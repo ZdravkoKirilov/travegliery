@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { InlineSVGModule } from 'ng-inline-svg';
 import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 
 import { IconsModule } from '@root/icons';
 import { BookingListComponent } from './components/booking-list/booking-list.component';
@@ -11,6 +12,7 @@ import { LogoComponent } from './components/logo/logo.component';
 import { PublicHeaderComponent } from './components/public-header/public-header.component';
 import { BookingTypePipe } from './pipes/booking-type.pipe';
 import { MaterialModule } from './material.module';
+import { BookingFiltersComponent } from './components/booking-filters/booking-filters.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +21,7 @@ import { MaterialModule } from './material.module';
     LogoComponent,
     PublicHeaderComponent,
     BookingTypePipe,
+    BookingFiltersComponent,
   ],
   imports: [
     CommonModule,
@@ -27,6 +30,7 @@ import { MaterialModule } from './material.module';
     InlineSVGModule,
     IconsModule,
     MaterialModule,
+    FormsModule,
   ],
   exports: [
     CommonModule,
@@ -36,6 +40,7 @@ import { MaterialModule } from './material.module';
     InlineSVGModule,
     MaterialModule,
     BookingTypePipe,
+    BookingFiltersComponent
   ],
 })
 export class SharedModule {}

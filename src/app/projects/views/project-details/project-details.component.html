@@ -30,16 +30,30 @@
 
       <div class="flex wrap">
         <span class="mr-3">
-          <a routerLink="itinerary" cta="tertiary"> Today </a>
+          <a routerLink="itinerary" cta="tertiary" [queryParams]="getToday()">
+            Today
+          </a>
         </span>
         <span class="mr-3">
           <a routerLink="itinerary" cta="tertiary"> All </a>
         </span>
         <span class="mr-3">
-          <a routerLink="itinerary" cta="tertiary"> Next 7 days </a>
+          <a
+            routerLink="itinerary"
+            cta="tertiary"
+            [queryParams]="getNextSeven()"
+          >
+            Next 7 days
+          </a>
         </span>
         <span>
-          <a routerLink="itinerary" cta="tertiary"> Past 7 days </a>
+          <a
+            routerLink="itinerary"
+            [queryParams]="getPastSeven()"
+            cta="tertiary"
+          >
+            Past 7 days
+          </a>
         </span>
       </div>
     </div>

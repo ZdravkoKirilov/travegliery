@@ -1,0 +1,24 @@
+@import "../../../../breakpoints.scss";
+
+:host {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+
+  .filters {
+    position: absolute;
+    top: 50px;
+    background-color: white;
+    min-width: 300px;
+    padding: var(--space-3);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+
+    @include phone {
+      min-width: 100vw;
+    }
+  }
+
+  .remove-participant, .clear-date {
+    color: var(--secondary-color);
+  }
+}

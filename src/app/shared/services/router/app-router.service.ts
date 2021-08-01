@@ -61,4 +61,12 @@ export class AppRouterService {
     const state = this.getRouteData();
     return state.data?.key === key;
   }
+
+  addQueryParams(params: Record<string, unknown>) {
+    this.router.navigate([], {
+      relativeTo: this.activatedRoute,
+      queryParams: params,
+      queryParamsHandling: 'merge', // remove to replace all query params by provided
+    });
+  }
 }

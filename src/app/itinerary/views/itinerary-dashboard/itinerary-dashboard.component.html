@@ -26,6 +26,14 @@
   </header>
 
   <article>
+    <header class="flex space-between mb-2 align-center">
+      <div>
+        <app-booking-filters [participants]="participants$"></app-booking-filters>
+      </div>
+      <div>
+        <button cta="outlined">Price summary</button>
+      </div>
+    </header>
     <app-booking-list
       [bookings]="(bookingGroups$ | async) || []"
     ></app-booking-list>

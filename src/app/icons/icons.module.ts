@@ -17,6 +17,8 @@ import { appTrainIcon } from '@assets/generated-icons/train';
 import { appHotelIcon } from '@assets/generated-icons/hotel';
 import { appFerryIcon } from '@assets/generated-icons/ferry';
 import { appCopyIcon } from '@assets/generated-icons/copy';
+import { appFilterIcon } from '@assets/generated-icons/filter';
+import { appRemoveIcon } from '@assets/generated-icons/remove';
 
 @NgModule({
   declarations: [],
@@ -48,6 +50,8 @@ import { appCopyIcon } from '@assets/generated-icons/copy';
         appHotelIcon,
         appFerryIcon,
         appCopyIcon,
+        appFilterIcon,
+        appRemoveIcon,
       ],
     }),
   ],
