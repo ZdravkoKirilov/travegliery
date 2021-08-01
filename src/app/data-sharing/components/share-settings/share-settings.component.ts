@@ -33,10 +33,16 @@ export class ShareSettingsComponent implements OnInit {
   recipients$ = combineLatest([this._recipients$, this.emailFilter$]).pipe(
     map(([recipients, activeFilter]) => {
       return activeFilter
-        ? recipients.filter((elem) => elem.includes(activeFilter))
+        ? recipients.filter(
+            (elem) =>
+              elem &&
+              elem.toLowerCase().includes(activeFilter.toLowerCase()) &&
+              !this.displayedRecipients.includes(elem)
+          )
         : [];
     })
   );
+
   displayedRecipients: string[] = [];
 
   @OnChange<string, ShareSettingsComponent>((value, self) => {
@@ -50,10 +56,12 @@ export class ShareSettingsComponent implements OnInit {
   }
 
   handleEnter(email: string) {
-    this.displayedRecipients = Array.from(
-      new Set([...this.displayedRecipients, email])
-    );
-    this.emailFilter = '';
+    if (email) {
+      this.displayedRecipients = Array.from(
+        new Set([...this.displayedRecipients, email])
+      );
+      this.emailFilter = '';
+    }
   }
 
   removeRecipient(event: Event, email: string) {
@@ -63,11 +71,10 @@ export class ShareSettingsComponent implements OnInit {
     );
   }
 
-  toggleRecipient(email: string) {
-    if (this.displayedRecipients.includes(email)) {
+  addRecipient(email: string) {
+    if (email) {
       this.displayedRecipients.push(email);
-    } else {
-      this.displayedRecipients.push(email);
+      this.emailFilter = '';
     }
   }
 

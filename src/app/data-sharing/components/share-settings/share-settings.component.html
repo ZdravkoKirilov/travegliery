@@ -1,5 +1,5 @@
-<div class="flex wrap align-center space-between">
-  <div>
+<div class="flex wrap">
+  <div class="mr-3">
     <button
       *ngIf="!code"
       cta="outlined"
@@ -46,7 +46,7 @@
 
         <mat-autocomplete
           #auto="matAutocomplete"
-          (optionSelected)="toggleRecipient($event.option.value)"
+          (optionSelected)="addRecipient($event.option.value)"
         >
           <mat-option *ngFor="let email of recipients$ | async" [value]="email">
             {{ email }}
