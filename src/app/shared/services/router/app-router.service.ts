@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 type RouteData = {
   key: string;
@@ -55,6 +57,20 @@ export class AppRouterService {
     } = this.activatedRoute.snapshot;
 
     return { url, params, queryParams, data };
+  }
+
+  getItineraryParams(): Observable<{
+    fromDate: string;
+    toDate: string;
+    participantId: string | string[];
+  }> {
+    return this.activatedRoute.queryParams.pipe(
+      map((currentParams) => ({
+        fromDate: currentParams['fromDate'],
+        toDate: currentParams['toDate'],
+        participantId: currentParams['participantId'],
+      }))
+    );
   }
 
   isRouteActive(key: RouteData['key']) {

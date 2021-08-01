@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable, BehaviorSubject, combineLatest } from 'rxjs';
-import { map, switchMap, take } from 'rxjs/operators';
-import { isAfter } from 'date-fns';
+import { map, switchMap, take, withLatestFrom } from 'rxjs/operators';
+import { parseISO, isValid, isAfter, isBefore } from 'date-fns';
 
 import { AppRouterService, Booking, Participant } from '@root/shared';
 
@@ -141,8 +141,51 @@ export class ProjectDataService {
     });
   }
 
+  getFilteredBookings(): Observable<Booking[]> {
+    return this.appRouter.getItineraryParams().pipe(
+      withLatestFrom(this.getBookings()),
+      map(([params, bookings]) => {
+        return bookings.filter((elem) => {
+          const fromDate = parseISO(params.fromDate);
+          const toDate = parseISO(params.toDate);
+          const participantIds = [params.participantId].reduce((acc, item) => {
+            if (Array.isArray(item)) {
+              acc = [...acc, ...item];
+            } else {
+              acc = [...acc, item];
+            }
+            return acc;
+          }, []) as string[];
+          const filteredParticipantIds = participantIds.filter(Boolean);
+
+          const bookingStartDate = new Date(elem.startDate);
+          bookingStartDate.setHours(0, 0, 0, 0);
+
+          if (isValid(fromDate) && isAfter(fromDate, bookingStartDate)) {
+            return false;
+          }
+
+          if (isValid(toDate) && isBefore(toDate, bookingStartDate)) {
+            return false;
+          }
+
+          if (
+            Array.isArray(filteredParticipantIds) &&
+            filteredParticipantIds.length > 0
+          ) {
+            return filteredParticipantIds.some((id) =>
+              elem.participants.includes(id)
+            );
+          }
+
+          return true;
+        });
+      })
+    );
+  }
+
   getBookingGroupsByDate(): Observable<BookingGroups> {
-    return this.getBookings().pipe(
+    return this.getFilteredBookings().pipe(
       map(this.createBookingGroups),
       map(this.sortBookingGroups)
     );
