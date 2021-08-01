@@ -3,13 +3,13 @@
     <section>
       <div class="mb-2 flex align-center wrap">
         <span class="bold">Email:</span>
-        <a class="ml-2" [href]="'mailto:' + participant.email">{{
+        <a class="ml-2 mobile-mr-2" [href]="'mailto:' + participant.email">{{
           participant.email
         }}</a>
         <button
           (click)="onCopy('Email')"
           [cdkCopyToClipboard]="participant.email"
-          class="ghost-button ml-2 mobile-ml-3 inline-flex align-center"
+          class="ghost-button ml-2 mobile-ml-0 inline-flex align-center"
         >
           <svg-icon key="copy" class="mr-1"></svg-icon>
           <span>Copy</span>
@@ -18,13 +18,13 @@
 
       <div *ngIf="participant.phone" class="flex align-center wrap">
         <span class="bold">Phone:</span>
-        <a class="ml-2" [href]="'tel:' + participant.phone"
+        <a class="ml-2 mobile-mr-2" [href]="'tel:' + participant.phone"
           >Call {{ participant.phone }}</a
         >
         <button
           (click)="onCopy('Phone')"
           [cdkCopyToClipboard]="participant.phone"
-          class="ghost-button ml-2 mobile-ml-3 inline-flex align-center"
+          class="ghost-button ml-2 mobile-ml-0 inline-flex align-center"
         >
           <svg-icon key="copy" class="mr-1"></svg-icon>
           <span>Copy</span>
@@ -35,11 +35,11 @@
     <section class="ml-4 mobile-ml-0">
       <div class="flex align-center wrap">
         <span class="bold">Passport number:</span>
-        <span class="ml-2">{{ participant.passportNumber }}</span>
+        <span class="ml-2 mobile-mr-2">{{ participant.passportNumber }}</span>
         <button
           (click)="onCopy('Passport number')"
           [cdkCopyToClipboard]="participant.passportNumber"
-          class="ghost-button ml-2 mobile-ml-3 inline-flex align-center"
+          class="ghost-button ml-2 mobile-ml-0 inline-flex align-center"
         >
           <svg-icon key="copy" class="mr-1"></svg-icon>
           <span>Copy</span>
