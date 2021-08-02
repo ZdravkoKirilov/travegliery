@@ -26,12 +26,24 @@
   </header>
 
   <article>
-    <header class="flex space-between mb-2 align-center">
-      <div>
-        <app-booking-filters [participants]="participants$"></app-booking-filters>
+    <header
+      class="flex space-between wrap mb-2 align-center mobile-mr-1 mobile-ml-1"
+    >
+      <div class="mobile-mb-1">
+        <app-booking-filters
+          [participants]="participants$"
+        ></app-booking-filters>
       </div>
       <div>
-        <button cta="outlined">Price summary</button>
+        <a
+          cta="tertiary"
+          class="flex align-center"
+          [routerLink]="['../', 'sharing', 'pricing', 'send']"
+          [queryParams]="bookingFilters$ | async"
+        >
+          <svg-icon key="budget" class="mr-1"></svg-icon>
+          <span>Price summary</span>
+        </a>
       </div>
     </header>
     <app-booking-list

@@ -7,6 +7,18 @@ type RouteData = {
   key: string;
 };
 
+export const BookingFilters = {
+  fromDate: 'fromDate',
+  toDate: 'toDate',
+  participantId: 'participantId',
+};
+
+export type BookingFilters = {
+  fromDate: string;
+  toDate: string;
+  participantId: string | string[];
+};
+
 @Injectable({
   providedIn: 'root',
 })
@@ -59,11 +71,7 @@ export class AppRouterService {
     return { url, params, queryParams, data };
   }
 
-  getItineraryParams(): Observable<{
-    fromDate: string;
-    toDate: string;
-    participantId: string | string[];
-  }> {
+  getItineraryParams(): Observable<BookingFilters> {
     return this.activatedRoute.queryParams.pipe(
       map((currentParams) => ({
         fromDate: currentParams['fromDate'],

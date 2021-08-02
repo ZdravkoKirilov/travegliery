@@ -1,0 +1,16 @@
+.table {
+  table-layout: auto;
+  width: 100%;
+  border-collapse: collapse;
+  border: 1px solid var(--secondary-color);
+
+  th,
+  td {
+    border: 1px solid var(--secondary-color);
+    padding: var(--space-1);
+  }
+
+  .centered {
+    text-align: center;
+  }
+}

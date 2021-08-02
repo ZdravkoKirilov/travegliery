@@ -1,0 +1,32 @@
+<div class="card-container wrap align-center">
+  <div class="flex align-center checkbox">
+    <input type="checkbox" class="mr-1" #sendMailInput />
+    <label>Send an email</label>
+  </div>
+
+  <span *ngIf="!!code" class="ml-3 mr-3 hide-on-mobile"> | </span>
+
+  <div *ngIf="!!code" class="flex align-center">
+    <span class="mr-1">{{ code }}</span>
+    <div></div>
+    <button
+      (click)="onCopy()"
+      [cdkCopyToClipboard]="''"
+      class="ghost-button ml-2 mobile-ml-3 inline-flex align-center"
+    >
+      <svg-icon key="copy" class="mr-1"></svg-icon>
+      <span>Copy</span>
+    </button>
+  </div>
+
+  <span class="ml-3 mr-3 hide-on-mobile"> | </span>
+
+  <div>
+    <button
+      cta="primary"
+      (click)="save.emit({ sendEmail: sendMailInput.checked })"
+    >
+      Save
+    </button>
+  </div>
+</div>

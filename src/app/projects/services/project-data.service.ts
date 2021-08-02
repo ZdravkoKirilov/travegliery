@@ -250,6 +250,20 @@ export class ProjectDataService {
     });
   }
 
+  sortBookings(bookings: Booking[]): Booking[] {
+    return [...bookings].sort((a, b) => {
+      const date1 = new Date(a.startDate);
+      const date2 = new Date(b.startDate);
+      if (isAfter(date1, date2)) {
+        return 1;
+      }
+      if (isAfter(date2, date1)) {
+        return -1;
+      }
+      return 0;
+    });
+  }
+
   getActiveBooking(): Observable<Booking> {
     const activeBookingId = this.appRouter.getBookingId();
     return this.bookings$

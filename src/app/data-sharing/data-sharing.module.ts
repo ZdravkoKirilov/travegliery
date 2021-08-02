@@ -8,6 +8,10 @@ import { ShareItineraryComponent } from './views/share-itinerary/share-itinerary
 import { ItineraryComponent } from './views/itinerary/itinerary.component';
 import { SharingDashboardComponent } from './views/sharing-dashboard/sharing-dashboard.component';
 import { ShareBookingComponent } from './views/share-booking/share-booking.component';
+import { PriceReportComponent } from './views/price-report/price-report.component';
+import { ShareSettingsComponent } from './components/share-settings/share-settings.component';
+import { IconsModule } from '@root/icons';
+import { PriceReportVisualizationComponent } from './components/price-report-visualization/price-report-visualization.component';
 
 const routes: Routes = [
   {
@@ -30,6 +34,11 @@ const routes: Routes = [
     canActivate: [WithAuthGuard],
   },
   {
+    path: 'pricing/send',
+    component: PriceReportComponent,
+    canActivate: [WithAuthGuard],
+  },
+  {
     path: '**',
     redirectTo: '',
   },
@@ -41,8 +50,11 @@ const routes: Routes = [
     ItineraryComponent,
     SharingDashboardComponent,
     ShareBookingComponent,
+    PriceReportComponent,
+    ShareSettingsComponent,
+    PriceReportVisualizationComponent,
   ],
-  imports: [SharedModule, RouterModule.forChild(routes)],
+  imports: [SharedModule, RouterModule.forChild(routes), IconsModule],
   exports: [RouterModule],
 })
 export class DataSharingModule {}
