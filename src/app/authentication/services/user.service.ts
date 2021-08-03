@@ -18,6 +18,8 @@ export class UserService {
   }
 
   logout() {
+    localStorage.removeItem('sharedItems');
+    localStorage.removeItem('emails');
     return of(this.storage.removeToken());
   }
 }

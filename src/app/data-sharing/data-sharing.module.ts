@@ -10,9 +10,11 @@ import { ShareItineraryComponent } from './views/share-itinerary/share-itinerary
 import { ItineraryComponent } from './views/itinerary/itinerary.component';
 import { SharingDashboardComponent } from './views/sharing-dashboard/sharing-dashboard.component';
 import { ShareBookingComponent } from './views/share-booking/share-booking.component';
-import { PriceReportComponent } from './views/price-report/price-report.component';
+import { SharePriceReportComponent } from './views/share-price-report/price-report.component';
 import { ShareSettingsComponent } from './components/share-settings/share-settings.component';
 import { PriceReportVisualizationComponent } from './components/price-report-visualization/price-report-visualization.component';
+import { SharingService } from './services/sharing.service';
+import { PriceReportComponent } from './views/price-report/price-report.component';
 
 const routes: Routes = [
   {
@@ -36,8 +38,12 @@ const routes: Routes = [
   },
   {
     path: 'pricing/send',
-    component: PriceReportComponent,
+    component: SharePriceReportComponent,
     canActivate: [WithAuthGuard],
+  },
+  {
+    path: 'pricing/:shareId',
+    component: PriceReportComponent,
   },
   {
     path: '**',
@@ -51,9 +57,10 @@ const routes: Routes = [
     ItineraryComponent,
     SharingDashboardComponent,
     ShareBookingComponent,
-    PriceReportComponent,
+    SharePriceReportComponent,
     ShareSettingsComponent,
     PriceReportVisualizationComponent,
+    PriceReportComponent,
   ],
   imports: [
     SharedModule,
@@ -62,5 +69,6 @@ const routes: Routes = [
     FormsModule,
   ],
   exports: [RouterModule],
+  providers: [SharingService],
 })
 export class DataSharingModule {}

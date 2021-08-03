@@ -51,6 +51,12 @@ export class AppRouterService {
     return bookingId;
   }
 
+  getShareId() {
+    const data = this.getRouteData();
+    const shareId: string = data.params['shareId'];
+    return shareId;
+  }
+
   getRouteData() {
     let route = this.activatedRoute.snapshot.root;
     let params = { ...route.params };

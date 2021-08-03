@@ -2,7 +2,8 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { Observable } from 'rxjs';
 
 import { ProjectsService } from '@root/projects';
-import { Project } from '@root/shared';
+import { Email, Project, SharedItem } from '@root/shared';
+import { SharingService } from '@root/data-sharing/services/sharing.service';
 
 @Component({
   selector: 'app-sharing-dashboard',
@@ -13,7 +14,20 @@ import { Project } from '@root/shared';
 export class SharingDashboardComponent {
   activeProject$: Observable<Project>;
 
-  constructor(private projectService: ProjectsService) {
+  items$: Observable<SharedItem[]>;
+  emails$: Observable<Email[]>;
+
+  constructor(
+    private projectService: ProjectsService,
+    private sharingService: SharingService
+  ) {
     this.activeProject$ = this.projectService.getActiveProject();
+
+    this.items$ = this.sharingService.items$;
+    this.emails$ = this.sharingService.emails$;
+  }
+
+  getItemLink(item: SharedItem) {
+    return this.sharingService.getItemLink(item);
   }
 }

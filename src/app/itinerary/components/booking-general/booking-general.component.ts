@@ -19,7 +19,7 @@ export class BookingGeneralComponent {
   }
 
   onCopy(target: string) {
-    this.snackbar.open(`${target} copied to clipboard!`, '', {
+    this.snackbar.open(`${target} copied!`, '', {
       duration: 3000,
     });
   }

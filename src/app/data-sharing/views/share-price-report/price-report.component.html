@@ -1,0 +1,41 @@
+<main class="centered-content padded-container" *ngIf="bookings$ | async as bookings">
+  <app-authenticated-header></app-authenticated-header>
+
+  <header class="mb-2 mt-1 flex align-center wrap mobile-ml-1 mobile-mr-1">
+    <span>
+      <a routerLink="../../../../" cta="tertiary"> Dashboard </a>
+    </span>
+
+    <span class="ml-1 mr-1"> / </span>
+
+    <span>
+      <a routerLink="../../../" cta="tertiary">{{
+        (activeProject$ | async)?.name
+      }}</a>
+    </span>
+
+    <span class="ml-1 mr-1"> / </span>
+
+    <span>
+      <a routerLink="../../" cta="tertiary">Sharing center</a>
+    </span>
+
+    <span class="ml-1 mr-1"> / </span>
+
+    <h1 class="h5">Price report</h1>
+  </header>
+
+  <article class="mobile-ml-1 mobile-mr-1">
+    <app-share-settings
+      class="block mb-3"
+      [link]="link"
+      [emails]="(participantEmails$ | async) || []"
+      (makeLink)="handleSave(bookings)"
+      (shareLink)="handleShare($event, bookings)"
+    ></app-share-settings>
+
+    <app-price-report-visualization
+      [bookings]="bookings"
+    ></app-price-report-visualization>
+  </article>
+</main>

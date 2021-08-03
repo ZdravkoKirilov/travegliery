@@ -15,7 +15,7 @@ export class ShareSettingsComponent implements OnInit {
   @Output() makeLink = new EventEmitter();
   @Output() shareLink: EventEmitter<string[]> = new EventEmitter();
 
-  @Input() code: string = '';
+  @Input() link: string = '';
   @Input() emails: string[] = [];
 
   emailFilter$ = new BehaviorSubject('');

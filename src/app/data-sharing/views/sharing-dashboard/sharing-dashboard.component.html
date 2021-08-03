@@ -1,7 +1,7 @@
 <main class="centered-content padded-container">
   <app-authenticated-header></app-authenticated-header>
 
-  <header class="mb-3 mt-1">
+  <header class="mb-3 mt-1 flex wrap align-center">
     <span>
       <a routerLink="../../" cta="tertiary"> Dashboard </a>
     </span>
@@ -13,10 +13,33 @@
         (activeProject$ | async)?.name
       }}</a>
     </span>
+
+    <span class="ml-1 mr-1"> / </span>
+
+    <h1 class="h5">Sharing center</h1>
   </header>
 
-  <article>
-    <p class="mb-2">Keeps a list of sent emails</p>
-    <p>And also a list of upcoming automatic emails</p>
+  <article class="flex wrap sections-container">
+    <section class="mr-4">
+      <h2 class="mb-2 h4">Links</h2>
+
+      <div *ngFor="let item of items$ | async" class="mb-1">
+        <a [href]="getItemLink(item)" target="_blank">{{
+          getItemLink(item)
+        }}</a>
+      </div>
+    </section>
+
+    <section>
+      <h2 class="mb-2 h4">Emails</h2>
+
+      <div *ngFor="let email of emails$ | async" class="mb-1 flex">
+        <span class="mr-3">{{ email.id }}</span>
+        <span>
+          <span class="mr-1">Ships at: </span>
+          <span>{{ email.sendAt | date }}</span>
+        </span>
+      </div>
+    </section>
   </article>
 </main>

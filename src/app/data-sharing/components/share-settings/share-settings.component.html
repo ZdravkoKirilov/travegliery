@@ -1,7 +1,7 @@
 <div class="flex wrap">
   <div class="mr-3">
     <button
-      *ngIf="!code"
+      *ngIf="!link"
       cta="outlined"
       class="flex align-center justify-center mobile-mb-2"
       (click)="makeLink.emit()"
@@ -11,10 +11,10 @@
     </button>
 
     <button
-      *ngIf="code"
+      *ngIf="link"
       cta="outlined"
-      class="flex align-center justify-center"
-      [cdkCopyToClipboard]="code"
+      class="flex align-center justify-center mobile-mb-2"
+      [cdkCopyToClipboard]="link"
       (click)="onCopy()"
     >
       <svg-icon key="link" class="mr-1"></svg-icon>
@@ -71,7 +71,11 @@
         <div class="separator mt-3"></div>
 
         <div class="mt-4">
-          <button (click)="handleShare(displayedRecipients)" cta="outlined" secondary>
+          <button
+            (click)="handleShare(displayedRecipients)"
+            cta="outlined"
+            secondary
+          >
             Done
           </button>
         </div>

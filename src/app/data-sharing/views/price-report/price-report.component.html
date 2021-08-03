@@ -1,41 +1,16 @@
-<main class="centered-content padded-container">
-  <app-authenticated-header></app-authenticated-header>
+<main
+  class="centered-content padded-container"
+  *ngIf="bookings$ | async as bookings"
+>
+  <app-public-header></app-public-header>
 
-  <header class="mb-2 mt-1 flex align-center wrap mobile-ml-1 mobile-mr-1">
-    <span>
-      <a routerLink="../../../../" cta="tertiary"> Dashboard </a>
-    </span>
-
-    <span class="ml-1 mr-1"> / </span>
-
-    <span>
-      <a routerLink="../../../" cta="tertiary">{{
-        (activeProject$ | async)?.name
-      }}</a>
-    </span>
-
-    <span class="ml-1 mr-1"> / </span>
-
-    <span>
-      <a routerLink="../../" cta="tertiary">Sharing center</a>
-    </span>
-
-    <span class="ml-1 mr-1"> / </span>
-
-    <h1 class="h5">Price report</h1>
+  <header *ngIf="sharedItem" class="mb-3 mt-3">
+    <h1 class="h3">Price report</h1>
+    <span>Created at: {{ sharedItem.createdAt | date }}</span>
   </header>
 
-  <article class="mobile-ml-1 mobile-mr-1">
-    <app-share-settings
-      class="block mb-3"
-      [code]="''"
-      [emails]="(participantEmails$ | async) || []"
-      (makeLink)="handleSave()"
-      (shareLink)="handleShare($event)"
-    ></app-share-settings>
-
-    <app-price-report-visualization
-      [bookings]="(bookings$ | async) || []"
-    ></app-price-report-visualization>
-  </article>
+  <app-price-report-visualization
+    class="mobile-ml-1 mobile-mr-1 block"
+    [bookings]="bookings"
+  ></app-price-report-visualization>
 </main>
