@@ -37,7 +37,9 @@ export class SharingService {
   emails$ = this._emails$.pipe(
     map((emails) => {
       const projectId = this.appRouter.getProjectId();
-      return Object.values(emails).filter((elem) => elem.id === projectId);
+      return Object.values(emails).filter(
+        (elem) => elem.projectId === projectId
+      );
     })
   );
 

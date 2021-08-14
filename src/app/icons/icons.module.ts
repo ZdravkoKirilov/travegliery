@@ -19,6 +19,7 @@ import { appFilterIcon } from '@assets/generated-icons/filter';
 import { appRemoveIcon } from '@assets/generated-icons/remove';
 import { appBudgetIcon } from '@assets/generated-icons/budget';
 import { appLinkIcon } from '@assets/generated-icons/link';
+import { appEmailIcon } from '@assets/generated-icons/email';
 
 @NgModule({
   declarations: [],
@@ -52,6 +53,7 @@ import { appLinkIcon } from '@assets/generated-icons/link';
         appRemoveIcon,
         appBudgetIcon,
         appLinkIcon,
+        appEmailIcon,
       ],
     }),
   ],

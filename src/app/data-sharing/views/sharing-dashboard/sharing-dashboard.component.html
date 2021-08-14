@@ -21,11 +21,14 @@
   </header>
 
   <article class="flex wrap mobile-ml-2 mobile-mr-1">
-    <section class="width-5 mbl-width-12">
-      <h2 class="mb-2 h4">Links</h2>
+    <section class="width-5 mbl-width-12 mr-4 mobile-mr-0">
+      <h2 class="mb-2 h4 flex align-center">
+        <svg-icon key="link" class="mr-2"></svg-icon>
+        <span>Links</span>
+      </h2>
 
-      <div *ngFor="let item of items$ | async" class="mb-3 flex column">
-        <div class="flex align-center wrap">
+      <div *ngFor="let item of items$ | async" class="mb-3 flex column card">
+        <div class="flex align-center wrap mb-2">
           <a
             class="mr-3"
             [href]="getItemLink(item)"
@@ -35,7 +38,9 @@
           >
           <button
             (click)="deleteItem(item.id)"
-            class="ghost-button flex align-center revoke"
+            class="flex align-center justify-center"
+            cta="outlined"
+            secondary
           >
             <svg-icon key="remove" class="mr-1"></svg-icon>
             <span>Revoke</span>
@@ -50,20 +55,22 @@
     </section>
 
     <section class="width-5 mbl-width-12">
-      <h2 class="mb-2 h4">Emails</h2>
+      <h2 class="mb-2 h4 flex align-center">
+        <svg-icon key="email" class="mr-2"></svg-icon>
+        <span>Emails</span>
+      </h2>
 
-      <div *ngFor="let email of emails$ | async" class="mb-1 flex column">
+      <div *ngFor="let email of emails$ | async" class="mb-1 flex column card">
         <ng-container *ngIf="getItemById(email.shareId) | async as item">
-          <div class="flex align-center wrap">
-            <a
-              class="mr-3"
-              [routerLink]="['/', 'projects', project.id, 'sharing']"
-              [fragment]="item.id"
-              >{{ item.type | sharingType }}</a
-            >
+          <div class="flex align-center wrap mb-2">
+            <a class="mr-3" [href]="getItemLink(item)" target="_blank">{{
+              item.type | sharingType
+            }}</a>
             <button
               (click)="deleteEmail(email.id)"
-              class="ghost-button flex align-center revoke"
+              class="flex align-center justify-center"
+              cta="outlined"
+              secondary
             >
               <svg-icon key="remove" class="mr-1"></svg-icon>
               <span>Delete</span>
