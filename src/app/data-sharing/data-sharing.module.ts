@@ -18,6 +18,8 @@ import { SharingService } from './services/sharing.service';
 import { PriceReportComponent } from './views/price-report/price-report.component';
 import { SharingTypePipe } from './pipes/sharing-type.pipe';
 import { EmailStatusPipe } from './pipes/email-status.pipe';
+import { BookingComponent } from './views/booking/booking.component';
+import { BookingVisualizationComponent } from './components/booking-visualization/booking-visualization.component';
 
 const routes: Routes = [
   {
@@ -35,9 +37,13 @@ const routes: Routes = [
     component: ItineraryComponent,
   },
   {
-    path: 'booking/send',
+    path: 'booking/send/:bookingId',
     component: ShareBookingComponent,
     canActivate: [WithAuthGuard],
+  },
+  {
+    path: 'booking/:shareId',
+    component: BookingComponent,
   },
   {
     path: 'pricing/send',
@@ -66,6 +72,8 @@ const routes: Routes = [
     PriceReportComponent,
     SharingTypePipe,
     EmailStatusPipe,
+    BookingComponent,
+    BookingVisualizationComponent,
   ],
   imports: [
     SharedModule,

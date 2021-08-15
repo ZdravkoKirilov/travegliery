@@ -21,7 +21,17 @@
     </span>
   </header>
 
-  <article>
-    <p>Send an email with detailed booking information</p>
+  <article *ngIf="booking$ | async as booking">
+    <app-share-settings
+      class="block mb-3"
+      [link]="link"
+      [emails]="(participantEmails$ | async) || []"
+      (makeLink)="handleSave(booking)"
+      (shareLink)="handleShare($event, booking)"
+    ></app-share-settings>
+    <app-booking-visualization
+      [booking]="(booking$ | async) || undefined"
+      [participants]="(participants$ | async) || []"
+    ></app-booking-visualization>
   </article>
 </main>

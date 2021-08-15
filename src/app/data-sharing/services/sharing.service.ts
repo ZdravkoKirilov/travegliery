@@ -87,6 +87,32 @@ export class SharingService {
     return item;
   }
 
+  generateBookingReport(bookingId: Booking['id']): SharedItem {
+    const nanoId = nanoid();
+    const projectId = this.appRouter.getProjectId();
+
+    const item = {
+      id: nanoId,
+      type: 'single-booking' as const,
+      bookingIds: [bookingId],
+      emails: [],
+      projectId,
+      createdAt: new Date().getTime(),
+    };
+
+    this._items$.next({
+      ...this._items$.getValue(),
+      [item.id]: item,
+    });
+
+    localStorage.setItem(
+      'sharedItems',
+      JSON.stringify(this._items$.getValue())
+    );
+
+    return item;
+  }
+
   generateEmail(
     shareId: SharedItem['id'],
     recipients: string[],
@@ -120,6 +146,10 @@ export class SharingService {
 
     if (item.type === 'price-report') {
       return `${host}/projects/${projectId}/sharing/pricing/${item.id}`;
+    }
+
+    if (item.type === 'single-booking') {
+      return `${host}/projects/${projectId}/sharing/booking/${item.id}`;
     }
 
     return '';
