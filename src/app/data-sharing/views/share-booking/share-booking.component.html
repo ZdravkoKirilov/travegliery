@@ -1,37 +1,50 @@
-<main class="centered-content padded-container">
-  <app-authenticated-header></app-authenticated-header>
+<main
+  *ngIf="booking$ | async as booking"
+  class="centered-content padded-container"
+>
+  <ng-container *ngIf="activeProject$ | async as project">
+    <app-authenticated-header></app-authenticated-header>
 
-  <header class="mb-2 mt-1">
-    <span>
-      <a routerLink="../../../../" cta="tertiary"> Dashboard </a>
-    </span>
+    <header class="mb-2 mt-1">
+      <span>
+        <a routerLink="../../../../" cta="tertiary"> Dashboard </a>
+      </span>
 
-    <span class="ml-1 mr-1"> / </span>
+      <span class="ml-1 mr-1"> / </span>
 
-    <span>
-      <a routerLink="../../../" cta="tertiary">{{
-        (activeProject$ | async)?.name
-      }}</a>
-    </span>
+      <span>
+        <a routerLink="../../../" cta="tertiary">{{ project.name }}</a>
+      </span>
 
-    <span class="ml-1 mr-1"> / </span>
+      <span class="ml-1 mr-1"> / </span>
 
-    <span>
-      <a routerLink="../../" cta="tertiary">Sharing center</a>
-    </span>
-  </header>
+      <span>
+        <a routerLink="../../" cta="tertiary">Sharing center</a>
+      </span>
 
-  <article *ngIf="booking$ | async as booking">
-    <app-share-settings
-      class="block mb-3"
-      [link]="link"
-      [emails]="(participantEmails$ | async) || []"
-      (makeLink)="handleSave(booking)"
-      (shareLink)="handleShare($event, booking)"
-    ></app-share-settings>
-    <app-booking-visualization
-      [booking]="(booking$ | async) || undefined"
-      [participants]="(participants$ | async) || []"
-    ></app-booking-visualization>
-  </article>
+      <span class="ml-1 mr-1"> / </span>
+
+      <span>
+        <a
+          [routerLink]="['/projects', project.id, 'itinerary', booking.id]"
+          cta="tertiary"
+          >Booking</a
+        >
+      </span>
+    </header>
+
+    <article>
+      <app-share-settings
+        class="block mb-3"
+        [link]="link"
+        [emails]="(participantEmails$ | async) || []"
+        (makeLink)="handleSave(booking)"
+        (shareLink)="handleShare($event, booking)"
+      ></app-share-settings>
+      <app-booking-visualization
+        [booking]="(booking$ | async) || undefined"
+        [participants]="(participants$ | async) || []"
+      ></app-booking-visualization>
+    </article>
+  </ng-container>
 </main>
