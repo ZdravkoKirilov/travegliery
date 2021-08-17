@@ -5,7 +5,7 @@
   <ng-container *ngIf="activeProject$ | async as project">
     <app-authenticated-header></app-authenticated-header>
 
-    <header class="mb-2 mt-1">
+    <header class="mb-2 mt-1 mobile-ml-1 mobile-mr-1">
       <span>
         <a routerLink="../../../../" cta="tertiary"> Dashboard </a>
       </span>
@@ -35,7 +35,7 @@
 
     <article>
       <app-share-settings
-        class="block mb-3"
+        class="block mb-3 mobile-ml-1 mobile-mr-1"
         [link]="link"
         [emails]="(participantEmails$ | async) || []"
         (makeLink)="handleSave(booking)"

@@ -1,7 +1,12 @@
 import { Component } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 
-import { AppRouterService, Booking, SharedItem } from '@root/shared';
+import {
+  AppRouterService,
+  Booking,
+  Participant,
+  SharedItem,
+} from '@root/shared';
 import { ProjectDataService } from '@root/projects';
 
 import { SharingService } from '../../services/sharing.service';
@@ -24,8 +29,11 @@ export class BookingComponent {
     this.booking$ = this.projectDataService.getBookingById(
       this.sharedItem.bookingIds[0]
     );
+
+    this.participants$ = this.projectDataService.getParticipants();
   }
 
   booking$?: Observable<Booking>;
+  participants$: Observable<Participant[]> = of([]);
   sharedItem: SharedItem | undefined;
 }

@@ -1,4 +1,33 @@
-<p>booking-visualization works!</p>
-<div>
-  {{ booking?.provider }}
+<div class="mobile-ml-1 mobile-mr-1 card" *ngIf="booking">
+  <div class="flex align-center wrap mb-2">
+    <svg-icon
+      [key]="booking.type | bookingType"
+      class="mr-1 booking-type"
+      size="xl"
+    ></svg-icon>
+
+    <h1 class="h4 mr-2">{{ booking.provider }}</h1>
+
+    <div class="small-text flex align-center">
+      <span> {{ booking.startDate | date }} {{ booking.startTime }} </span>
+      <span> - </span>
+      <span>{{ booking.endDate | date }} {{ booking.endTime }}</span>
+    </div>
+  </div>
+
+  <div class="mb-2 flex align-center">
+    <span class="mr-2">Confirmation number</span>
+    <span class="bold">{{ booking.confirmationNumber }}</span>
+  </div>
+
+  <div *ngIf="participants && participants.length">
+    <h2 class="mb-1 h5">Participants</h2>
+
+    <div class="flex wrap gap-2">
+      <div *ngFor="let participant of participants; let last = last">
+        {{ participant.firstName }} {{ participant.lastName
+        }}<span *ngIf="!last">,</span>
+      </div>
+    </div>
+  </div>
 </div>

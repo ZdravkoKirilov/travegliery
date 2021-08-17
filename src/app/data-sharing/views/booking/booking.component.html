@@ -5,9 +5,12 @@
   <app-public-header></app-public-header>
 
   <header *ngIf="sharedItem" class="mb-3 mt-3 mobile-ml-1 mobile-mr-1">
-    <h1 class="h3">Booking summary</h1>
+    <h1 class="h3 mb-1">Booking summary</h1>
     <span>Created at: {{ sharedItem.createdAt | date }}</span>
   </header>
 
-  <app-booking-visualization [booking]="booking"></app-booking-visualization>
+  <app-booking-visualization
+    [booking]="booking"
+    [participants]="(participants$ | async) || []"
+  ></app-booking-visualization>
 </main>
