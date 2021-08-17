@@ -13,7 +13,6 @@ const routes: Routes = [
   {
     path: 'projects',
     loadChildren: () => import('./projects').then((m) => m.ProjectsModule),
-    canActivate: [WithAuthGuard],
   },
   {
     path: 'me/account',

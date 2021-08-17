@@ -33,7 +33,7 @@ const routes: Routes = [
     canActivate: [WithAuthGuard],
   },
   {
-    path: 'itinerary/view/:token',
+    path: 'itinerary/view/:shareId',
     component: ItineraryComponent,
   },
   {
