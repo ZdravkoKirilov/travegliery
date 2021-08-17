@@ -5,7 +5,13 @@
   <app-public-header></app-public-header>
 
   <header *ngIf="sharedItem" class="mb-3 mt-3 mobile-ml-1 mobile-mr-1">
-    <h1 class="h3 mb-1">Traveler itinerary</h1>
+    <span class="flex align-center mb-1">
+      <h1 class="h3">
+        {{ participant.firstName }} {{ participant.lastName }}
+      </h1>
+      <span class="ml-1 badge">Itinerary</span>
+    </span>
+
     <span>Created at: {{ sharedItem.createdAt | date }}</span>
   </header>
 

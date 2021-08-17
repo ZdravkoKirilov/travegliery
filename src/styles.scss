@@ -737,3 +737,10 @@ svg-icon.star {
     display: none;
   }
 }
+
+.badge {
+  padding: var(--space-1);
+  border-radius: 10px;
+  font-weight: var(--font-weight-big);
+  background-color: var(--neutral-transparent-color);
+}
