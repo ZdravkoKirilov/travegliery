@@ -48,7 +48,7 @@
       ></app-share-settings>
 
       <div *ngFor="let group of bookingGroups$ | async" class="card mb-3">
-        <div class="date-badge mb-2">
+        <div class="badge mb-2">
           <span>{{ group.date | date }} </span>
           <span class="ml-3"
             >{{ group.bookings.length }}

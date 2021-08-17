@@ -740,7 +740,7 @@ svg-icon.star {
 
 .badge {
   padding: var(--space-1);
-  border-radius: 10px;
+  border-radius: var(--space-1);
   font-weight: var(--font-weight-big);
   background-color: var(--neutral-transparent-color);
 }
