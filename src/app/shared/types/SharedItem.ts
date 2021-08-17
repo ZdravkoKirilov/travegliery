@@ -1,11 +1,25 @@
 import { Booking } from './Booking';
+import { Participant } from './Participant';
 
-export type SharedItem = {
+type CommonFields = {
   id: string;
   projectId: string;
-  type: 'price-report' | 'single-booking' | 'itinerary';
-
   createdAt: number;
-  bookingIds: Array<Booking['id']>;
-  emails: Array<string>;
 };
+
+export type PriceReport = CommonFields & {
+  type: 'price-report';
+  bookingIds: Array<Booking['id']>;
+};
+
+export type BookingReport = CommonFields & {
+  type: 'booking';
+  bookingId: Booking['id'];
+};
+
+export type ItineraryReport = CommonFields & {
+  type: 'itinerary';
+  participantId: Participant['id'];
+};
+
+export type SharedItem = PriceReport | BookingReport | ItineraryReport;

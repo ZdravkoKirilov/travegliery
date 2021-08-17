@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
-import { combineLatest, Observable, of } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { map } from 'rxjs/operators';
 
-import { AppRouterService, Booking, SharedItem } from '@root/shared';
+import { AppRouterService, Booking, PriceReport } from '@root/shared';
 import { ProjectDataService } from '@root/projects';
 
 import { SharingService } from '../../services/sharing.service';
@@ -18,11 +18,12 @@ export class PriceReportComponent {
     private sharingService: SharingService,
     private appRouter: AppRouterService
   ) {
-    this.bookings$ = 
-      this.dataService.getBookings().pipe(
+    this.bookings$ = this.dataService.getBookings().pipe(
       map((bookings) => {
         const shareId = this.appRouter.getShareId();
-        const sharedItem = this.sharingService.getSharedItem(shareId);
+        const sharedItem = this.sharingService.getSharedItem(
+          shareId
+        ) as PriceReport;
         this.sharedItem = sharedItem;
 
         return bookings.filter((booking) =>
@@ -32,7 +33,7 @@ export class PriceReportComponent {
     );
   }
 
-  sharedItem: SharedItem | undefined;
+  sharedItem: PriceReport | undefined;
 
   bookings$: Observable<Booking[]> = of([]);
 }

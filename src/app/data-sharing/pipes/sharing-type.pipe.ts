@@ -12,7 +12,7 @@ export class SharingTypePipe implements PipeTransform {
         return 'Traveler itinerary';
       case 'price-report':
         return 'Price report';
-      case 'single-booking':
+      case 'booking':
         return 'Booking';
       default:
         return 'Unknown';

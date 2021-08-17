@@ -44,6 +44,7 @@
       <app-booking-visualization
         [booking]="(booking$ | async) || undefined"
         [participants]="(participants$ | async) || []"
+        class="block card"
       ></app-booking-visualization>
     </article>
   </ng-container>

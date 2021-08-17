@@ -30,9 +30,7 @@
         <img src="assets/avatar.jpg" />
       </div>
 
-      <h1 class="h3">
-        {{ participant.firstName }} {{ participant.lastName }}
-      </h1>
+      <h1 class="h3">{{ participant.firstName }} {{ participant.lastName }}</h1>
     </header>
 
     <div class="card-container">
@@ -63,8 +61,13 @@
           <a
             cta="outlined"
             class="ml-2"
-            [routerLink]="['../..', 'sharing', 'itinerary', 'send']"
-            [queryParams]="{ participant: participant.id }"
+            [routerLink]="[
+              '../..',
+              'sharing',
+              'itinerary',
+              'send',
+              participant.id
+            ]"
             >Send itinerary</a
           >
         </span>

@@ -83,6 +83,12 @@ export class ProjectDataService {
       .pipe(map((participants) => participants[activeParticipantId]));
   }
 
+  getParticipantById(id: Participant['id']): Observable<Participant> {
+    return this.participants$
+      .asObservable()
+      .pipe(map((participants) => participants[id]));
+  }
+
   getBookings(): Observable<Booking[]> {
     return combineLatest([
       this.bookings$,
@@ -196,6 +202,15 @@ export class ProjectDataService {
       switchMap((participant) =>
         this.getBookingsByParticipantId(participant.id)
       ),
+      map((bookings) => this.createBookingGroups(bookings)),
+      map(this.sortBookingGroups)
+    );
+  }
+
+  getBookingGroupsByParticipantId(
+    id: Participant['id']
+  ): Observable<BookingGroups> {
+    return this.getBookingsByParticipantId(id).pipe(
       map((bookings) => this.createBookingGroups(bookings)),
       map(this.sortBookingGroups)
     );

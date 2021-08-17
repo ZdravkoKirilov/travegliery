@@ -1,27 +1,68 @@
-<main class="centered-content padded-container">
-  <app-authenticated-header></app-authenticated-header>
+<main
+  *ngIf="activeParticipant$ | async as participant"
+  class="centered-content padded-container"
+>
+  <ng-container *ngIf="activeProject$ | async as project">
+    <app-authenticated-header></app-authenticated-header>
 
-  <header class="mb-2 mt-1">
-    <span>
-      <a routerLink="../../../../" cta="tertiary"> Dashboard </a>
-    </span>
+    <header class="mb-2 mt-1 mobile-ml-1 mobile-mr-1">
+      <span>
+        <a routerLink="../../../../" cta="tertiary"> Dashboard </a>
+      </span>
 
-    <span class="ml-1 mr-1"> / </span>
+      <span class="ml-1 mr-1"> / </span>
 
-    <span>
-      <a routerLink="../../../" cta="tertiary">{{
-        (activeProject$ | async)?.name
-      }}</a>
-    </span>
+      <span>
+        <a routerLink="../../../" cta="tertiary">{{ project.name }}</a>
+      </span>
 
-    <span class="ml-1 mr-1"> / </span>
+      <span class="ml-1 mr-1"> / </span>
 
-    <span>
-      <a routerLink="../../" cta="tertiary">Sharing center</a>
-    </span>
-  </header>
+      <span>
+        <a routerLink="../../" cta="tertiary">Sharing center</a>
+      </span>
 
-  <article>
-    <p>Send itinerary information to participants</p>
-  </article>
+      <span class="ml-1 mr-1"> / </span>
+
+      <span>
+        <a
+          [routerLink]="[
+            '/projects',
+            project.id,
+            'participants',
+            participant.id
+          ]"
+          cta="tertiary"
+          >Participant</a
+        >
+      </span>
+    </header>
+
+    <article *ngIf="bookings$ | async as bookings">
+      <app-share-settings
+        class="block mb-3 mobile-ml-1 mobile-mr-1"
+        [link]="link"
+        [emails]="[participant.email]"
+        (makeLink)="handleSave(participant.id)"
+        (shareLink)="handleShare($event, participant.id)"
+      ></app-share-settings>
+
+      <div *ngFor="let group of bookingGroups$ | async" class="card mb-3">
+        <div class="date-badge mb-2">
+          <span>{{ group.date | date }} </span>
+          <span class="ml-3"
+            >{{ group.bookings.length }}
+            {{ group.bookings.length > 1 ? "bookings" : "booking" }}</span
+          >
+        </div>
+
+        <app-booking-visualization
+          *ngFor="let booking of group.bookings"
+          [booking]="booking"
+          [participants]="(getBookingParticipants(booking) | async) || []"
+        >
+        </app-booking-visualization>
+      </div>
+    </article>
+  </ng-container>
 </main>

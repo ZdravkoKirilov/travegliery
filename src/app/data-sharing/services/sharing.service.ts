@@ -2,8 +2,18 @@ import { Injectable } from '@angular/core';
 import { nanoid } from 'nanoid';
 import { BehaviorSubject } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { isBefore, isAfter } from 'date-fns';
 
-import { AppRouterService, Booking, SharedItem, Email } from '@root/shared';
+import {
+  AppRouterService,
+  Booking,
+  SharedItem,
+  Email,
+  Participant,
+  PriceReport,
+  BookingReport,
+  ItineraryReport,
+} from '@root/shared';
 import { environment } from 'src/environments/environment';
 
 @Injectable()
@@ -29,17 +39,33 @@ export class SharingService {
   items$ = this._items$.pipe(
     map((items) => {
       const projectId = this.appRouter.getProjectId();
-      return Object.values(items).filter(
-        (elem) => elem.projectId === projectId
-      );
+      return Object.values(items)
+        .filter((elem) => elem.projectId === projectId)
+        .sort((a, b) => {
+          if (isAfter(a.createdAt, b.createdAt)) {
+            return -1;
+          }
+          if (isBefore(a.createdAt, b.createdAt)) {
+            return 1;
+          }
+          return 0;
+        });
     })
   );
   emails$ = this._emails$.pipe(
     map((emails) => {
       const projectId = this.appRouter.getProjectId();
-      return Object.values(emails).filter(
-        (elem) => elem.projectId === projectId
-      );
+      return Object.values(emails)
+        .filter((elem) => elem.projectId === projectId)
+        .sort((a, b) => {
+          if (isAfter(a.createdAt, b.createdAt)) {
+            return -1;
+          }
+          if (isBefore(a.createdAt, b.createdAt)) {
+            return 1;
+          }
+          return 0;
+        });
     })
   );
 
@@ -61,14 +87,13 @@ export class SharingService {
     this._emails$.next(currentEmails);
   }
 
-  generatePriceReport(bookingIds: Array<Booking['id']>): SharedItem {
+  generatePriceReport(bookingIds: Array<Booking['id']>): PriceReport {
     const nanoId = nanoid();
     const projectId = this.appRouter.getProjectId();
 
     const item = {
       id: nanoId,
       type: 'price-report' as const,
-      emails: [],
       bookingIds,
       projectId,
       createdAt: new Date().getTime(),
@@ -87,15 +112,39 @@ export class SharingService {
     return item;
   }
 
-  generateBookingReport(bookingId: Booking['id']): SharedItem {
+  generateBookingReport(bookingId: Booking['id']): BookingReport {
     const nanoId = nanoid();
     const projectId = this.appRouter.getProjectId();
 
     const item = {
       id: nanoId,
-      type: 'single-booking' as const,
-      bookingIds: [bookingId],
-      emails: [],
+      type: 'booking' as const,
+      bookingId,
+      projectId,
+      createdAt: new Date().getTime(),
+    };
+
+    this._items$.next({
+      ...this._items$.getValue(),
+      [item.id]: item,
+    });
+
+    localStorage.setItem(
+      'sharedItems',
+      JSON.stringify(this._items$.getValue())
+    );
+
+    return item;
+  }
+
+  generateItineraryReport(participantId: Participant['id']): ItineraryReport {
+    const nanoId = nanoid();
+    const projectId = this.appRouter.getProjectId();
+
+    const item = {
+      id: nanoId,
+      type: 'itinerary' as const,
+      participantId,
       projectId,
       createdAt: new Date().getTime(),
     };
@@ -145,11 +194,15 @@ export class SharingService {
     const projectId = this.appRouter.getProjectId();
 
     if (item.type === 'price-report') {
-      return `${host}/projects/${projectId}/sharing/pricing/${item.id}`;
+      return `${host}/projects/${projectId}/sharing/pricing/view/${item.id}`;
     }
 
-    if (item.type === 'single-booking') {
-      return `${host}/projects/${projectId}/sharing/booking/${item.id}`;
+    if (item.type === 'booking') {
+      return `${host}/projects/${projectId}/sharing/booking/view/${item.id}`;
+    }
+
+    if (item.type === 'itinerary') {
+      return `${host}/projects/${projectId}/sharing/itinerary/view/${item.id}`;
     }
 
     return '';

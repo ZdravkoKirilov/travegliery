@@ -28,7 +28,7 @@ const routes: Routes = [
     canActivate: [WithAuthGuard],
   },
   {
-    path: 'itinerary/send',
+    path: 'itinerary/send/:participantId',
     component: ShareItineraryComponent,
     canActivate: [WithAuthGuard],
   },
@@ -42,7 +42,7 @@ const routes: Routes = [
     canActivate: [WithAuthGuard],
   },
   {
-    path: 'booking/:shareId',
+    path: 'booking/view/:shareId',
     component: BookingComponent,
   },
   {
@@ -51,7 +51,7 @@ const routes: Routes = [
     canActivate: [WithAuthGuard],
   },
   {
-    path: 'pricing/:shareId',
+    path: 'pricing/view/:shareId',
     component: PriceReportComponent,
   },
   {

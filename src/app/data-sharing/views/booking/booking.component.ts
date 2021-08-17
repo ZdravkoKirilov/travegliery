@@ -4,6 +4,7 @@ import { Observable, of } from 'rxjs';
 import {
   AppRouterService,
   Booking,
+  BookingReport,
   Participant,
   SharedItem,
 } from '@root/shared';
@@ -24,10 +25,12 @@ export class BookingComponent {
   ) {
     const shareId = this.appRouter.getShareId();
 
-    this.sharedItem = this.sharingService.getSharedItem(shareId);
+    this.sharedItem = this.sharingService.getSharedItem(
+      shareId
+    ) as BookingReport;
 
     this.booking$ = this.projectDataService.getBookingById(
-      this.sharedItem.bookingIds[0]
+      this.sharedItem.bookingId
     );
 
     this.participants$ = this.projectDataService.getParticipants();
@@ -35,5 +38,5 @@ export class BookingComponent {
 
   booking$?: Observable<Booking>;
   participants$: Observable<Participant[]> = of([]);
-  sharedItem: SharedItem | undefined;
+  sharedItem: BookingReport | undefined;
 }
