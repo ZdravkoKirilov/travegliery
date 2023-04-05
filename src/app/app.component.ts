@@ -7,5 +7,5 @@ import { Component } from '@angular/core';
   host: { class: 'full-container' },
 })
 export class AppComponent {
-  title = 'goatzilla';
+  title = 'Travegliery';
 }

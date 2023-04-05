@@ -1,5 +1,5 @@
 {
-  "name": "goatzilla",
+  "name": "travegliery",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
@@ -8,8 +8,8 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "generate-icons": "svg-generator",
-    "serve": "http-server dist/goatzilla",
-    "deploy": "npm run build && ng deploy --base-href=/goatzilla/"
+    "serve": "http-server dist/travegliery",
+    "deploy": "npm run build && ng deploy --base-href=/travegliery/"
   },
   "private": true,
   "dependencies": {
